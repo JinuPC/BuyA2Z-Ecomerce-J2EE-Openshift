@@ -71,9 +71,13 @@ public class Config {
         return dbPassword;
     }
 
+    public static String getDbName() {
+        return DB_NAME;
+    }
+
     /*
-             * Method for Setting the environment variable based on the deployment platform.
-             */
+                 * Method for Setting the environment variable based on the deployment platform.
+                 */
     private static void setEnv() {
         if(isInOpenshift() && DB_TYPE.equalsIgnoreCase("mysql")) {
             dbHost = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
