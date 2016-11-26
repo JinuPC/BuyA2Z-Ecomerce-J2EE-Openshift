@@ -3,6 +3,7 @@ package com.buya2z.config;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Properties;
 
 /**
@@ -20,24 +21,22 @@ public class Config {
     private static String homeDirectory;
     private static String dataDirectory;
 
-    /*
-     * Will set the Environment variables for this application based on the platform
-     * If the application deployed in openshift then it will set openshift variables
-     * If it is local development then local variables will set from the properties file
-     */
     static {
+        //Will initialize all environment variables based on the deployment platform
         setEnv();
     }
 
-    /*
-     * Method for checking the deployment platform
+    private Config() {}
+
+    /**
+     * Method for checking the deployment platform<br>
      * If true application is deployed in openshift
      */
     public static boolean isInOpenshift() {
         return System.getenv("OPENSHIFT_MYSQL_DB_HOST") != null;
     }
 
-    /*
+    /**
      * Method for checking the deployment is done in localhost
      * If true this is deployed in localhost
      */
@@ -45,53 +44,65 @@ public class Config {
         return System.getenv("OPENSHIFT_MYSQL_DB_HOST") == null;
     }
 
-    /*
-     * Return base Url of the application
-     * Example
-     * Local : http://localhost:8080
-     * Openshift : shop-buya2z.rhcloud.com
+    /**
+     * Return base Url of the application<br>
+     * Example<br>
+     * Local : <b>http://localhost:8080</b><br>
+     * Openshift : <b>shop-buya2z.rhcloud.com</b>
      */
     public static String getBaseUrl() {
         return Config.baseUrl;
     }
 
-    public static String getDbUrl() {
+    static String getDbUrl() {
         String dbUrl = "";
+        //if mysql load mysql driver and return mysql dbUrl
         if(DB_TYPE.equalsIgnoreCase("mysql")) {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
             dbUrl = "jdbc:mysql://" + Config.dbHost + ":" + Config.dbPort;
         }
         return dbUrl;
     }
 
-    public static String getDbUserName() {
+    static String getDbUserName() {
         return dbUserName;
     }
 
-    public static String getDbPassword() {
+    static String getDbPassword() {
         return dbPassword;
     }
 
-    public static String getDbName() {
+    static String getDbName() {
         return DB_NAME;
     }
 
     /*
-                 * Method for Setting the environment variable based on the deployment platform.
-                 */
+     * Method for Setting the environment variable based on the deployment platform.
+     */
     private static void setEnv() {
         if(isInOpenshift() && DB_TYPE.equalsIgnoreCase("mysql")) {
-            dbHost = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
-            dbPort = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
-            dbUserName = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
-            dbPassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-            baseUrl = System.getenv("OPENSHIFT_APP_DNS");
-            appName = System.getenv("OPENSHIFT_APP_NAME");
-            homeDirectory = System.getenv("OPENSHIFT_HOMEDIR");
-            dataDirectory = System.getenv("OPENSHIFT_DATA_DIR");
-
+            setOpenshiftEnv();
         } else if(isInLocal()){
             setLocalEnv();
         }
+    }
+
+    /*
+     * Set all OpenShift environment variables
+     */
+    private static void setOpenshiftEnv() {
+        dbHost = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
+        dbPort = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
+        dbUserName = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
+        dbPassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
+        baseUrl = System.getenv("OPENSHIFT_APP_DNS");
+        appName = System.getenv("OPENSHIFT_APP_NAME");
+        homeDirectory = System.getenv("OPENSHIFT_HOMEDIR");
+        dataDirectory = System.getenv("OPENSHIFT_DATA_DIR");
     }
 
     /*
@@ -127,9 +138,4 @@ public class Config {
             }
         }
     }
-
-    public String toString() {
-        return getDbUrl();
-    }
-
 }
