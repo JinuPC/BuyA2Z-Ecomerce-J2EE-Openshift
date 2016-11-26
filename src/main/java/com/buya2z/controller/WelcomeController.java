@@ -1,6 +1,7 @@
 package com.buya2z.controller;
 
 import com.buya2z.config.Config;
+import com.buya2z.config.Database;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,5 +22,6 @@ public class WelcomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.getWriter().print(config);
+        resp.getWriter().print(Database.getConnection());
     }
 }
