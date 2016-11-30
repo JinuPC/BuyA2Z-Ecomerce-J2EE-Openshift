@@ -6,16 +6,13 @@ import java.util.*;
 /**
  * Created by Jinu on 11/27/2016.
  */
-class Tables {
+class TableSchema {
     private Map<String, String> tableSchema;
 
-    Tables() {
-        tableSchema = new HashMap<>();
-        initTables();
-    }
-
-    public Map<String, String> getTableSchema() {
-        return this.tableSchema;
+    TableSchema() {
+        this.tableSchema = new HashMap<>();
+        this.setTableSchema();
+        this.setColumns();
     }
 
     /*
@@ -24,15 +21,16 @@ class Tables {
      * with constraints and data type.
      *
      */
-    private void initTables() {
-        addTable("products", setSchema(
+    private void setTableSchema() {
+        addTable("product", setColumns(
                 "id int primary key",
                 "name varchar(255) not null"
         ));
-        addTable("user", setSchema(
+        addTable("user", setColumns(
                 "id int primary key",
                 "name varchar(255) not null"
         ));
+        addTable("image", setColumns("id int primary key"));
 
     }
 
@@ -41,7 +39,7 @@ class Tables {
         tableSchema.put(tableName, query);
     }
 
-    private String setSchema(String... columns) {
+    private String setColumns(String... columns) {
         StringBuilder schema = new StringBuilder(" ( ");
         for(String column : columns) {
             schema.append(" " + column + " ,");
@@ -56,7 +54,8 @@ class Tables {
         return "CREATE TABLE " + tableName + " " + schema;
     }
 
-    public String toString() {
-        return tableSchema.toString();
+    public Map<String, String> getTableSchema() {
+        return this.tableSchema;
     }
+
 }
