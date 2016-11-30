@@ -30,6 +30,10 @@ class TableSchema {
                 "id int primary key",
                 "name varchar(255) not null"
         ));
+        addTable("praveen", setColumns(
+                "id int primary key",
+                "name varchar(24)"
+        ));
         addTable("image", setColumns("id int primary key"));
 
     }

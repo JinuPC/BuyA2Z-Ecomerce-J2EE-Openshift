@@ -32,8 +32,15 @@ public class TableData {
         );
         setRecord("product",
                 new Record(1, "Samsung galaxy"),
-                new Record(2, "Apple Iphone")
+                new Record(2, "Apple Iphone"),
+                new Record(3, "Yahoo"),
+                new Record(4, "mango")
         );
+        setRecord("praveen",
+                new Record(1, "praveen"),
+                new Record(2, "jinu")
+        );
+
     }
 
     private void setRecord(String tableName, Record... records) {

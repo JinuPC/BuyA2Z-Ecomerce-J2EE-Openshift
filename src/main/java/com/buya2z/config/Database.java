@@ -51,7 +51,7 @@ public class Database {
             if (connectionPool.isEmpty()) {
                 con = createNewConnection();
             }
-            con = connectionPool.get(connectionPool.size() - 1);
+            con = connectionPool.remove(connectionPool.size() - 1);
             if (con.isClosed() || !con.isValid(5)) {
                 return getConnection();
             }
@@ -61,7 +61,7 @@ public class Database {
         return con;
     }
 
-    private static void putConnectionToPool(Connection con) throws SQLException{
+    private static void putConnectionToPool(Connection con) throws SQLException {
         if (connectionPool.size() > MAX_CONNECTIONS) {
             con.close();
         }
@@ -102,7 +102,7 @@ public class Database {
 
     public static void destroy() {
         try {
-            for(Connection connection : connectionPool) {
+            for (Connection connection : connectionPool) {
                 connection.close();
             }
             connectionPool.clear();
