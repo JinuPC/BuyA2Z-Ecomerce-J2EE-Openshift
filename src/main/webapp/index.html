@@ -60,7 +60,8 @@
         }
 
         .remove-all-padding {
-            padding: 0px; !important;
+            padding: 0px;
+        !important;
         }
 
         .remove-bottom-margin {
@@ -105,7 +106,7 @@
                 <li class="active">
                     <a href="#">
                         <i class="material-icons">explore</i>
-                        Discover
+                        Electronics
                     </a>
                 </li>
                 <li>
@@ -140,7 +141,8 @@
                     <div class="input-group input-group-lg mater">
                         <span class="input-group-addon" style="width:1%;"><i
                                 class="glyphicon glyphicon-search"></i></span>
-                        <input style="text-align: center" class="form-control w3-input w3-text-white" name="search"
+                        <input style="text-align: center; line-height: 30px;" class="form-control input-group-lg "
+                               name="search"
                                placeholder="Search Products" autocomplete="off" autofocus="autofocus" type="text">
                     </div>
                 </div>
@@ -150,92 +152,78 @@
     </div>
     <!-- /.container -->
 </nav>
-<div class="row remove-all-padding" >
+<div class="row ">
+    <div id="navbar">
+        <div class="navigation-example">
 
-    <div class="container-fluid " >
-        <nav class="navbar navbar-default  w3-text-black remove-bottom-margin" role="navigation"  style="background-color: #ffffff">
-            <div class="container-fluid" >
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse"
-                            data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand hidden-lg hidden-md hidden-sm" href="#">MENU</a>
-                </div>
+            <!-- Navbar Primary  -->
+            <nav class="navbar  w3-white remove-bottom-margin">
+                <div class="container w3-center">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-primary">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand hidden-lg hidden-sm hidden-md" href="#pablo">MENU</a>
+                    </div>
 
-                <div class="collapse navbar-collapse navbar-collapse-center " id="bs-example-navbar-collapse-1">
-                    <ul class="nav nav-pills nav-justified navbar-center ">
-                        <li class="active "><a href="#">Link</a></li>
-                        <li class="w3-hover-red"><a href="#">Link</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">MEN </b></a>
-                            <ul class="dropdown-menu">
-                                <li class="list-center"><a href="#">Action</a></li>
-                                <li class="list-center"><a href="#">Action</a></li>
-                                <li class="list-center"><a href="#">Action</a></li>
-                                <li class="list-center"><a href="#">Action</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">MEN </b></a>
-                            <ul class="dropdown-menu">
-                                <li class="list-center"><a href="#">Action</a></li>
-                                <li class="list-center"><a href="#">Action</a></li>
-                                <li class="list-center"><a href="#">Action</a></li>
-                                <li class="list-center"><a href="#">Action</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">MEN </b></a>
-                            <ul class="dropdown-menu">
-                                <li class="list-center"><a href="#">Action</a></li>
-                                <li class="list-center"><a href="#">Action</a></li>
-                                <li class="list-center"><a href="#">Action</a></li>
-                                <li class="list-center"><a href="#">Action</a></li>
-                            </ul>
-                        </li><li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">MEN </b></a>
-                        <ul class="dropdown-menu">
-                            <li class="list-center"><a href="#">Action</a></li>
-                            <li class="list-center"><a href="#">Action</a></li>
-                            <li class="list-center"><a href="#">Action</a></li>
-                            <li class="list-center"><a href="#">Action</a></li>
+                    <div class="collapse navbar-collapse " id="example-navbar-primary">
+                        <ul class="nav nav-pills w3-text-purple nav-justified">
+                            <li >
+                                <a href="#pablo" class="w3-text-purple">
+                                    <i  class="material-icons">airplay</i>
+                                    APPLIANCES
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#pablo" class="w3-text-purple">
+                                    <i class="material-icons">mood</i>
+                                    MEN
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#pablo" class="w3-text-purple">
+                                    <i class="material-icons">face</i>
+                                    WOMEN
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#pablo" class="w3-text-purple">
+                                    <i class="material-icons">kitchen</i>
+                                    APPLIANCES
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#pablo" class="w3-text-purple">
+                                    <i class="material-icons">child_care</i>
+                                    BABY & KIDS
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#pablo" class="w3-text-purple">
+                                    <i class="material-icons">hotel</i>
+                                    HOME & FURNITURE
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle w3-text-purple" data-toggle="dropdown"><i class="material-icons">settings</i>Dropdown</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">One more separated link</a></li>
+                                </ul>
+                            </li>
                         </ul>
-                    </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">MEN </b></a>
-                            <ul class="dropdown-menu">
-                                <li class="list-center"><a href="#">Action</a></li>
-                                <li class="list-center"><a href="#">Action</a></li>
-                                <li class="list-center"><a href="#">Action</a></li>
-                                <li class="list-center"><a href="#">Action</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">MEN </b></a>
-                            <ul class="dropdown-menu">
-                                <li class="list-center"><a href="#">Action</a></li>
-                                <li class="list-center"><a href="#">Action</a></li>
-                                <li class="list-center"><a href="#">Action</a></li>
-                                <li class="list-center"><a href="#">Action</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">MEN </b></a>
-                            <ul class="dropdown-menu">
-                                <li class="list-center"><a href="#">Action</a></li>
-                                <li class="list-center"><a href="#">Action</a></li>
-                                <li class="list-center"><a href="#">Action</a></li>
-                                <li class="list-center"><a href="#">Action</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
     </div>
 </div>
 <div class="row remove-all-padding">
@@ -273,7 +261,8 @@
                                     <div class="item">
                                         <img src="assets/img/slider/slider3.jpg" alt="Awesome Image">
                                         <div class="carousel-caption">
-                                            <h4><a href="something">skjdlf</a> Yellowstone National Park, United States</h4>
+                                            <h4><a href="something">skjdlf</a> Yellowstone National Park, United States
+                                            </h4>
                                         </div>
                                     </div>
                                 </div>
@@ -299,28 +288,28 @@
 </div>
 
 <div class="container-fluid text-center w3-white ">
-    <hr />
+    <hr/>
     <div class="row">
         <div class="col-lg-12">
-            <div class="col-md-3">
+            <div class="col-md-3 col-xs-6">
                 <ul class="nav nav-pills nav-stacked">
                     <li><a href="#">Category 1</a></li>
                     <li><a href="#">Category 1</a></li>
                 </ul>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-xs-6">
                 <ul class="nav nav-pills nav-stacked">
                     <li><a href="#">Category 1</a></li>
                     <li><a href="#">Category 1</a></li>
                 </ul>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-xs-6">
                 <ul class="nav nav-pills nav-stacked">
                     <li><a href="#">Category 1</a></li>
                     <li><a href="#">Category 1</a></li>
                 </ul>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-xs-6">
                 <ul class="nav nav-pills nav-stacked">
                     <li><a href="#">Category 1</a></li>
                     <li><a href="#">Category 6</a></li>
