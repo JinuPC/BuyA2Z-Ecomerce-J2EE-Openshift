@@ -1,145 +1,254 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
+    <meta charset="utf-8"/>
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>BuyA2Z Shop Online</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"/>
+    <!-- CSS Files -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="assets/css/material-kit.css" rel="stylesheet"/>
+    <link href="assets/css/scrolling-nav.css" rel="stylesheet"/>
+    <link href="welcome/css/w3.css" rel="stylesheet"/>
+    <style>
+        body {
+            padding-top: 150px;
+            background-color: whitesmoke;
+        }
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+        @media screen and (max-width: 768px) {
+            body {
+                padding-top: 80px;
+            }
+        }
 
-    <title>Material Design Bootstrap</title>
+        #search {
+            display: block;
+            text-align: center;
+        }
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+        .material-greeen-cl {
+            color: #00C851;
+        }
 
-    <!-- Bootstrap core CSS -->
-    <link href="welcome/css/bootstrap.min.css" rel="stylesheet">
+        .material-red-color {
+            color: #ff4444;
+        }
 
-    <!-- Material Design Bootstrap -->
-    <link href="welcome/css/mdb.min.css" rel="stylesheet">
+        .navbar-brand {
+        }
 
-    <!-- My custom styles (optional) -->
-    <link href="welcome/css/style.css" rel="stylesheet">
+        .remove-all-margin {
+            margin-left: 0 ! important;
+            margin-right: 0 ! important;
+        }
 
-    <!-- My custom styles (optional) -->
-    <link href="welcome/css/w3.css" rel="stylesheet">
+        .remove-all-margin-padding {
+            margin: 0 ! important;
+            padding: 0 ! important;
+        }
 
+        .navbar .navbar-center {
+            display: inline-block;
+            float: none;
+        }
+
+        .navbar .navbar-collapse-center {
+            text-align: center;
+        }
+    </style>
 </head>
 
-<body>
-<header>
-    <!--Navbar-->
-    <nav id="header" class="navbar navbar-dark primary-color-dark navbar-fixed-top">
-        <!--<a class="navbar-brand hidden-sm-up" id="" href="#">Navbar</a>-->
-        <!-- Collapse button-->
-        <a class="navbar-brand " href="">BuyA2Z</a>
-        <button class="navbar-toggler hidden-md-up" type="button" data-toggle="collapse" data-target="#collapseEx">
-            <i class="fa fa-bars"></i>
-        </button>
+<body id="page-top" data-spy="scroll" class="remove-all-margin"
+      data-target=".navbar-fixed-top">
 
-        <div class="container-fluid navbar-container" id="header-container">
-
-            <!--Collapse content-->
-             <div class="collapse navbar-toggleable-sm" id="collapseEx">
-                <!--&lt;!&ndash;Navbar Brand&ndash;&gt;-->
-                <!--<div class="navbar-brand">-->
-                    <!--<a class="navbar-brand " id="brand" href="#">Navbar</a>-->
-                <!--</div>-->
-                <!--Links-->
-
-
-                <ul class="nav navbar-nav w3-center w3-right ">
-                    <li class="nav-item"><br></li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                </ul>
-                <!--Search form-->
-                <form class="form-inline  ">
-                    <input class="form-control " type="text" placeholder="Search">
-                </form>
-            </div>
-            <!--/.Collapse content-->
-
+<!-- Navigation -->
+<nav class="container-fluid navbar navbar-primary navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a style="font-size: 30px; margin-bottom: 20px; padding-bottom: 20px;" class="navbar-brand page-scroll"
+               href="#">
+                <i style="font-size: 40px;" class="fa fa-shopping-cart material-red-color" aria-hidden="true"></i>
+                Buy A <span class="material-red-color">2</span> Z
+            </a>
         </div>
 
-    </nav>
-    <!--/.Navbar-->
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse-center navbar-collapse navbar-ex1-collapse">
+
+            <ul class="nav navbar-nav navbar-center navbar-right">
+                <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                <!--<li class=" ">-->
+                <!--<a class="page-scroll" href="#page-top"><br></a>-->
+                <!--</li>-->
+                <li class="active">
+                    <a href="#">
+                        <i class="material-icons">explore</i>
+                        Discover
+                    </a>
+                </li>
+                <li>
+                    <a href="#vc">
+                        <i class="material-icons">account_circle</i>
+                        Profile
+                    </a>
+                </li>
+                <li>
+                    <a href="#cvb">
+                        <i class="material-icons">settings</i>
+                        Settings
+                    </a>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <form class="navbar-form" id="search">
+                <div class="form-group" style="display:inline;">
+                    <div class="input-group input-group-lg mater">
+                        <span class="input-group-addon" style="width:1%;"><i
+                                class="glyphicon glyphicon-search"></i></span>
+                        <input style="text-align: center" class="form-control w3-input w3-text-white" name="search"
+                               placeholder="Search Products" autocomplete="off" autofocus="autofocus" type="text">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<div class="row" >
+
+    <div class="container-fluid remove-all-margin" >
+        <nav class="navbar navbar-default w3-text-black" role="navigation" style="background-color: #ffffff">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand hidden-lg hidden-md hidden-sm" href="#">Brand</a>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-collapse-center" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-center">
+                        <li class="active"><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b
+                                    class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li class="list-center"><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<div class="row">
+    <h1>sjfdlkjfkljs</h1>
+    <h1>sjfdlkjfkljs</h1>
+    <h1>sjfdlkjfkljs</h1>
+    <h1>sjfdlkjfkljs</h1>
+    <h1>sjfdlkjfkljs</h1>
+    <h1>sjfdlkjfkljs</h1>
+    <h1>sjfdlkjfkljs</h1>
+    <h1>sjfdlkjfkljs</h1>
+    <h1>sjfdlkjfkljs</h1>
+    <h1>sjfdlkjfkljs</h1>
+    <h1>sjfdlkjfkljs</h1>
+    <h1>sjfdlkjfkljs</h1>
+    <h1>sjfdlkjfkljs</h1>
+    <h1>sjfdlkjfkljs</h1>
 
 
-</header>
-<div>
-    <h1>Hia kdajf dklj</h1>
-    <h1>Hia kdajf dklj</h1>
-    <h1>Hia kdajf dklj</h1>
-    <h1>Hia kdajf dklj</h1>
-    <h1>Hia kdajf dklj</h1>
-    <h1>Hia kdajf dklj</h1>
-    <h1>Hia kdajf dklj</h1>
-    <h1>Hia kdajf dklj</h1>
-    <h1>Hia kdajf dklj</h1>
-    <h1>Hia kdajf dklj</h1>
-    <h1>Hia kdajf dklj</h1>
-    <h1>Hia kdajf dklj</h1>
-    <h1>Hia kdajf dklj</h1>
-    <h1>Hia kdajf dklj</h1>
-    <h1>Hia kdajf dklj</h1>
-    <h1>Hia kdajf dklj</h1>
-    <h1>Hia kdajf dklj</h1>
-    <h1>Hia kdajf dklj</h1>
-    <h1>Hia kdajf dklj</h1>
-    <h1>Hia kdajf dklj</h1>
 </div>
 
+<div class="container text-center ba">
+    <hr />
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-md-3">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">Product for Mac</a></li>
+                    <li><a href="#">Product for Windows</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">Web analytics</a></li>
+                    <li><a href="#">Presentations</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">Product Help</a></li>
+                    <li><a href="#">Developer API</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="nav nav-pills nav-justified">
+                <li><a href="/">© 2013 Company Name.</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Privacy</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- SCRIPTS -->
-
-<!-- JQuery -->
-<script type="text/javascript" src="welcome/js/jquery-3.1.1.min.js"></script>
-
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="welcome/js/tether.min.js"></script>
-
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="welcome/js/bootstrap.min.js"></script>
-
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="welcome/js/mdb.min.js"></script>
-
-<!-- My Own Javascript -->
-<script type="text/javascript" src="welcome/js/myjs.js"></script>
-
+<!--   Core JS Files   -->
+<script src="assets/js/jquery.min.js" type="text/javascript"></script>
+<script src="assets/js/jquery.easing.min.js" type="text/javascript"></script>
+<script src="assets/js/scrolling-nav.js" type="text/javascript"></script>
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/js/material.min.js"></script>
+<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
+<script src="assets/js/material-kit.js" type="text/javascript"></script>
 
 </body>
-
 </html>
