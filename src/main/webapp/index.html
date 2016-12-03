@@ -22,37 +22,11 @@
             background-color: whitesmoke;
         }
 
-        .Absolute-Center {
-            margin: auto;
-            position: absolute;
-            top: 0; left: 0; bottom: 0; right: 0;
-        }
-
-        h2.text-left{
-            position:relative;
-            top:50%;
-            transform: translateY(-50%);
-            -webkit-transform: translateY(-50%);
-            -ms-transform: translateY(-50%);
-        }
-
-        .vcenter {
-            display: inline-block;
-            vertical-align: middle;
-            float: none;
-        }
-
-        .vertical-align {
-            display: flex;
-            align-items: center;
-        }
-
         @media screen and (max-width: 768px) {
             body {
                 padding-top: 80px;
             }
         }
-
         .img-hover img {
             -webkit-transition: all .3s ease; /* Safari and Chrome */
             -moz-transition: all .3s ease; /* Firefox */
@@ -63,11 +37,11 @@
         .img-hover img:hover {
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
-            -webkit-transform:translateZ(0) scale(1.20); /* Safari and Chrome */
-            -moz-transform:scale(1.20); /* Firefox */
-            -ms-transform:scale(1.20); /* IE 9 */
-            /*-o-transform:translatZ(0) scale(1.20); !* Opera *!*/
-            /*transform:translatZ(0) scale(1.20);*/
+            -webkit-transform:translateZ(0) scale(1.05); /* Safari and Chrome */
+            -moz-transform:scale(1.05); /* Firefox */
+            -ms-transform:scale(1.05); /* IE 9 */
+            /*-o-transform:translatZ(0) scale(1.05); !* Opera *!*/
+            /*transform:translatZ(0) scale(1.05);*/
         }
 
 
@@ -80,10 +54,6 @@
         #search {
             display: block;
             text-align: center;
-        }
-
-        .material-greeen-cl {
-            color: #00C851;
         }
 
         .material-red-color {
@@ -137,7 +107,7 @@
 
 <!-- Navigation -->
 <nav class="container-fluid navbar navbar-primary navbar-fixed-top" role="navigation">
-    <div class="container-fluid remove-all-padding">
+    <div class="container-fluid ">
         <div class="navbar-header page-scroll">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -331,7 +301,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <!-- Controls -->
                                 <!--<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">-->
                                 <!--<i class="material-icons">keyboard_arrow_left</i>-->
@@ -349,333 +318,6 @@
     </div>
 </div>
 <!-- /Carousel layout -->
-<!-- List of products -->
-<div class="row">
-    <div class="container-fluid" style="margin-top: 10px;">
-        <!-- Main Card Starting poing -->
-        <div class="card">
-            <!-- card Header -->
-            <div class="col-sm-3 w3-center col-md-2 col-lg-2" >
-                <div class="hidden-xs" style="padding-top: 80px;"></div>
-                <div class="">
-                    <h2>Sports Shoes</h2>
-                    <a href="dfks" class="btn btn-primary">Browse</a>
-                </div>
-            </div>
-            <!-- /Card Header -->
-            <!-- Card Body -->
-            <div class="col-sm-9 col-md-10 col-lg-10">
-                <!-- Product Card -->
-                <div class="set-product-padding-margin col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                        <div class="w3-card-8 w3-hover-shadow">
-                            <header class="w3-container w3-center">
-                                <div class="ratings ">
-                                    <i class="material-icons pull-left w3-text-blue-gray ">favorite</i>
-                                    <p class="pull-right w3-text-pink">
-
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                    </p>
-                                </div>
-                                <!--<a href="#pablo" class="btn btn-simple  w3-center btn-just-icon">-->
-                                <!--<i class="material-icons  w3-text-white w3-xxxlarge">favorite</i>-->
-                                <!--<i class="material-icons  w3-text-white w3-xxxlarge">favorite</i>-->
-                                <!--</a>-->
-                            </header>
-                            <a href="ksdf">
-                            <div class="w3-container w3-center img-hover">
-                                <img src="assets/img/shoes.jpeg" class="w3-round  img-responsive" style="width:100%; min-height: 176px; max-height: 176px"
-                                     alt="kessel">
-                            </div>
-                            </a>
-
-                            <footer class="w3-container  w3-center">
-                                <p class="w3-text-black w3-xlarge" style="text-decoration: none">Product Name</p>
-                                <p class="w3-text-grey w3-large"><i class="fa fa-inr" aria-hidden="true"></i> 344</p>
-                            </footer>
-                        </div>
-                </div>
-                <!-- /Product Card -->
-
-                <!-- Product Card -->
-                <div class="set-product-padding-margin col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                    <div class="w3-card-8 w3-hover-shadow">
-                        <header class="w3-container w3-center">
-                            <div class="ratings  ">
-                                <i class="material-icons pull-left w3-text-blue-gray ">favorite</i>
-                                <p class="pull-right w3-text-pink">
-
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                </p>
-                            </div>
-                            <!--<a href="#pablo" class="btn btn-simple  w3-center btn-just-icon">-->
-                            <!--<i class="material-icons  w3-text-white w3-xxxlarge">favorite</i>-->
-                            <!--<i class="material-icons  w3-text-white w3-xxxlarge">favorite</i>-->
-                            <!--</a>-->
-                        </header>
-                        <a href="ksdf">
-                            <div class="w3-container w3-center img-hover">
-                                <img src="assets/img/sportsshoes3.jpeg" class="w3-round  img-responsive" style="width:100%; min-height: 176px; max-height: 176px"
-                                     alt="kessel">
-                            </div>
-                        </a>
-
-                        <footer class="w3-container  w3-center">
-                            <p class="w3-text-black w3-xlarge" style="text-decoration: none">Product Name</p>
-                            <p class="w3-text-grey w3-large"><i class="fa fa-inr" aria-hidden="true"></i> 344</p>
-                        </footer>
-                    </div>
-                </div>
-                <!-- /Product Card -->
-
-                <!-- Product Card -->
-                <div class="set-product-padding-margin col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                    <div class="w3-card-8 w3-hover-shadow">
-                        <header class="w3-container w3-center">
-                            <div class="ratings  ">
-                                <i class="material-icons pull-left w3-text-blue-gray ">favorite</i>
-                                <p class="pull-right w3-text-pink">
-
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                </p>
-                            </div>
-                            <!--<a href="#pablo" class="btn btn-simple  w3-center btn-just-icon">-->
-                            <!--<i class="material-icons  w3-text-white w3-xxxlarge">favorite</i>-->
-                            <!--<i class="material-icons  w3-text-white w3-xxxlarge">favorite</i>-->
-                            <!--</a>-->
-                        </header>
-                        <a href="ksdf">
-                            <div class="w3-container w3-center img-hover">
-                                <img src="assets/img/sports%20shoes2.jpeg" class="w3-round  img-responsive" style="width:100%; min-height: 176px; max-height: 176px"
-                                     alt="kessel">
-                            </div>
-                        </a>
-
-                        <footer class="w3-container  w3-center">
-                            <p class="w3-text-black w3-xlarge" style="text-decoration: none">Product Name</p>
-                            <p class="w3-text-grey w3-large"><i class="fa fa-inr" aria-hidden="true"></i> 344</p>
-                        </footer>
-                    </div>
-                </div>
-                <!-- /Product Card -->
-
-                <!-- Product Card -->
-                <div class="set-product-padding-margin col-xs-6 hidden-sm col-md-3 col-lg-3">
-                    <div class="w3-card-8 w3-hover-shadow">
-                        <header class="w3-container w3-center">
-                            <div class="ratings  ">
-                                <i class="material-icons pull-left w3-text-blue-gray ">favorite</i>
-                                <p class="pull-right w3-text-pink">
-
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                </p>
-                            </div>
-                            <!--<a href="#pablo" class="btn btn-simple  w3-center btn-just-icon">-->
-                            <!--<i class="material-icons  w3-text-white w3-xxxlarge">favorite</i>-->
-                            <!--<i class="material-icons  w3-text-white w3-xxxlarge">favorite</i>-->
-                            <!--</a>-->
-                        </header>
-                        <a href="ksdf">
-                            <div class="w3-container w3-center img-hover">
-                                <img src="assets/img/sports%20shoes.jpeg" class="w3-round  img-responsive" style="width:100%; min-height: 176px; max-height: 176px"
-                                     alt="kessel">
-                            </div>
-                        </a>
-
-                        <footer class="w3-container  w3-center">
-                            <p class="w3-text-black w3-xlarge" style="text-decoration: none">Product Name</p>
-                            <p class="w3-text-grey w3-large"><i class="fa fa-inr" aria-hidden="true"></i> 344</p>
-                        </footer>
-                    </div>
-                </div>
-                <!-- /Product Card -->
-            </div>
-            <!-- /Card Body -->
-        </div>
-        <!-- /Main Card Ending poing -->
-    </div>
-</div>
-<!-- /List of products -->
-
-
-<!-- List of products -->
-<div class="row">
-    <div class="container-fluid" style="margin-top: 10px;">
-        <!-- Main Card Starting poing -->
-        <div class="card">
-            <!-- card Header -->
-            <div class="col-sm-3 w3-center col-md-2 col-lg-2" >
-                <div class="hidden-xs" style="padding-top: 80px;"></div>
-                <div class="">
-                    <h2>Telvisions</h2>
-                    <a href="dfks" class="btn btn-primary">Browse</a>
-                </div>
-            </div>
-            <!-- /Card Header -->
-            <!-- Card Body -->
-            <div class="col-sm-9 col-md-10 col-lg-10">
-                <!-- Product Card -->
-                <div class="set-product-padding-margin col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                    <div class="w3-card-8 w3-hover-shadow">
-                        <header class="w3-container w3-center">
-                            <div class="ratings ">
-                                <i class="material-icons pull-left w3-text-blue-gray ">favorite</i>
-                                <p class="pull-right w3-text-pink">
-
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                </p>
-                            </div>
-                            <!--<a href="#pablo" class="btn btn-simple  w3-center btn-just-icon">-->
-                            <!--<i class="material-icons  w3-text-white w3-xxxlarge">favorite</i>-->
-                            <!--<i class="material-icons  w3-text-white w3-xxxlarge">favorite</i>-->
-                            <!--</a>-->
-                        </header>
-                        <a href="ksdf">
-                            <div class="w3-container w3-center img-hover">
-                                <img src="assets/img/tv2.jpeg" class="w3-round  img-responsive" style="width:100%; min-height: 200px; max-height: 176px"
-                                     alt="kessel">
-                            </div>
-                        </a>
-
-                        <footer class="w3-container  w3-center">
-                            <p class="w3-text-black w3-xlarge" style="text-decoration: none">Product Name</p>
-                            <p class="w3-text-grey w3-large"><i class="fa fa-inr" aria-hidden="true"></i> 344</p>
-                        </footer>
-                    </div>
-                </div>
-                <!-- /Product Card -->
-
-                <!-- Product Card -->
-                <div class="set-product-padding-margin col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                    <div class="w3-card-8 w3-hover-shadow">
-                        <header class="w3-container w3-center">
-                            <div class="ratings  ">
-                                <i class="material-icons pull-left w3-text-blue-gray ">favorite</i>
-                                <p class="pull-right w3-text-pink">
-
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                </p>
-                            </div>
-                            <!--<a href="#pablo" class="btn btn-simple  w3-center btn-just-icon">-->
-                            <!--<i class="material-icons  w3-text-white w3-xxxlarge">favorite</i>-->
-                            <!--<i class="material-icons  w3-text-white w3-xxxlarge">favorite</i>-->
-                            <!--</a>-->
-                        </header>
-                        <a href="ksdf">
-                            <div class="w3-container w3-center img-hover">
-                                <img src="assets/img/tv2.jpeg" class="w3-round  img-responsive" style="width:100%; min-height: 200px; max-height: 176px"
-                                     alt="kessel">
-                            </div>
-                        </a>
-
-                        <footer class="w3-container  w3-center">
-                            <p class="w3-text-black w3-xlarge" style="text-decoration: none">Product Name</p>
-                            <p class="w3-text-grey w3-large"><i class="fa fa-inr" aria-hidden="true"></i> 344</p>
-                        </footer>
-                    </div>
-                </div>
-                <!-- /Product Card -->
-
-                <!-- Product Card -->
-                <div class="set-product-padding-margin col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                    <div class="w3-card-8 w3-hover-shadow">
-                        <header class="w3-container w3-center">
-                            <div class="ratings  ">
-                                <i class="material-icons pull-left w3-text-blue-gray ">favorite</i>
-                                <p class="pull-right w3-text-pink">
-
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                </p>
-                            </div>
-                            <!--<a href="#pablo" class="btn btn-simple  w3-center btn-just-icon">-->
-                            <!--<i class="material-icons  w3-text-white w3-xxxlarge">favorite</i>-->
-                            <!--<i class="material-icons  w3-text-white w3-xxxlarge">favorite</i>-->
-                            <!--</a>-->
-                        </header>
-                        <a href="ksdf">
-                            <div class="w3-container w3-center img-hover">
-                                <img src="assets/img/tv3.jpeg" class="w3-round  img-responsive" style="width:100%; min-height: 200px; max-height: 176px"
-                                     alt="kessel">
-                            </div>
-                        </a>
-
-                        <footer class="w3-container  w3-center">
-                            <p class="w3-text-black w3-xlarge" style="text-decoration: none">Product Name</p>
-                            <p class="w3-text-grey w3-large"><i class="fa fa-inr" aria-hidden="true"></i> 344</p>
-                        </footer>
-                    </div>
-                </div>
-                <!-- /Product Card -->
-
-                <!-- Product Card -->
-                <div class="set-product-padding-margin col-xs-6 hidden-sm col-md-3 col-lg-3">
-                    <div class="w3-card-8 w3-hover-shadow">
-                        <header class="w3-container w3-center">
-                            <div class="ratings  ">
-                                <i class="material-icons pull-left w3-text-blue-gray ">favorite</i>
-                                <p class="pull-right w3-text-pink">
-
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                </p>
-                            </div>
-                            <!--<a href="#pablo" class="btn btn-simple  w3-center btn-just-icon">-->
-                            <!--<i class="material-icons  w3-text-white w3-xxxlarge">favorite</i>-->
-                            <!--<i class="material-icons  w3-text-white w3-xxxlarge">favorite</i>-->
-                            <!--</a>-->
-                        </header>
-                        <a href="ksdf">
-                            <div class="w3-container w3-center img-hover">
-                                <img src="assets/img/tv1.jpeg" class="w3-round  img-responsive" style="width:100%; min-height: 200px; max-height: 176px"
-                                     alt="kessel">
-                            </div>
-                        </a>
-
-                        <footer class="w3-container  w3-center">
-                            <p class="w3-text-black w3-xlarge" style="text-decoration: none">Product Name</p>
-                            <p class="w3-text-grey w3-large"><i class="fa fa-inr" aria-hidden="true"></i> 344</p>
-                        </footer>
-                    </div>
-                </div>
-                <!-- /Product Card -->
-            </div>
-            <!-- /Card Body -->
-        </div>
-        <!-- /Main Card Ending poing -->
-    </div>
-</div>
-<!-- /List of products -->
-
 
 <!-- List of products -->
 <div class="row">
@@ -694,7 +336,7 @@
             <!-- Card Body -->
             <div class="col-sm-9 col-md-10 col-lg-10">
                 <!-- Product Card -->
-                <div class="set-product-padding-margin col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                <div class="set-product-padding-margin  col-sm-4 col-md-3 col-lg-3">
                     <div class="w3-card-8 w3-hover-shadow">
                         <header class="w3-container w3-center">
                             <div class="ratings ">
@@ -726,7 +368,7 @@
                 <!-- /Product Card -->
 
                 <!-- Product Card -->
-                <div class="set-product-padding-margin col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                <div class="set-product-padding-margin  col-sm-4 col-md-3 col-lg-3">
                     <div class="w3-card-8 w3-hover-shadow">
                         <header class="w3-container w3-center">
                             <div class="ratings ">
@@ -758,7 +400,7 @@
                 <!-- /Product Card -->
 
                 <!-- Product Card -->
-                <div class="set-product-padding-margin col-xs-6 col-sm-4 col-md-3 col-lg-3">
+                <div class="set-product-padding-margin  col-sm-4 col-md-3 col-lg-3">
                     <div class="w3-card-8 w3-hover-shadow">
                         <header class="w3-container w3-center">
                             <div class="ratings ">
@@ -790,7 +432,7 @@
                 <!-- /Product Card -->
 
                 <!-- Product Card -->
-                <div class="set-product-padding-margin col-xs-6 hidden-sm col-md-3 col-lg-3">
+                <div class="set-product-padding-margin  hidden-sm col-md-3 col-lg-3">
                     <div class="w3-card-8 w3-hover-shadow">
                         <header class="w3-container w3-center">
                             <div class="ratings  ">
@@ -813,6 +455,318 @@
                             <div class="w3-container w3-center img-hover ">
                                 <img src="assets/img/mobile4.jpeg" class="w3-round  w3-image"
                                      style="max-height: 300px; min-height: 300px;"
+                                     alt="kessel">
+                            </div>
+                        </a>
+
+                        <footer class="w3-container  w3-center">
+                            <p class="w3-text-black w3-xlarge" style="text-decoration: none">Product Name</p>
+                            <p class="w3-text-grey w3-large"><i class="fa fa-inr" aria-hidden="true"></i> 344</p>
+                        </footer>
+                    </div>
+                </div>
+                <!-- /Product Card -->
+            </div>
+            <!-- /Card Body -->
+        </div>
+        <!-- /Main Card Ending poing -->
+    </div>
+</div>
+<!-- /List of products -->
+
+
+<!-- List of products -->
+<div class="row">
+    <div class="container-fluid" style="margin-top: 10px;">
+        <!-- Main Card Starting poing -->
+        <div class="card">
+            <!-- card Header -->
+            <div class="col-sm-3 w3-center col-md-2 col-lg-2" >
+                <div class="hidden-xs" style="padding-top: 75px;"></div>
+                <div class="">
+                    <h2>Televisions</h2>
+                    <a href="dfks" class="btn btn-primary">Browse</a>
+                </div>
+            </div>
+            <!-- /Card Header -->
+            <!-- Card Body -->
+            <div class="col-sm-9 col-md-10 col-lg-10">
+                <!-- Product Card -->
+                <div class="set-product-padding-margin  col-sm-4 col-md-3 col-lg-3">
+                    <div class="w3-card-8 w3-hover-shadow">
+                        <header class="w3-container w3-center">
+                            <div class="ratings ">
+                                <i class="material-icons pull-left w3-text-blue-gray ">favorite</i>
+                                <p class="pull-right w3-text-pink">
+
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </p>
+                            </div>
+                        </header>
+                        <a href="kdsjf">
+                            <div class="w3-container w3-center img-hover ">
+                                <img src="assets/img/tv3.jpeg" class="w3-round  w3-image"
+                                     style="max-height: 172px; min-height: 172px;"
+                                     alt="kessel">
+                            </div>
+                        </a>
+
+                        <footer class="w3-container  w3-center">
+                            <p class="w3-text-black w3-xlarge" style="text-decoration: none">Product Name</p>
+                            <p class="w3-text-grey w3-large"><i class="fa fa-inr" aria-hidden="true"></i> 344</p>
+                        </footer>
+                    </div>
+                </div>
+                <!-- /Product Card -->
+
+                <!-- Product Card -->
+                <div class="set-product-padding-margin  col-sm-4 col-md-3 col-lg-3">
+                    <div class="w3-card-8 w3-hover-shadow">
+                        <header class="w3-container w3-center">
+                            <div class="ratings ">
+                                <i class="material-icons pull-left w3-text-blue-gray ">favorite</i>
+                                <p class="pull-right w3-text-pink">
+
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </p>
+                            </div>
+                        </header>
+                        <a href="kdsjf">
+                            <div class="w3-container w3-center img-hover ">
+                                <img src="assets/img/tv1.jpeg" class="w3-round  w3-image"
+                                     style="max-height: 172px; min-height: 172px;"
+                                     alt="kessel">
+                            </div>
+                        </a>
+
+                        <footer class="w3-container  w3-center">
+                            <p class="w3-text-black w3-xlarge" style="text-decoration: none">Product Name</p>
+                            <p class="w3-text-grey w3-large"><i class="fa fa-inr" aria-hidden="true"></i> 344</p>
+                        </footer>
+                    </div>
+                </div>
+                <!-- /Product Card -->
+
+                <!-- Product Card -->
+                <div class="set-product-padding-margin  col-sm-4 col-md-3 col-lg-3">
+                    <div class="w3-card-8 w3-hover-shadow">
+                        <header class="w3-container w3-center">
+                            <div class="ratings ">
+                                <i class="material-icons pull-left w3-text-blue-gray ">favorite</i>
+                                <p class="pull-right w3-text-pink">
+
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </p>
+                            </div>
+                        </header>
+                        <a href="kdsjf">
+                            <div class="w3-container w3-center img-hover ">
+                                <img src="assets/img/tv2.jpeg" class="w3-round  w3-image"
+                                     style="max-height: 172px; min-height: 172px;"
+                                     alt="kessel">
+                            </div>
+                        </a>
+
+                        <footer class="w3-container  w3-center">
+                            <p class="w3-text-black w3-xlarge" style="text-decoration: none">Product Name</p>
+                            <p class="w3-text-grey w3-large"><i class="fa fa-inr" aria-hidden="true"></i> 344</p>
+                        </footer>
+                    </div>
+                </div>
+                <!-- /Product Card -->
+
+                <!-- Product Card -->
+                <div class="set-product-padding-margin  hidden-sm col-md-3 col-lg-3">
+                    <div class="w3-card-8 w3-hover-shadow">
+                        <header class="w3-container w3-center">
+                            <div class="ratings  ">
+                                <i class="material-icons pull-left w3-text-blue-gray ">favorite</i>
+                                <p class="pull-right w3-text-pink">
+
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </p>
+                            </div>
+                            <!--<a href="#pablo" class="btn btn-simple  w3-center btn-just-icon">-->
+                            <!--<i class="material-icons  w3-text-white w3-xxxlarge">favorite</i>-->
+                            <!--<i class="material-icons  w3-text-white w3-xxxlarge">favorite</i>-->
+                            <!--</a>-->
+                        </header>
+                        <a href="kdsjf">
+                            <div class="w3-container w3-center img-hover ">
+                                <img src="assets/img/tv3.jpeg" class="w3-round  w3-image"
+                                     style="max-height: 172px; min-height: 172px;"
+                                     alt="kessel">
+                            </div>
+                        </a>
+
+                        <footer class="w3-container  w3-center">
+                            <p class="w3-text-black w3-xlarge" style="text-decoration: none">Product Name</p>
+                            <p class="w3-text-grey w3-large"><i class="fa fa-inr" aria-hidden="true"></i> 344</p>
+                        </footer>
+                    </div>
+                </div>
+                <!-- /Product Card -->
+            </div>
+            <!-- /Card Body -->
+        </div>
+        <!-- /Main Card Ending poing -->
+    </div>
+</div>
+<!-- /List of products -->
+
+
+<!-- List of products -->
+<div class="row">
+    <div class="container-fluid" style="margin-top: 10px;">
+        <!-- Main Card Starting poing -->
+        <div class="card">
+            <!-- card Header -->
+            <div class="col-sm-3 w3-center col-md-2 col-lg-2" >
+                <div class="hidden-xs" style="padding-top: 75px;"></div>
+                <div class="">
+                    <h2>Sports Shoes</h2>
+                    <a href="dfks" class="btn btn-primary">Browse</a>
+                </div>
+            </div>
+            <!-- /Card Header -->
+            <!-- Card Body -->
+            <div class="col-sm-9 col-md-10 col-lg-10">
+                <!-- Product Card -->
+                <div class="set-product-padding-margin  col-sm-4 col-md-3 col-lg-3">
+                    <div class="w3-card-8 w3-hover-shadow">
+                        <header class="w3-container w3-center">
+                            <div class="ratings ">
+                                <i class="material-icons pull-left w3-text-blue-gray ">favorite</i>
+                                <p class="pull-right w3-text-pink">
+
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </p>
+                            </div>
+                        </header>
+                        <a href="kdsjf">
+                            <div class="w3-container w3-center img-hover ">
+                                <img src="assets/img/shoes.jpeg" class="w3-round  w3-image"
+                                     style="max-height: 172px; min-height: 172px;"
+                                     alt="kessel">
+                            </div>
+                        </a>
+
+                        <footer class="w3-container  w3-center">
+                            <p class="w3-text-black w3-xlarge" style="text-decoration: none">Product Name</p>
+                            <p class="w3-text-grey w3-large"><i class="fa fa-inr" aria-hidden="true"></i> 344</p>
+                        </footer>
+                    </div>
+                </div>
+                <!-- /Product Card -->
+
+                <!-- Product Card -->
+                <div class="set-product-padding-margin  col-sm-4 col-md-3 col-lg-3">
+                    <div class="w3-card-8 w3-hover-shadow">
+                        <header class="w3-container w3-center">
+                            <div class="ratings ">
+                                <i class="material-icons pull-left w3-text-blue-gray ">favorite</i>
+                                <p class="pull-right w3-text-pink">
+
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </p>
+                            </div>
+                        </header>
+                        <a href="kdsjf">
+                            <div class="w3-container w3-center img-hover ">
+                                <img src="assets/img/sportsshoes3.jpeg" class="w3-round  w3-image"
+                                     style="max-height: 172px; min-height: 172px;"
+                                     alt="kessel">
+                            </div>
+                        </a>
+
+                        <footer class="w3-container  w3-center">
+                            <p class="w3-text-black w3-xlarge" style="text-decoration: none">Product Name</p>
+                            <p class="w3-text-grey w3-large"><i class="fa fa-inr" aria-hidden="true"></i> 344</p>
+                        </footer>
+                    </div>
+                </div>
+                <!-- /Product Card -->
+
+                <!-- Product Card -->
+                <div class="set-product-padding-margin  col-sm-4 col-md-3 col-lg-3">
+                    <div class="w3-card-8 w3-hover-shadow">
+                        <header class="w3-container w3-center">
+                            <div class="ratings ">
+                                <i class="material-icons pull-left w3-text-blue-gray ">favorite</i>
+                                <p class="pull-right w3-text-pink">
+
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </p>
+                            </div>
+                        </header>
+                        <a href="kdsjf">
+                            <div class="w3-container w3-center img-hover ">
+                                <img src="assets/img/sports%20shoes.jpeg" class="w3-round  w3-image"
+                                     style="max-height: 172px; min-height: 172px;"
+                                     alt="kessel">
+                            </div>
+                        </a>
+
+                        <footer class="w3-container  w3-center">
+                            <p class="w3-text-black w3-xlarge" style="text-decoration: none">Product Name</p>
+                            <p class="w3-text-grey w3-large"><i class="fa fa-inr" aria-hidden="true"></i> 344</p>
+                        </footer>
+                    </div>
+                </div>
+                <!-- /Product Card -->
+
+                <!-- Product Card -->
+                <div class="set-product-padding-margin  hidden-sm col-md-3 col-lg-3">
+                    <div class="w3-card-8 w3-hover-shadow">
+                        <header class="w3-container w3-center">
+                            <div class="ratings  ">
+                                <i class="material-icons pull-left w3-text-blue-gray ">favorite</i>
+                                <p class="pull-right w3-text-pink">
+
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </p>
+                            </div>
+                            <!--<a href="#pablo" class="btn btn-simple  w3-center btn-just-icon">-->
+                            <!--<i class="material-icons  w3-text-white w3-xxxlarge">favorite</i>-->
+                            <!--<i class="material-icons  w3-text-white w3-xxxlarge">favorite</i>-->
+                            <!--</a>-->
+                        </header>
+                        <a href="kdsjf">
+                            <div class="w3-container w3-center img-hover ">
+                                <img src="assets/img/sports%20shoes2.jpeg" class="w3-round  w3-image"
+                                     style="max-height: 172px; min-height: 172px;"
                                      alt="kessel">
                             </div>
                         </a>
