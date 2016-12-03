@@ -8,18 +8,30 @@
     <title>BuyA2Z Shop Online</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <!--     Fonts and icons     -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"/>
     <!-- CSS Files -->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="assets/css/material-kit.css" rel="stylesheet"/>
+    <link href="assets/css/material-kit.css" rel="stylesheet" type="text/css"/>
     <link href="assets/css/scrolling-nav.css" rel="stylesheet"/>
-    <link href="welcome/css/w3.css" rel="stylesheet"/>
+    <link href="assets/css/w3.css" rel="stylesheet"/>
     <style>
         body {
             padding-top: 150px;
             background-color: whitesmoke;
+        }
+
+        p a:hover {
+            background-color: whitesmoke !important;
+            color: deeppink !important;
+            text-decoration: none !important;
+        }
+
+        .nav-pills>li > a:active, .nav-pills>li>a:hover{
+            background-color: #9c27b0 !important;
+            color: #FFFFFF !important;
+            box-shadow: 0 16px 26px -10px rgba(156, 39, 176, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(156, 39, 176, 0.2);
+
         }
 
         @media screen and (max-width: 768px) {
@@ -27,17 +39,93 @@
                 padding-top: 80px;
             }
 
+            li .category-list {
+                width: 100vw;
+                background-color: white;
+                color:whitesmoke;
+                margin-top: 0px !important;
+
+            }
+
+            .category-list-row {
+                padding-top: 0px;
+                margin-top: 0px;
+                padding-bottom: 20px;
+                height: 20px;
+                color: black;
+            }
+            .category-list-row:hover {
+                background-color: purple;
+                color: white;
+            }
+
+
+            .dropdown-menu.product-list-1,
+            .dropdown-menu.product-list-2,
+            .dropdown-menu.product-list-3,
+            .dropdown-menu.product-list-4,
+            .dropdown-menu.product-list-5,
+            .dropdown-menu.product-list-6,
+            .dropdown-menu.product-list-7
+            {
+                right: auto;
+                text-align: center;
+                transform: translate(0%, 0);
+            }
+
             .account {
                 color: white !important;
             }
 
-            .my-product-card{box-shadow:0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)!important}
+            .my-product-card {
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important
+            }
         }
 
         @media screen and (min-width: 769px) {
             .account {
                 color: purple !important;
             }
+
+
+            .dropdown-menu.product-list-1{
+                right: auto;
+                text-align: center;
+                transform: translate(-3%, 0);
+            }
+
+            .dropdown-menu.product-list-2{
+                right: auto;
+                text-align: center;
+                transform: translate(-18%, 0);
+            }
+
+            .dropdown-menu.product-list-3{
+                right: auto;
+                text-align: center;
+                transform: translate(-30%, 0);
+            }
+            .dropdown-menu.product-list-4{
+                right: auto;
+                text-align: center;
+                transform: translate(-45%, 0);
+            }
+            .dropdown-menu.product-list-5{
+                right: auto;
+                text-align: center;
+                transform: translate(-62%, 0);
+            }
+            .dropdown-menu.product-list-6{
+                right: auto;
+                text-align: center;
+                transform: translate(-75%, 0);
+            }
+            .dropdown-menu.product-list-7{
+                right: auto;
+                text-align: center;
+                transform: translate(-90%, 0);
+            }
+
         }
 
         .caret-up {
@@ -63,17 +151,11 @@
         .img-hover img:hover {
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
-            -webkit-transform: translateZ(0) scale(1.05); /* Safari and Chrome */
-            -moz-transform: scale(1.05); /* Firefox */
-            -ms-transform: scale(1.05); /* IE 9 */
-            /*-o-transform:translatZ(0) scale(1.05); !* Opera *!*/
-            /*transform:translatZ(0) scale(1.05);*/
-        }
-
-        .grayscale {
-            -webkit-filter: brightness(1.10) grayscale(100%) contrast(90%);
-            -moz-filter: brightness(1.10) grayscale(100%) contrast(90%);
-            filter: brightness(1.10) grayscale(100%);
+            -webkit-transform: translateZ(0) scale(1.10); /* Safari and Chrome */
+            -moz-transform: scale(1.10); /* Firefox */
+            -ms-transform: scale(1.10); /* IE 9 */
+            /*-o-transform:translatZ(0) scale(1.10); !* Opera *!*/
+            /*transform:translatZ(0) scale(1.10);*/
         }
 
         #search {
@@ -124,6 +206,30 @@
         .navbar .navbar-collapse-center {
             text-align: center;
         }
+
+
+        /*Setting the table width is important!*/
+        table.fixed td {
+            overflow: hidden;
+        }
+
+        /*Hide text outside the cell.*/
+        table.fixed td:nth-of-type(1) {
+            width: 200px;
+        }
+
+        /*Setting the width of column 1.*/
+        table.fixed td:nth-of-type(2) {
+            width: 200px;
+        }
+
+        /*Setting the width of column 2.*/
+        table.fixed td:nth-of-type(3) {
+            width: 200px;
+        }
+
+        /*Setting the width of column 3.*/
+
     </style>
 </head>
 
@@ -142,7 +248,7 @@
             </button>
             <a style="font-size: 30px; margin-bottom: 20px; padding-bottom: 20px;" class="navbar-brand page-scroll"
                href="#">
-                <i style="font-size: 50px;" class="fa fa-shopping-cart material-red-color" aria-hidden="true"></i>
+                <i style="font-size: 50px;" class="fa fa-shopping-cart w3-text-pink" aria-hidden="true"></i>
                 Buy A<span class="material-red-color">2</span>Z
             </a>
         </div>
@@ -213,9 +319,9 @@
     <div id="navbar">
         <div class="navigation-example">
             <!-- Navbar Primary  -->
-            <nav class="navbar  w3-white remove-bottom-margin">
-                <div class="container w3-center">
-                    <div class="navbar-header">
+            <nav class="navbar w3-white remove-bottom-margin">
+                <div class="container-fluid w3-center">
+                    <div class="navbar-header ">
                         <button type="button" class="navbar-toggle" data-toggle="collapse"
                                 data-target="#example-navbar-primary">
                             <span class="sr-only">Toggle navigation</span>
@@ -225,57 +331,234 @@
                         </button>
                         <a class="navbar-brand hidden-lg hidden-sm hidden-md" href="#">MENU</a>
                     </div>
-                    <div class="collapse navbar-collapse " id="example-navbar-primary">
-                        <ul class="nav nav-pills w3-text-purple nav-justified">
-                            <li>
-                                <a href="#" class="w3-text-purple">
+                    <div class="collapse navbar-collapse" id="example-navbar-primary">
+                        <ul class="nav nav-pills  w3-text-purple nav-justified" role="tablist">
+
+                            <!-- Category List -->
+                            <li class="dropdown">
+                                <a href="#" class="w3-text-purple w3-medium">
                                     <i class="fa fa-television" aria-hidden="true"></i>
                                     APPLIANCES
                                 </a>
+                                <!-- List Menu -->
+                                <ul class="dropdown-menu product-list-1 remove-all-padding">
+                                    <li class="category-list">
+                                        <div class="container">
+                                            <!--  Content Area-->
+                                            <div class="row remove-all-margin-padding">
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    <p class="category-list-row"><a class="w3-text-blue w3-hover-purple" href="">TVs </a></p>
+                                                    <p class="category-list-row"><a href="">Full HD</a></p>
+                                                    <p class="category-list-row"><a href="">Ultra HD </a></p>
+                                                    <p class="category-list-row"><a href="">LED </a></p>
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                            </div>
+                                            <!-- /Content Area -->
+                                        </div>
+                                    </li>
+                                </ul>
+                                <!-- /List Menu -->
                             </li>
-                            <li>
-                                <a href="#" class="w3-text-purple">
-                                    <i class="fa fa-male" aria-hidden="true"></i>
+                            <!-- /Category List  -->
+
+
+                            <!-- Category List -->
+                            <li class="dropdown">
+                                <a href="#" class="w3-text-purple w3-medium">
+                                    <i class="fa fa-male " aria-hidden="true"></i>
                                     MEN
                                 </a>
+                                <!-- List Menu -->
+                                <ul class="dropdown-menu product-list-2 remove-all-padding">
+                                    <li class="remove-all-margin-padding">
+                                        <div class="container">
+                                            <!--  Content Area-->
+                                            <div class="row remove-all-margin-padding">
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 w3-light-gray">
+                                                    <p>sdfdklsjfjlkkkkkkkkkkkkkkkkkkkk</p>
+
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4 ">
+                                                    sosdlkfj
+                                                </div>
+                                            </div>
+                                            <!-- /Content Area -->
+                                        </div>
+                                    </li>
+                                </ul>
+                                <!-- /List Menu -->
                             </li>
-                            <li>
-                                <a href="#" class="w3-text-purple">
+                            <!-- /Category List  -->
+
+
+
+                            <!-- Category List -->
+                            <li class="dropdown">
+                                <a href="#" class="w3-text-purple w3-medium">
                                     <i class="fa fa-female" aria-hidden="true"></i>
                                     WOMEN
                                 </a>
+                                <!-- List Menu -->
+                                <ul class="dropdown-menu product-list-3 remove-all-padding">
+                                    <li class="category-list">
+                                        <div class="container">
+                                            <!--  Content Area-->
+                                            <div class="row remove-all-margin-padding">
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                                <div class="col-md-4 w3-light-gray col-sm-4 col-lg-4">
+                                                    <p>sdfdklsjfjlkkkkkkkkkkkkkkkkkkkk</p>
+
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                            </div>
+                                            <!-- /Content Area -->
+                                        </div>
+                                    </li>
+                                </ul>
+                                <!-- /List Menu -->
                             </li>
-                            <li>
-                                <a href="#" class="w3-text-purple">
+                            <!-- /Category List  -->
+
+
+
+                            <!-- Category List -->
+                            <li class="dropdown">
+                                <a href="#" class="w3-text-purple w3-medium">
                                     <i class="fa fa-mobile" aria-hidden="true"></i>
                                     ELECTRONICS
                                 </a>
+                                <!-- List Menu -->
+                                <ul class="dropdown-menu product-list-4 remove-all-padding">
+                                    <li class="remove-all-margin-padding">
+                                        <div class="container">
+                                            <!--  Content Area-->
+                                            <div class="row remove-all-margin-padding">
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4 w3-light-gray">
+                                                    <p>sdf</p>
+
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                            </div>
+                                            <!-- /Content Area -->
+                                        </div>
+                                    </li>
+                                </ul>
+                                <!-- /List Menu -->
                             </li>
-                            <li>
-                                <a href="#" class="w3-text-purple">
+                            <!-- /Category List  -->
+
+
+                            <!-- Category List -->
+                            <li class="dropdown">
+                                <a href="#" class="w3-text-purple w3-medium">
                                     <i class="fa fa-child" aria-hidden="true"></i>
                                     BABY & KIDS
                                 </a>
-                            </li>
-                            <li>
-                                <a href="#" class="w3-text-purple">
-                                    <i class="fa fa-bed" aria-hidden="true"></i>
-                                    HOME & FURNITURE
-                                </a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle w3-text-purple" data-toggle="dropdown">
-                                    <i class="fa fa-coffee" aria-hidden="true"></i>Dropdown</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">One more separated link</a></li>
+                                <!-- List Menu -->
+                                <ul class="dropdown-menu product-list-5 remove-all-padding">
+                                    <li class="remove-all-margin-padding">
+                                        <div class="container">
+                                            <!--  Content Area-->
+                                            <div class="row remove-all-margin-padding">
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4 w3-light-gray">
+                                                    <p>sdfdklsjfjlkkkkkkkkkkkkkkkkkkkk</p>
+
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                            </div>
+                                            <!-- /Content Area -->
+                                        </div>
+                                    </li>
                                 </ul>
+                                <!-- /List Menu -->
                             </li>
+                            <!-- /Category List  -->
+
+
+
+                            <!-- Category List -->
+                            <li class="dropdown">
+                                <a href="#" class="w3-text-purple w3-medium">
+                                    <i class="fa fa-bed" aria-hidden="true"></i>
+                                    HOME&FURNITURE
+                                </a>
+                                <!-- List Menu -->
+                                <ul class="dropdown-menu product-list-6 remove-all-padding">
+                                    <li class="remove-all-margin-padding">
+                                        <div class="container">
+                                            <!--  Content Area-->
+                                            <div class="row remove-all-margin-padding">
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4 w3-light-gray">
+                                                    <p>sdfdklsjfjlkkkkkkkkkkkkkkkkkkkk</p>
+
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                            </div>
+                                            <!-- /Content Area -->
+                                        </div>
+                                    </li>
+                                </ul>
+                                <!-- /List Menu -->
+                            </li>
+                            <!-- /Category List  -->
+
+
+                            <!-- Category List -->
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle  w3-text-purple" data-toggle="dropdown">
+                                    <i class="fa fa-coffee" aria-hidden="true"></i>Dropdown</a>
+                                <!-- List Menu -->
+                                <ul class="dropdown-menu product-list-7 remove-all-padding">
+                                    <li class="remove-all-margin-padding">
+                                        <div class="container">
+                                            <!--  Content Area-->
+                                            <div class="row remove-all-margin-padding">
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4 w3-light-gray">
+                                                    <p>sdfdklsjfjlkkkkkkkkkkkkkkkkkkkk</p>
+
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                            </div>
+                                            <!-- /Content Area -->
+                                        </div>
+                                    </li>
+                                </ul>
+                                <!-- /List Menu -->
+                            </li>
+                            <!-- /Category List  -->
                         </ul>
                     </div>
                 </div>
@@ -366,7 +649,7 @@
             <div class="col-sm-9 col-md-10 col-lg-10">
                 <!-- Product Card -->
                 <div class="set-product-padding-margin col-sm-4 col-md-3 col-lg-3">
-                    <div class="my-product-card w3-hover-shadow">
+                    <div class="my-product-card">
                         <header class="w3-container w3-center">
                             <div class="ratings ">
                                 <i class="fa fa-heart-o pull-left w3-large w3-text-blue-gray "></i>
@@ -401,7 +684,7 @@
 
                 <!-- Product Card -->
                 <div class="set-product-padding-margin col-sm-4 col-md-3 col-lg-3">
-                    <div class="my-product-card w3-hover-shadow">
+                    <div class="my-product-card">
                         <header class="w3-container w3-center">
                             <div class="ratings ">
                                 <i class="fa fa-heart-o pull-left w3-large w3-text-blue-gray "></i>
@@ -436,7 +719,7 @@
 
                 <!-- Product Card -->
                 <div class="set-product-padding-margin col-sm-4 col-md-3 col-lg-3">
-                    <div class="my-product-card w3-hover-shadow">
+                    <div class="my-product-card">
                         <header class="w3-container w3-center">
                             <div class="ratings ">
                                 <i class="fa fa-heart-o pull-left w3-large w3-text-blue-gray "></i>
@@ -471,7 +754,7 @@
 
                 <!-- Product Card -->
                 <div class="set-product-padding-margin hidden-sm col-sm-4 col-md-3 col-lg-3">
-                    <div class="my-product-card w3-hover-shadow">
+                    <div class="my-product-card">
                         <header class="w3-container w3-center">
                             <div class="ratings ">
                                 <i class="fa fa-heart-o pull-left w3-large w3-text-blue-gray "></i>
@@ -531,7 +814,7 @@
 
                 <!-- Product Card -->
                 <div class="set-product-padding-margin col-sm-4 col-md-3 col-lg-3">
-                    <div class="my-product-card w3-hover-shadow">
+                    <div class="my-product-card">
                         <header class="w3-container w3-center">
                             <div class="ratings ">
                                 <i class="fa fa-heart-o pull-left w3-large w3-text-blue-gray "></i>
@@ -567,7 +850,7 @@
 
                 <!-- Product Card -->
                 <div class="set-product-padding-margin col-sm-4 col-md-3 col-lg-3">
-                    <div class="my-product-card w3-hover-shadow">
+                    <div class="my-product-card">
                         <header class="w3-container w3-center">
                             <div class="ratings ">
                                 <!--<i class="fa fa-heart-o pull-left w3-large w3-text-blue-gray "></i>-->
@@ -603,7 +886,7 @@
 
                 <!-- Product Card -->
                 <div class="set-product-padding-margin col-sm-4 col-md-3 col-lg-3">
-                    <div class="my-product-card w3-hover-shadow">
+                    <div class="my-product-card">
                         <header class="w3-container w3-center">
                             <div class="ratings ">
                                 <i class="fa fa-heart-o pull-left w3-large w3-text-blue-gray "></i>
@@ -639,7 +922,7 @@
 
                 <!-- Product Card -->
                 <div class="set-product-padding-margin hidden-sm col-sm-4 col-md-3 col-lg-3">
-                    <div class="my-product-card w3-hover-shadow">
+                    <div class="my-product-card">
                         <header class="w3-container w3-center">
                             <div class="ratings ">
                                 <i class="fa fa-heart-o pull-left w3-large w3-text-blue-gray "></i>
@@ -699,7 +982,7 @@
 
                 <!-- Product Card -->
                 <div class="set-product-padding-margin col-sm-4 col-md-3 col-lg-3">
-                    <div class="my-product-card w3-hover-shadow">
+                    <div class="my-product-card">
                         <header class="w3-container w3-center">
                             <div class="ratings ">
                                 <i class="fa fa-heart-o pull-left w3-large w3-text-blue-gray "></i>
@@ -734,7 +1017,7 @@
 
                 <!-- Product Card -->
                 <div class="set-product-padding-margin col-sm-4 col-md-3 col-lg-3">
-                    <div class="my-product-card w3-hover-shadow">
+                    <div class="my-product-card">
                         <header class="w3-container w3-center">
                             <div class="ratings ">
                                 <i class="fa fa-heart-o pull-left w3-large w3-text-blue-gray"></i>
@@ -769,7 +1052,7 @@
 
                 <!-- Product Card -->
                 <div class="set-product-padding-margin col-sm-4 col-md-3 col-lg-3">
-                    <div class="my-product-card w3-hover-shadow">
+                    <div class="my-product-card">
                         <header class="w3-container w3-center">
                             <div class="ratings ">
                                 <!--<i class="fa fa-heart-o pull-left w3-xlarge w3-text-blue-gray "></i>-->
@@ -805,7 +1088,7 @@
                 <!-- Product Card -->
                 <div class="set-product-padding-margin hidden-sm  col-sm-4 col-md-3 col-lg-3">
                     <!-- Product Card Starts Here -->
-                    <div class="my-product-card w3-hover-shadow">
+                    <div class="my-product-card">
                         <header class="w3-container w3-center">
                             <div class="ratings ">
                                 <!--<i class="fa fa-heart-o pull-left w3-xlarge w3-text-blue-gray "></i>-->
