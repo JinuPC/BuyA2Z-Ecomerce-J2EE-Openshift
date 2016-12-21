@@ -1,6 +1,5 @@
 package com.buya2z.controller;
 
-import com.buya2z.config.Config;
 import com.buya2z.config.Database;
 import org.apache.log4j.Logger;
 
@@ -14,19 +13,27 @@ import java.io.IOException;
 /**
  * Created by Jinu on 11/26/2016.
  */
-@WebServlet("/")
+@WebServlet(name = "WelcomeController", urlPatterns = "/", loadOnStartup = 1 )
 public class WelcomeController extends HttpServlet {
-    Config config;
+
+    private final Logger logger = Logger.getLogger(WelcomeController.class);
+
     @Override
     public void init() throws ServletException {
-
+        logger.info("Initializing Application ");
+        Database.init();
+        logger.info("Initialization finished");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Database.init();
-        Logger logger = Logger.getLogger(WelcomeController.class);
-        logger.info("something");
-        resp.getWriter().print(config);
+    }
+
+    @Override
+    public void destroy() {
+        logger.info("Closing Application");
+        Database.destroy();
+        logger.info("Application Closed");
     }
 }

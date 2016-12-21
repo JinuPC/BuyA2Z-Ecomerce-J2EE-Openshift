@@ -1,5 +1,7 @@
 package com.buya2z.config;
 
+import org.apache.log4j.Logger;
+
 import java.sql.*;
 import java.util.Map;
 
@@ -7,6 +9,8 @@ import java.util.Map;
  * Created by Jinu on 11/30/2016.
  */
 public class Schema {
+
+    private final Logger logger = Logger.getLogger(Schema.class);
     private final String DB_NAME;
 
     Schema() {
@@ -24,10 +28,12 @@ public class Schema {
         try (Connection connection = DriverManager.getConnection(Config.getDbUrl(),
                 Config.getDbUserName(), Config.getDbPassword())) {
             if (!dbExists(connection)) {
+                logger.info("Database is not exist. Trying to create database " + DB_NAME);
                 createNewDatabase(connection);
+                logger.info("Database " + DB_NAME + " Created Successfully");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Exception happened", e);
         }
     }
 
@@ -49,7 +55,6 @@ public class Schema {
         String query = "CREATE database " + this.DB_NAME;
         try (Statement statement = connection.createStatement()) {
             int updatedCount = statement.executeUpdate(query);
-            Logger.print(updatedCount > 0 ? "Database Created Successfully" : "");
         }
     }
 
@@ -64,23 +69,27 @@ public class Schema {
             );
             for (String tableName : tableSchema.keySet()) {
                 if (!tableExist(connection, tableName)) {
+                    logger.info(tableName + " Table not found. Trying to create the table");
                     createTable(connection, tableSchema.get(tableName));
+                    logger.info(tableName + " Table Created");
                 }
+
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Exception happened", e);
         } finally {
             if(connection != null) {
                 try {
                     connection.close();
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    logger.error("Exception happened", e);
                 }
             }
+            tableSchema.clear();
         }
     }
 
-    public static boolean tableExist(Connection conn, String tableName) throws SQLException {
+    public boolean tableExist(Connection conn, String tableName) throws SQLException {
         boolean tExists = false;
         try (ResultSet rs = conn.getMetaData().getTables(null, null, tableName, null)) {
             while (rs.next()) {
@@ -94,7 +103,8 @@ public class Schema {
         return tExists;
     }
 
-    private static void createTable(Connection connection, String query) throws SQLException {
+    private void createTable(Connection connection, String query) throws SQLException {
+        logger.info(query);
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate(query);
         }

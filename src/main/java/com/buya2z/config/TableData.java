@@ -1,5 +1,7 @@
 package com.buya2z.config;
 
+import org.apache.log4j.Logger;
+
 import java.sql.*;
 import java.util.*;
 
@@ -7,6 +9,8 @@ import java.util.*;
  * Created by Jinu on 11/30/2016.
  */
 public class TableData {
+
+    private final Logger logger = Logger.getLogger(TableData.class);
 
     private Map<String, List<TableData.Record>> tableRecords;
 
@@ -17,29 +21,18 @@ public class TableData {
     public void setTableData() {
         setTableRecords();
         for(String tableName : tableRecords.keySet()) {
+            logger.info("Updating " + tableName + " Table Data");
             checkAndInsertData(tableName, tableRecords.get(tableName));
         }
     }
 
     private void setTableRecords() {
-        System.out.println("Table records getting");
-        setRecord("user",
-                new Record(1, "jinu"),
-                new Record(2, "james"),
-                new Record(3, "Hello"),
-                new Record(4, "haeedaf"),
-                new Record(5, "THis is great")
-        );
-        setRecord("product",
-                new Record(1, "Samsung galaxy"),
-                new Record(2, "Apple Iphone"),
-                new Record(3, "Yahoo"),
-                new Record(4, "mango")
-        );
-        setRecord("praveen",
-                new Record(1, "praveen"),
-                new Record(2, "jinu")
-        );
+
+
+//        setRecord("praveen",
+//                new Record(1, "praveen"),
+//                new Record(2, "jinu")
+//        );
 
     }
 
@@ -53,6 +46,7 @@ public class TableData {
         Connection con = Database.getConnection();
         try {
             if(isTableEmpty(tableName, con)) {
+                logger.info(tableName + " Data Updated ");
                 insertData(tableName, records, con);
             }
         } catch (SQLException e) {
@@ -111,7 +105,6 @@ public class TableData {
                 }
             }
         }
-        System.out.println(isEmpty);
         return isEmpty;
     }
 
