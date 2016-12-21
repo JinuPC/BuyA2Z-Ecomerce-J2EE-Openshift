@@ -51,7 +51,7 @@ public class Database {
             if (connectionPool.isEmpty()) {
                 con = createNewConnection();
             }
-            con = connectionPool.remove(connectionPool.size() - 1);
+            con = connectionPool.remove(1);
             if (con.isClosed() || !con.isValid(5)) {
                 return getConnection();
             }

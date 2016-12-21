@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>BuyA2Z Shop Online</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"/>
+    <!-- CSS Files -->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="assets/css/material-kit.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/scrolling-nav.css" rel="stylesheet"/>
+    <link href="assets/css/w3.css" rel="stylesheet"/>
+    <link href="assets/css/style.css" rel="stylesheet"/>
+    <style>
+        body {
+            /*padding-top:50px;*/
+        }
+
+        #masthead {
+            min-height:270px;
+            background-color:#000044;
+            color:#aaaacc;
+        }
+
+        #masthead h1 {
+            font-size: 55px;
+            line-height: 1;
+        }
+
+        #masthead .well {
+            margin-top:13%;
+            background-color:#111155;
+            border-color:#000033;
+        }
+
+        .icon-bar {
+            background-color:#fff;
+        }
+
+        @media screen and (min-width: 768px) {
+            #masthead h1 {
+                font-size: 100px;
+            }
+        }
+
+        .navbar-bright {
+            background-color:#111155;
+            color:#fff;
+        }
+
+        .navbar-bright a, #masthead a, #masthead .lead {
+            color:#aaaacc;
+        }
+
+        .navbar-bright li > a:hover {
+            background-color:#000033;
+        }
+
+        .affix-top,.affix{
+            position: static;
+        }
+
+        @media (min-width: 979px) {
+            #sidebar.affix-top {
+                position: static;
+                margin-top:30px;
+                width:228px;
+            }
+
+            #sidebar.affix {
+                position: fixed;
+                top:130px;
+                width:228px;
+            }
+        }
+
+        #sidebar li.active {
+            border:0 #eee solid;
+            border-right-width:4px;
+        }
+
+        #mainCol h2 {
+            padding-top: 80px;
+            margin-top: -55px;
+        }
+    </style>
+</head>
+
+<body id="page-top" data-spy="scroll" class="remove-all-margin"
+      data-target=".navbar-fixed-top">
+
+<!-- Navigation -->
+<nav class="container-fluid navbar navbar-primary navbar-fixed-top" role="navigation">
+    <div class="container-fluid ">
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a style="font-size: 30px; margin-bottom: 20px; padding-bottom: 20px;" class="navbar-brand page-scroll"
+               href="#">
+                <i style="font-size: 50px;" class="fa fa-shopping-cart w3-text-pink" aria-hidden="true"></i>
+                Buy A<span class="material-red-color">2</span>Z
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse  navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                <!--<li class=" ">-->
+                <!--<a class="page-scroll" href="#page-top"><br></a>-->
+                <!--</li>-->
+                <!--<li class="active" style="padding: 3px;">-->
+                <!--<a href="#">-->
+                <!--<i class="material-icons">explore</i>-->
+                <!--Electronics-->
+                <!--</a>-->
+                <!--</li>-->
+                <li class="active" style="padding: 3px;">
+                    <a href="#vc" class=" w3-medium active">
+                        <i class="fa fa-heart" aria-hidden="true"></i> WishList 1
+
+                    </a>
+                </li>
+                <li class="active" style="padding: 3px;">
+                    <a href="#cvb" class=" w3-medium  ">
+                        <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                        Cart <span class="w3-text-white " style="padding-left: 3px;">2</span>
+                    </a>
+                </li>
+
+                <li class="dropdown active" style="padding: 3px;">
+                    <a href="#" class="dropdown-toggle w3-medium " data-toggle="dropdown">
+                        <i class="fa fa-user-circle-o" aria-hidden="true"></i> JINU P C <b
+                            class=" pull-right caret hidden-sm hidden-md hidden-lg"></b></a>
+                    <ul class="dropdown-menu w3-xxlarge">
+                        <li><a href="#" class="w3-medium account w3-hover-text-white">
+                            <i class="fa fa-address-card pull-right" aria-hidden="true"></i>Account</a>
+                        </li>
+                        <li><a href="#" class="w3-medium account w3-hover-text-white">
+                            <i class="fa fa-shopping-bag pull-right" aria-hidden="true"></i>Orders</a>
+                        </li>
+                        <li><a href="#" class="w3-medium account w3-hover-text-white">
+                            <i class="fa fa-sign-out pull-right" aria-hidden="true"></i>Logout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <form class="navbar-form" id="search">
+                <div class="form-group" style="display:inline;">
+                    <div class="input-group input-group-lg mater">
+                        <span class="input-group-addon" style="width:1%;"><i
+                                class="glyphicon glyphicon-search"></i></span>
+                        <input style="text-align: center; line-height: 30px;" class="form-control input-group-lg "
+                               name="search"
+                               placeholder="Search Products" autocomplete="off" autofocus="autofocus" type="text">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<!-- /Navigation bar -->
+<!-- Category Navigation bar -->
+<div class="row ">
+    <div id="navbar">
+        <div class="navigation-example">
+            <!-- Navbar Primary  -->
+            <nav class="navbar w3-white remove-bottom-margin">
+                <div class="container-fluid w3-center">
+                    <div class="navbar-header ">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target="#example-navbar-primary">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand hidden-lg hidden-sm hidden-md" href="#">MENU</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="example-navbar-primary">
+                        <ul class="nav nav-pills  w3-text-purple nav-justified" role="tablist">
+
+                            <!-- Category List -->
+                            <li class="dropdown">
+                                <a href="#" class="w3-text-purple w3-medium">
+                                    <i class="fa fa-television" aria-hidden="true"></i>
+                                    APPLIANCES
+                                </a>
+                                <!-- List Menu -->
+                                <ul class="dropdown-menu product-list-1 remove-all-padding">
+                                    <li class="category-list">
+                                        <div class="container">
+                                            <!--  Content Area-->
+                                            <div class="row remove-all-margin-padding">
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    <p class="category-list-row"><a class="w3-text-blue w3-hover-purple"
+                                                                                    href="">TVs </a></p>
+                                                    <p class="category-list-row"><a href="">Full HD</a></p>
+                                                    <p class="category-list-row"><a href="">Ultra HD </a></p>
+                                                    <p class="category-list-row"><a href="">LED </a></p>
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                            </div>
+                                            <!-- /Content Area -->
+                                        </div>
+                                    </li>
+                                </ul>
+                                <!-- /List Menu -->
+                            </li>
+                            <!-- /Category List  -->
+
+
+                            <!-- Category List -->
+                            <li class="dropdown">
+                                <a href="#" class="w3-text-purple w3-medium">
+                                    <i class="fa fa-male " aria-hidden="true"></i>
+                                    MEN
+                                </a>
+                                <!-- List Menu -->
+                                <ul class="dropdown-menu product-list-2 remove-all-padding">
+                                    <li class="remove-all-margin-padding">
+                                        <div class="container">
+                                            <!--  Content Area-->
+                                            <div class="row remove-all-margin-padding">
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 w3-light-gray">
+                                                    <p>sdfdklsjfjlkkkkkkkkkkkkkkkkkkkk</p>
+
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4 ">
+                                                    sosdlkfj
+                                                </div>
+                                            </div>
+                                            <!-- /Content Area -->
+                                        </div>
+                                    </li>
+                                </ul>
+                                <!-- /List Menu -->
+                            </li>
+                            <!-- /Category List  -->
+
+
+                            <!-- Category List -->
+                            <li class="dropdown">
+                                <a href="#" class="w3-text-purple w3-medium">
+                                    <i class="fa fa-female" aria-hidden="true"></i>
+                                    WOMEN
+                                </a>
+                                <!-- List Menu -->
+                                <ul class="dropdown-menu product-list-3 remove-all-padding">
+                                    <li class="category-list">
+                                        <div class="container">
+                                            <!--  Content Area-->
+                                            <div class="row remove-all-margin-padding">
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                                <div class="col-md-4 w3-light-gray col-sm-4 col-lg-4">
+                                                    <p>sdfdklsjfjlkkkkkkkkkkkkkkkkkkkk</p>
+
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                            </div>
+                                            <!-- /Content Area -->
+                                        </div>
+                                    </li>
+                                </ul>
+                                <!-- /List Menu -->
+                            </li>
+                            <!-- /Category List  -->
+
+
+                            <!-- Category List -->
+                            <li class="dropdown">
+                                <a href="#" class="w3-text-purple w3-medium">
+                                    <i class="fa fa-mobile" aria-hidden="true"></i>
+                                    ELECTRONICS
+                                </a>
+                                <!-- List Menu -->
+                                <ul class="dropdown-menu product-list-4 remove-all-padding">
+                                    <li class="remove-all-margin-padding">
+                                        <div class="container">
+                                            <!--  Content Area-->
+                                            <div class="row remove-all-margin-padding">
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4 w3-light-gray">
+                                                    <p>sdf</p>
+
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                            </div>
+                                            <!-- /Content Area -->
+                                        </div>
+                                    </li>
+                                </ul>
+                                <!-- /List Menu -->
+                            </li>
+                            <!-- /Category List  -->
+
+
+                            <!-- Category List -->
+                            <li class="dropdown">
+                                <a href="#" class="w3-text-purple w3-medium">
+                                    <i class="fa fa-child" aria-hidden="true"></i>
+                                    BABY & KIDS
+                                </a>
+                                <!-- List Menu -->
+                                <ul class="dropdown-menu product-list-5 remove-all-padding">
+                                    <li class="remove-all-margin-padding">
+                                        <div class="container">
+                                            <!--  Content Area-->
+                                            <div class="row remove-all-margin-padding">
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4 w3-light-gray">
+                                                    <p>sdfdklsjfjlkkkkkkkkkkkkkkkkkkkk</p>
+
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                            </div>
+                                            <!-- /Content Area -->
+                                        </div>
+                                    </li>
+                                </ul>
+                                <!-- /List Menu -->
+                            </li>
+                            <!-- /Category List  -->
+
+
+                            <!-- Category List -->
+                            <li class="dropdown">
+                                <a href="#" class="w3-text-purple w3-medium">
+                                    <i class="fa fa-bed" aria-hidden="true"></i>
+                                    HOME&FURNITURE
+                                </a>
+                                <!-- List Menu -->
+                                <ul class="dropdown-menu product-list-6 remove-all-padding">
+                                    <li class="remove-all-margin-padding">
+                                        <div class="container">
+                                            <!--  Content Area-->
+                                            <div class="row remove-all-margin-padding">
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4 w3-light-gray">
+                                                    <p>sdfdklsjfjlkkkkkkkkkkkkkkkkkkkk</p>
+
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                            </div>
+                                            <!-- /Content Area -->
+                                        </div>
+                                    </li>
+                                </ul>
+                                <!-- /List Menu -->
+                            </li>
+                            <!-- /Category List  -->
+
+
+                            <!-- Category List -->
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle  w3-text-purple" data-toggle="dropdown">
+                                    <i class="fa fa-coffee" aria-hidden="true"></i>Dropdown</a>
+                                <!-- List Menu -->
+                                <ul class="dropdown-menu product-list-7 remove-all-padding">
+                                    <li class="remove-all-margin-padding">
+                                        <div class="container">
+                                            <!--  Content Area-->
+                                            <div class="row remove-all-margin-padding">
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4 w3-light-gray">
+                                                    <p>sdfdklsjfjlkkkkkkkkkkkkkkkkkkkk</p>
+
+                                                </div>
+                                                <div class="col-md-4 col-sm-4 col-lg-4">
+                                                    sosdlkfj
+                                                </div>
+                                            </div>
+                                            <!-- /Content Area -->
+                                        </div>
+                                    </li>
+                                </ul>
+                                <!-- /List Menu -->
+                            </li>
+                            <!-- /Category List  -->
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- /Category Navigation Bar -->
+
+<!-- Begin Body -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3" id="leftCol">
+
+            <ul class="nav nav-stacked" id="sidebar">
+                <li><a href="#sec0">Section 0</a></li>
+                <li><a href="#sec1">Section 1</a></li>
+                <li><a href="#sec2">Section 2</a></li>
+                <li><a href="#sec3">Section 3</a></li>
+                <li><a href="#sec4">Section 4</a></li>
+                <div class="panel remove-all-margin-padding panel-success">  <!-- accordion 2 -->
+                    <div class="panel-heading">
+                        <h4 class="panel-title"> <!-- title 2 -->
+                            <a data-toggle="collapse" data-parent="#accordion" href="#accordionTwo">
+                                Collapsible Accordion 2
+                            </a>
+                        </h4>
+                    </div>
+                    <!-- panel body -->
+                    <div id="accordionTwo" class="panel-collapse collapse">
+                        <div class="panel-body">
+                                <h1>sjakfljkdfjk</h1>
+                                <h1>sjakfljkdfjk</h1>
+                                <h1>sjakfljkdfjk</h1>
+                                <h1>sjakfljkdfjk</h1>
+                                <h1>sjakfljkdfjk</h1>
+                                <h1>sjakfljkdfjk</h1>
+                                <h1>sjakfljkdfjk</h1>
+
+                        </div>
+                    </div>
+                </div>
+            </ul>
+
+        </div>
+        <div class="col-md-9" id="mainCol">
+
+            <br>
+
+            <h2 id="sec0">Content</h2>
+            At Bootply we like to build simple Bootstrap templates that utilize the code Bootstap CSS without a lot of customization. Sure you can
+            find a lot of Bootstrap themes and inspiration, but these templates tend to be heavy on customization.
+
+
+
+            <hr class="col-md-12">
+            Rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores
+            eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
+            sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+            Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut.
+            Rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia cor magni dolores
+            eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
+            sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1>jkkjlkjklj</h1>
+            <h1><jkkjlkjklj></jkkjlkjklj></h1>
+            Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut!
+        </div>
+    </div>
+</div>
+<div class="row">
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1>sdjklfk</h1>
+    <h1><sdjklfk></sdjklfk></h1>
+</div>
+
+<!--&lt;!&ndash; Main Content &ndash;&gt;-->
+
+<!--<div class="row">-->
+    <!--<div class="container-fluid remove-all-margin-padding">-->
+        <!--&lt;!&ndash; Side Navigation &ndash;&gt;-->
+        <!--<div class=" remove-all-margin-padding  container-fluid col-lg-2 col-md-3 " >-->
+
+            <!--<div class="  container-fluid remove-all-margin-padding col-sm-6 col-lg-12 col-md-12" style="position: absolute">-->
+                <!--<div class="panel remove-all-margin-padding panel-success">  &lt;!&ndash; accordion 2 &ndash;&gt;-->
+                    <!--<div class="panel-heading">-->
+                        <!--<h4 class="panel-title"> &lt;!&ndash; title 2 &ndash;&gt;-->
+                            <!--<a data-toggle="collapse" data-parent="#accordion" href="#accordionTwo">-->
+                                <!--Collapsible Accordion 2-->
+                            <!--</a>-->
+                        <!--</h4>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash; panel body &ndash;&gt;-->
+                    <!--<div id="accordionTwo" class="panel-collapse collapse">-->
+                        <!--<div class="panel-body">-->
+
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="clearfix hidden-sm"></div>-->
+            <!--<div class=" container-fluid  remove-all-margin-padding col-sm-6 col-lg-12 col-md-12">-->
+                <!--<div class="panel remove-all-margin-padding panel-success">-->
+                    <!--<div class="panel-heading"> &lt;!&ndash; panel-heading &ndash;&gt;-->
+                        <!--<h4 class="panel-title"> &lt;!&ndash; title 1 &ndash;&gt;-->
+                            <!--<a data-toggle="collapse" data-parent="#accordion" href="#accordionOne">-->
+                                <!--Collapsible Accordion 1-->
+                            <!--</a>-->
+                        <!--</h4>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash; panel body &ndash;&gt;-->
+                    <!--<div id="accordionOne" class="panel-collapse collapse">-->
+                        <!--<div class="panel-body">-->
+
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+        <!--&lt;!&ndash; Side Navigation &ndash;&gt;-->
+
+        <!--&lt;!&ndash; Main Products View &ndash;&gt;-->
+        <!--<div class="col-lg-10 col-md-9 w3-purple" style="min-height: 1200px">-->
+        <!--</div>-->
+        <!--&lt;!&ndash; Main Products View &ndash;&gt;-->
+    <!--</div>-->
+
+<!--</div>-->
+
+<!--&lt;!&ndash; /Main Content &ndash;&gt;-->
+
+
+<!-- footer Layout -->
+<div class="container-fluid text-center w3-white ">
+    <hr/>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-md-3 col-xs-6">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">Category 1</a></li>
+                    <li><a href="#">Category 1</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-xs-6">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">Category 1</a></li>
+                    <li><a href="#">Category 1</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-xs-6">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">Category 1</a></li>
+                    <li><a href="#">Category 1</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-xs-6">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#">Category 1</a></li>
+                    <li><a href="#">Category 6</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="nav nav-pills nav-justified">
+                <li><a href="/">© 2016 BuyA2Z.</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">About Us</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--   Core JS Files   -->
+<script src="assets/js/jquery.min.js" type="text/javascript"></script>
+<script src="assets/js/jquery.easing.min.js" type="text/javascript"></script>
+<script src="assets/js/scrolling-nav.js" type="text/javascript"></script>
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/js/material.min.js"></script>
+<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
+<script src="assets/js/material-kit.js" type="text/javascript"></script>
+<script>
+    $(function () {
+        $(".dropdown").hover(
+            function () {
+                $('.dropdown-menu', this).stop(true, true).fadeIn("fast");
+                $(this).toggleClass('open');
+                $('b', this).toggleClass("caret caret-up");
+            },
+            function () {
+                $('.dropdown-menu', this).stop(true, true).fadeOut("fast");
+                $(this).toggleClass('open');
+                $('b', this).toggleClass("caret caret-up");
+            });
+    });
+
+    $('#sidebar').affix({
+        offset: {
+            top: 245
+        }
+    });
+
+    var $body   = $(document.body);
+    var navHeight = $('.navbar').outerHeight(true) + 10;
+
+    $body.scrollspy({
+        target: '#leftCol',
+        offset: navHeight
+    });
+
+</script>
+
+</body>
+</html>
