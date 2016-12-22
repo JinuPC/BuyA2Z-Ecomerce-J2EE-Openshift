@@ -13,7 +13,7 @@ import java.io.IOException;
 /**
  * Created by Jinu on 11/26/2016.
  */
-@WebServlet(name = "WelcomeController", urlPatterns = "/", loadOnStartup = 1 )
+@WebServlet(name = "WelcomeController", urlPatterns = "/welcome", loadOnStartup = 1 )
 public class WelcomeController extends HttpServlet {
 
     private final Logger logger = Logger.getLogger(WelcomeController.class);
@@ -28,8 +28,8 @@ public class WelcomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
-        req.getRequestDispatcher("index1.jsp").forward(req, resp);
-        //req.getRequestDispatcher("/index1.jsp").include(req, resp);
+        req.getRequestDispatcher("index.html").include(req, resp);
+        //req.getRequestDispatcher("/index.html").include(req, resp);
     }
 
     @Override
