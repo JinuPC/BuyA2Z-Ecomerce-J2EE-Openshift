@@ -27,7 +27,8 @@ public class WelcomeController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Database.init();
+        req.getRequestDispatcher("index1.jsp").include(req, resp);
+        //req.getRequestDispatcher("/index1.jsp").include(req, resp);
     }
 
     @Override
