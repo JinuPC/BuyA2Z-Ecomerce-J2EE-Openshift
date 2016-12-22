@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html" %>
 <!doctype html>
 <html lang="en">
 <head>
