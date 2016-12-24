@@ -86,7 +86,7 @@ output {
 // horizontal sizing, wrap controls in the predefined grid classes. `<select>`
 // element gets special love because it's special, and that's a fact!
 
-// mixin pulled from bootstrap and altered for less/sass compatibility with sass parent hack.
+// mixin pulled from bootstrap and altered for less/sass compatibility with sass MAIN hack.
 //  bootstrap-sass has this one, but we would have to then convert it back to less.  chicken meet egg.
 @mixin input-size($parent, $mdb-input-height, $padding-vertical, $padding-horizontal, $font-size, $line-height, $border-radius){
 

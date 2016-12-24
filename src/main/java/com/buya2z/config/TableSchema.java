@@ -14,12 +14,6 @@ class TableSchema {
 
     private Map<String, String> tableSchema;
 
-    TableSchema() {
-        this.tableSchema = new LinkedHashMap<>();
-        this.setTableSchema();
-        this.setColumns();
-    }
-
     /*
      * Define Database Schema here
      * call addTable method for add new Table with table name and columns
@@ -27,7 +21,7 @@ class TableSchema {
      *
      */
     private void setTableSchema() {
-        addTable("User", setColumns(
+        addTable("user", setColumns(
                 "user_id bigint primary key auto_increment",
                 "first_name varchar(50) not null",
                 "last_name varchar(50)",
@@ -39,14 +33,13 @@ class TableSchema {
                 "gender varchar(6) ",
                 "updated_at Timestamp ",
                 "created_at Timestamp"
-
         ));
-        addTable("Address", setColumns(
+        addTable("address", setColumns(
                 "address_id bigint primary key auto_increment",
                 "name varchar(50) not null",
                 "street varchar(100) not null",
-                "landmark varchar(100)",
-                "city varchar(35) not null",
+                "landmark varchar(255)",
+                "city varchar(100) not null",
                 "state varchar(30) not null",
                 "pincode varchar(6) not null",
                 "phone_number varchar(10)",
@@ -91,7 +84,7 @@ class TableSchema {
                 "category_id int primary key auto_increment",
                 "category_name varchar(200) not null",
                 "parent_category_id int",
-                "category_type varchar(10) not null default 'lower' ",
+                "category_type varchar(10) not null default 'LOWER' ",
                 "updated_at timestamp",
                 "created_at timestamp"
         ));
@@ -111,7 +104,80 @@ class TableSchema {
                 "FOREIGN KEY(created_by) REFERENCES user(user_id)",
                 "FOREIGN KEY(category_id) REFERENCES category(category_id)"
         ));
+        addTable("seller_product", setColumns(
+                "sku varchar(20) primary key",
+                "stock int not null",
+                "base_price decimal(10,2) null",
+                "selling_price decimal(10,2) not null",
+                "updated_at timestamp",
+                "created_at timestamp",
+                "product_id bigint",
+                "user_id bigint",
+                "FOREIGN KEY(user_id) REFERENCES user(user_id)",
+                "FOREIGN KEY(product_id) REFERENCES product(product_id)"
+        ));
+        addTable("main_feature", setColumns(
+                "main_feature_id int primary key auto_increment",
+                "main_feature_title varchar(200) not null",
+                "main_feature_desc varchar(255) not null",
+                "product_id bigint not null",
+                "updated_at timestamp",
+                "created_at timestamp",
+                "FOREIGN KEY(product_id) REFERENCES product(product_id)"
+        ));
+        addTable("feature_category", setColumns(
+                "feature_category_id int primary key auto_increment",
+                "feature_category_name varchar(100) not null",
+                "updated_at timestamp",
+                "created_at timestamp"
+        ));
+        addTable("feature", setColumns(
+                "feature_id bigint primary key auto_increment",
+                "feature_title varchar(200) not null",
+                "feature_desc varchar(255) not null",
+                "updated_at timestamp",
+                "created_at timestamp",
+                "feature_category_id int",
+                "product_id bigint not null",
+                "foreign key(product_id) references product(product_id)",
+                "foreign key(feature_category_id) references feature_category(feature_category_id)"
+        ));
+        addTable("warranty", setColumns(
+                "warranty_id int primary key auto_increment",
+                "warranty_summary text(3000) not null",
+                "warranty_type varchar(250) not null",
+                "warranty_cover varchar(50) ",
+                "not_covered varchar(100)",
+                "updated_at timestamp",
+                "created_at timestamp",
+                "product_id bigint not null",
+                "foreign key(product_id) references product(product_id)"
+        ));
+        addTable("rating", setColumns(
+                "rating_id bigint primary key auto_increment",
+                "rating tinyint not null",
+                "updated_at timestamp",
+                "created_at timestamp",
+                "product_id bigint not null",
+                "foreign key(product_id) references product(product_id)"
+        ));
+        addTable("comment", setColumns(
+                "comment_id bigint primary key auto_increment",
+                "comment_title varchar(255) not null",
+                "comment_desc text(5000) not null",
+                "updated_at timestamp",
+                "created_at timestamp",
+                "rating_id bigint not null",
+                "foreign key(rating_id) references rating(rating_id)"
+        ));
 
+
+    }
+
+    TableSchema() {
+        this.tableSchema = new LinkedHashMap<>();
+        this.setTableSchema();
+        this.setColumns();
     }
 
     private void addTable(String tableName, String schema) {

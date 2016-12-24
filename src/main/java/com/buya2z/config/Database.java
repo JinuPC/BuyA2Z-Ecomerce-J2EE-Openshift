@@ -3,7 +3,9 @@ package com.buya2z.config;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
+
 import org.apache.log4j.Logger;
 
 /**
@@ -54,7 +56,7 @@ public class Database {
 
     private static Connection createNewConnection() throws SQLException {
         logger.info("Creating new Connection");
-        String dbUrl = Config.getDbUrl() + "/" + DB_NAME;
+        String dbUrl = Config.getDbUrlWithDatabaseName();
         return DriverManager.getConnection(dbUrl, Config.getDbUserName(), Config.getDbPassword());
     }
 
@@ -118,15 +120,29 @@ public class Database {
 
     public static void destroy() {
         try {
-            logger.info("Trying to close all connections and remove connection Pool");
-            for (Connection connection : connectionPool) {
-                logger.info("Closing " + connection + " Connection");
-                connection.close();
-            }
-            connectionPool.clear();
-            logger.info("Connection Pool Removed Successfully");
+            removeConnectionPool();
+            unRegisterDriver();
         } catch (SQLException e) {
-            logger.error("Exception happened while closing connection Object ", e);
+            logger.error("Exception happened while closing Database", e);
+        }
+    }
+
+    private static void removeConnectionPool() throws SQLException {
+        logger.info("Trying to close all connections and remove connection Pool");
+        for (Connection connection : connectionPool) {
+            logger.info("Closing " + connection + " Connection");
+            connection.close();
+        }
+        connectionPool.clear();
+        logger.info("Connection Pool Removed Successfully");
+    }
+
+    private static void unRegisterDriver() throws SQLException {
+        Enumeration<Driver> drivers = DriverManager.getDrivers();
+        while (drivers.hasMoreElements()) {
+            Driver driver = drivers.nextElement();
+            DriverManager.deregisterDriver(driver);
+            logger.info("Jdbc Drivers unregistered Successfully");
         }
     }
 

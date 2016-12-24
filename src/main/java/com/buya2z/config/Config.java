@@ -10,15 +10,25 @@ import java.util.Properties;
  * Created by Jinu on 11/26/2016.
  */
 public class Config {
+
     private final static String DB_TYPE = "MYSQL";
+
     private final static String DB_NAME = "shop";
+
     private static String dbHost;
+
     private static String dbPort;
+
     private static String dbUserName;
+
     private static String dbPassword;
+
     private static String baseUrl;
+
     private static String appName;
+
     private static String homeDirectory;
+
     private static String dataDirectory;
 
     static {
@@ -64,6 +74,24 @@ public class Config {
                 e.printStackTrace();
             }
             dbUrl = "jdbc:mysql://" + Config.dbHost + ":" + Config.dbPort;
+        }
+        return dbUrl;
+    }
+
+    static String getDbUrlWithoutDbName() {
+        String dbUrl = getDbUrl();
+        if(isInLocal()) {
+            dbUrl += "?autoReconnect=true&useSSL=false";
+        }
+        return dbUrl;
+    }
+
+    static String getDbUrlWithDatabaseName() {
+        String dbUrl = getDbUrl();
+        if(isInLocal()) {
+            dbUrl += "/" + DB_NAME + "?autoReconnect=true&useSSL=false";
+        } else {
+            dbUrl += "/" + DB_NAME;
         }
         return dbUrl;
     }

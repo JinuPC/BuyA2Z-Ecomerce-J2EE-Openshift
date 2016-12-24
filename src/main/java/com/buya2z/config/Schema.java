@@ -11,6 +11,7 @@ import java.util.Map;
 public class Schema {
 
     private final Logger logger = Logger.getLogger(Schema.class);
+
     private final String DB_NAME;
 
     Schema() {
@@ -25,7 +26,7 @@ public class Schema {
     private void ensureDatabaseExist() {
         //One time connection for checking the database and tables are exist.
         //If not exist create everything and close
-        try (Connection connection = DriverManager.getConnection(Config.getDbUrl(),
+        try (Connection connection = DriverManager.getConnection(Config.getDbUrlWithoutDbName(),
                 Config.getDbUserName(), Config.getDbPassword())) {
             if (!dbExists(connection)) {
                 logger.info("Database is not exist. Trying to create database " + DB_NAME);
@@ -63,7 +64,7 @@ public class Schema {
         Map<String, String> tableSchema = new TableSchema().getTableSchema();
         try {
             connection = DriverManager.getConnection(
-                    Config.getDbUrl() +"/" + DB_NAME,
+                    Config.getDbUrlWithDatabaseName(),
                     Config.getDbUserName(),
                     Config.getDbPassword()
             );

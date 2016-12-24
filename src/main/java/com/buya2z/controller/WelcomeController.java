@@ -13,13 +13,17 @@ import java.io.IOException;
 /**
  * Created by Jinu on 11/26/2016.
  */
-@WebServlet(name = "WelcomeController", urlPatterns = "/welcome", loadOnStartup = 1 )
+@WebServlet(name = "WelcomeController", urlPatterns = "/", loadOnStartup = 1 )
 public class WelcomeController extends HttpServlet {
 
     private final Logger logger = Logger.getLogger(WelcomeController.class);
 
     @Override
     public void init() throws ServletException {
+        System.out.println("***********************************************************************************************");
+        System.out.println("\t\t\t\t\t\t\t\t\t\tApplication Started");
+        System.out.println("***********************************************************************************************");
+        logger.info("Application Started");
         logger.info("Initializing Application ");
         Database.init();
         logger.info("Initialization finished");
@@ -27,9 +31,10 @@ public class WelcomeController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html");
-        req.getRequestDispatcher("welcome.jsp").forward(req, resp);
+        //resp.setContentType("text/html");
+        //req.getRequestDispatcher("welcome.jsp").forward(req, resp);
         //req.getRequestDispatcher("/index.html").include(req, resp);
+        Database.init();
     }
 
     @Override
@@ -37,5 +42,9 @@ public class WelcomeController extends HttpServlet {
         logger.info("Closing Application");
         Database.destroy();
         logger.info("Application Closed");
+        System.out.println("***********************************************************************************************");
+        System.out.println("\t\t\t\t\t\t\t\t\t\tApplication Closed");
+        System.out.println("***********************************************************************************************");
+
     }
 }
