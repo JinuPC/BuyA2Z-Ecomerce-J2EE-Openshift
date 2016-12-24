@@ -47,7 +47,7 @@ class TableSchema {
                 "updated_at Timestamp",
                 "created_at Timestamp",
                 "user_id bigint ",
-                "FOREIGN KEY(user_id) REFERENCES User(user_id)"
+                "FOREIGN KEY(user_id) REFERENCES user(user_id)"
         ));
         addTable("card", setColumns(
                 "card_id bigint primary key auto_increment",
