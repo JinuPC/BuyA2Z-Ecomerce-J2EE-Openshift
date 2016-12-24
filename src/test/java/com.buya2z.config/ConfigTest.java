@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
  * Created by Jinu on 12/13/2016.
  */
 public class ConfigTest {
+
     @Test
     public void test() {
         assertEquals("CE", "CE");

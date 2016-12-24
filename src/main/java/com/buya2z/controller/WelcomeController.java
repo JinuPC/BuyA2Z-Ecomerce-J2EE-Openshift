@@ -1,5 +1,6 @@
 package com.buya2z.controller;
 
+import com.buya2z.app.Application;
 import com.buya2z.config.Database;
 import org.apache.log4j.Logger;
 
@@ -20,13 +21,7 @@ public class WelcomeController extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        System.out.println("***********************************************************************************************");
-        System.out.println("\t\t\t\t\t\t\t\t\t\tApplication Started");
-        System.out.println("***********************************************************************************************");
-        logger.info("Application Started");
-        logger.info("Initializing Application ");
-        Database.init();
-        logger.info("Initialization finished");
+        Application.getInstance().initApplication();
     }
 
     @Override
@@ -39,12 +34,6 @@ public class WelcomeController extends HttpServlet {
 
     @Override
     public void destroy() {
-        logger.info("Closing Application");
-        Database.destroy();
-        logger.info("Application Closed");
-        System.out.println("***********************************************************************************************");
-        System.out.println("\t\t\t\t\t\t\t\t\t\tApplication Closed");
-        System.out.println("***********************************************************************************************");
-
+        Application.getInstance().destroyApplication();
     }
 }

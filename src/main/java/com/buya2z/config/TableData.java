@@ -110,7 +110,7 @@ public class TableData {
 
 
 
-                new Record(20, "Personal Care", 2, "sub", timestamp, timestamp)
+                new Record(101, "Personal Care", 2, "sub", timestamp, timestamp)
         );
         setRecords("product",
                 new Record(1, "asus zenfone", "This is a good phone", "image url",

@@ -125,9 +125,9 @@ class TableSchema {
                 "created_at timestamp",
                 "FOREIGN KEY(product_id) REFERENCES product(product_id)"
         ));
-        addTable("feature_category", setColumns(
-                "feature_category_id int primary key auto_increment",
-                "feature_category_name varchar(100) not null",
+        addTable("specification", setColumns(
+                "specification_id int primary key auto_increment",
+                "specification_name varchar(100) not null",
                 "updated_at timestamp",
                 "created_at timestamp"
         ));
@@ -137,10 +137,10 @@ class TableSchema {
                 "feature_desc varchar(255) not null",
                 "updated_at timestamp",
                 "created_at timestamp",
-                "feature_category_id int",
+                "specification_id int",
                 "product_id bigint not null",
                 "foreign key(product_id) references product(product_id)",
-                "foreign key(feature_category_id) references feature_category(feature_category_id)"
+                "foreign key(specification_id) references specification(specification_id)"
         ));
         addTable("warranty", setColumns(
                 "warranty_id int primary key auto_increment",

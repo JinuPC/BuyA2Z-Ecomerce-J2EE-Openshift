@@ -9,7 +9,7 @@ public class DAOFactory {
 
     private DAOFactory() {}
 
-    public CategoryDAO getCategoryDAO() {
+    public static CategoryDAO getCategoryDAO() {
         return CategoryDAOImpl.getInstance();
     }
 

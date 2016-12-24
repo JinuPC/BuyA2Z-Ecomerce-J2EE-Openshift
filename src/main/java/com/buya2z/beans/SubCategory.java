@@ -38,4 +38,5 @@ public class SubCategory extends Category{
     public String toString() {
         return super.toString() + (hasLowerCategories() ?" { LOWER-CATEGORIES ==> " + this.lowerCategories +"}" : "");
     }
+
 }

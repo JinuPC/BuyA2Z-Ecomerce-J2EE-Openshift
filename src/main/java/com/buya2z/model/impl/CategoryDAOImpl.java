@@ -3,15 +3,14 @@ package com.buya2z.model.impl;
 import com.buya2z.beans.*;
 import com.buya2z.config.Database;
 import com.buya2z.model.CategoryDAO;
+import com.buya2z.model.CategoryList;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by Jinu on 12/24/2016.
@@ -22,17 +21,23 @@ public class CategoryDAOImpl implements CategoryDAO {
 
     private final Logger LOGGER = Logger.getLogger(CategoryDAOImpl.class);
 
-    private ArrayList<Category> categories;
+    private final ArrayList<Category> CATEGORIES;
 
     private CategoryDAOImpl() {
-        categories = new ArrayList<>();
+        CATEGORIES = new ArrayList<>();
+        initCategoryList();
+    }
+
+    private void initCategoryList() {
+        CATEGORIES.clear();
         LOGGER.info("Initializing Category List");
         fetchCategories();
+        LOGGER.info("Categories initialized : \n" );
     }
 
     @Override
-    public ArrayList<Category> getAll() {
-        return categories;
+    public CategoryList getCategoryList() {
+        return new CategoryListImpl(CATEGORIES);
     }
 
     private void fetchCategories() {
@@ -56,7 +61,7 @@ public class CategoryDAOImpl implements CategoryDAO {
             Category currentCategory = getCategory(rs);
             categoryMap.put(currentCategory.getId(), currentCategory);
             if(currentCategory.isMainCategory()) {
-                categories.add(currentCategory);
+                CATEGORIES.add(currentCategory);
             }
             if(currentCategory.isSubCategory()) {
                 MainCategory mainCategory = (MainCategory) categoryMap.get(currentCategory.getParentId());
@@ -90,7 +95,7 @@ public class CategoryDAOImpl implements CategoryDAO {
         category.setName(rs.getString("category_name"));
         category.setCreatedAt(rs.getDate("created_at"));
         category.setUpdatedAt(rs.getDate("updated_at"));
-        LOGGER.info("New Category Created " + category);
+        LOGGER.info("New Category Created " + category.getName());
         return category;
     }
 
