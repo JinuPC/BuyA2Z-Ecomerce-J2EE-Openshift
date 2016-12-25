@@ -1,6 +1,7 @@
 package com.buya2z.controller;
 
 import com.buya2z.app.Application;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -28,20 +29,9 @@ public class WelcomeController extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        try {
-            PrintWriter out = resp.getWriter();
-            logger.info("Executing doget");
-            out.println(APP.getImagePath());
-            File file = new File("c:/buya2z/images");
-            out.println(file.exists());
-            file.mkdir();
-            logger.info("New file created");
-            out.println(file.exists());
-        } catch (Exception e ) {
-            e.printStackTrace();
-        }
+        resp.getWriter().println("Checking");
 
 
 

@@ -13,16 +13,18 @@ public class DirectoryManager {
 
     private final Logger LOGGER = Logger.getLogger(DirectoryManager.class);
 
+    private final String RESOURCE_FOLDER_NAME = "res";
+
     private final String DATA_DIRECTORY;
 
-    private final String IMAGE_DIRECTORY;
+    private final String RESOURCE_DIRECTORY;
 
     private DirectoryManager() {
         LOGGER.info("Initializing DirectoryManager");
         DATA_DIRECTORY = Config.getDataDirectory();
+        RESOURCE_DIRECTORY = setImageDirectory();
         LOGGER.info("Set Data Directory as " + DATA_DIRECTORY);
-        IMAGE_DIRECTORY = setImageDirectory();
-        LOGGER.info("Set Image Dirctory as " + IMAGE_DIRECTORY);
+        LOGGER.info("Set Resource Directory as " + RESOURCE_DIRECTORY);
     }
 
     private String setImageDirectory() {
@@ -30,14 +32,16 @@ public class DirectoryManager {
         try {
             File directoryFile = new File(DATA_DIRECTORY);
             if (!directoryFile.exists()) {
-                LOGGER.info("Directory file is not found Trying to create directory file");
+                LOGGER.info("Data Directory is not found Trying to create directory file");
                 directoryFile.mkdir();
+                LOGGER.info("Data Directory is created as " + DATA_DIRECTORY);
             }
-            imageDirectoryName = DATA_DIRECTORY + "/images";
+            imageDirectoryName = DATA_DIRECTORY + RESOURCE_FOLDER_NAME;
             File imageDirectory = new File(imageDirectoryName);
             if (!imageDirectory.exists()) {
-                LOGGER.info("Image file not found trying to create Image Directory");
+                LOGGER.info("Resource Directory not found trying to create Resource Directory");
                 imageDirectory.mkdir();
+                LOGGER.info("Resource Directory is created as " + RESOURCE_FOLDER_NAME);
             }
         } catch (Exception e) {
             LOGGER.error("Exception happend while making Data and image Directory Creation", e);
@@ -46,12 +50,12 @@ public class DirectoryManager {
         return imageDirectoryName;
     }
 
-    public String getImageDirectory() {
-        return IMAGE_DIRECTORY;
+    public String getResourceDirectory() {
+        return RESOURCE_DIRECTORY;
     }
 
-    public File getImageDirectoryFile() {
-        return new File(IMAGE_DIRECTORY);
+    public File getResourceFile() {
+        return new File(RESOURCE_DIRECTORY);
     }
 
     public static DirectoryManager getInstance() {
