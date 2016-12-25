@@ -1,4 +1,4 @@
-package com.buya2z.beans;
+package com.buya2z.beans.category;
 
 /**
  * Created by Jinu on 12/24/2016.

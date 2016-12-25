@@ -1,8 +1,7 @@
 package com.buya2z.model;
 
 import com.buya2z.TestInitializer;
-import com.buya2z.beans.Category;
-import com.buya2z.config.Database;
+import com.buya2z.beans.category.Category;
 import org.junit.Test;
 
 import java.util.List;

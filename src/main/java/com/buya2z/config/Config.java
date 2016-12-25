@@ -166,4 +166,8 @@ public class Config {
             }
         }
     }
+
+    public static String getDataDirectory() {
+        return dataDirectory;
+    }
 }

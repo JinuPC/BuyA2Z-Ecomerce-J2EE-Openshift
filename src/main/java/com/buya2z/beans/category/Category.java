@@ -1,4 +1,4 @@
-package com.buya2z.beans;
+package com.buya2z.beans.category;
 
 import java.util.Date;
 
@@ -83,4 +83,5 @@ public class Category {
     public String toString() {
         return this.name;
     }
+
 }

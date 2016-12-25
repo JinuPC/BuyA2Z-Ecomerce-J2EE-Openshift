@@ -101,7 +101,8 @@ class TableSchema {
                 "created_at timestamp",
                 "created_by bigint not null",
                 "category_id int not null",
-                "FOREIGN KEY(created_by) REFERENCES user(user_id)",
+                "user_id bigint not null",
+                "FOREIGN KEY(user_id) REFERENCES user(user_id)",
                 "FOREIGN KEY(category_id) REFERENCES category(category_id)"
         ));
         addTable("seller_product", setColumns(
@@ -159,6 +160,8 @@ class TableSchema {
                 "updated_at timestamp",
                 "created_at timestamp",
                 "product_id bigint not null",
+                "user_id bigint not null",
+                "foreign key(user_id) references user(user_id)",
                 "foreign key(product_id) references product(product_id)"
         ));
         addTable("comment", setColumns(
@@ -170,6 +173,7 @@ class TableSchema {
                 "rating_id bigint not null",
                 "foreign key(rating_id) references rating(rating_id)"
         ));
+
 
 
     }

@@ -1,8 +1,8 @@
 package com.buya2z.model.impl;
 
-import com.buya2z.beans.Category;
-import com.buya2z.beans.MainCategory;
-import com.buya2z.beans.SubCategory;
+import com.buya2z.beans.category.Category;
+import com.buya2z.beans.category.MainCategory;
+import com.buya2z.beans.category.SubCategory;
 import com.buya2z.model.CategoryList;
 
 import java.util.ArrayList;

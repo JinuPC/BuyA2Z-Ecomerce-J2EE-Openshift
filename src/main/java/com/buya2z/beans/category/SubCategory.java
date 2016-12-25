@@ -1,4 +1,4 @@
-package com.buya2z.beans;
+package com.buya2z.beans.category;
 
 
 import java.util.ArrayList;
