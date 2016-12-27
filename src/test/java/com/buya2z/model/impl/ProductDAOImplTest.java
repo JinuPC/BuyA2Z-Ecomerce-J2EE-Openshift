@@ -45,9 +45,9 @@ public class ProductDAOImplTest {
 
     @Test
     public void testCreate() {
-        for (int i = 1000; i<= 1004 ; i++) {
-            Connection connection =
-        }
+//        for (int i = 1000; i<= 1004 ; i++) {
+//            Connection connection =
+//        }
 
     }
 
