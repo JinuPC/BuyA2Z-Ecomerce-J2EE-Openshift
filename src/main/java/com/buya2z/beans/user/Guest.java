@@ -1,11 +1,13 @@
 package com.buya2z.beans.user;
 
+import com.buya2z.beans.AbstractBean;
+
 import java.util.Date;
 
 /**
  * Created by Jinu on 12/25/2016.
  */
-public class Guest implements User {
+public class Guest extends AbstractBean implements User {
 
     @Override
     public boolean isGuest(){
@@ -15,6 +17,11 @@ public class Guest implements User {
     @Override
     public int getId() {
         return 0;
+    }
+
+    @Override
+    public void setId(int id) {
+
     }
 
     @Override
@@ -49,16 +56,6 @@ public class Guest implements User {
 
     @Override
     public String gender() {
-        return null;
-    }
-
-    @Override
-    public Date getCreatedAtTimestamp() {
-        return null;
-    }
-
-    @Override
-    public Date getUpdatedAtTimestamp() {
         return null;
     }
 

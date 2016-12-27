@@ -15,8 +15,6 @@ public interface User {
     public UserRole getRole();
     public Status getStatus();
     public String gender();
-    public Date getCreatedAtTimestamp();
-    public Date getUpdatedAtTimestamp();
     public boolean isAdmin();
     public boolean isSeller();
     public boolean isBuyer();
@@ -27,6 +25,7 @@ public interface User {
     public boolean isGuest();
 
     //Setters
+    public void setId(int id);
     public void setFirstName(String firstName);
     public void setLastName(String lastName);
     public void setEmail(String email);

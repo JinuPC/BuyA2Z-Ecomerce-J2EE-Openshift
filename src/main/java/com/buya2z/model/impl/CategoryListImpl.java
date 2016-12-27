@@ -56,14 +56,22 @@ public class CategoryListImpl implements CategoryList{
 
 
     private Category findCategory(int id) {
-        Category category = null;
-        for(Category c : CATEGORIES) {
-            if(c.getId() == id) {
-                category = c;
-                break;
+        for(Category mainCategory : CATEGORIES) {
+            if(mainCategory.getId() == id) {
+                return mainCategory;
+            }
+            for(Category subCategory : ((MainCategory)mainCategory).getSubCategories()) {
+                if (subCategory.getId() == id) {
+                    return subCategory;
+                }
+                for(Category lowerCategory : ((SubCategory)subCategory).getLowerCategories()) {
+                    if(lowerCategory.getId() == id) {
+                        return lowerCategory;
+                    }
+                }
             }
         }
-        return category;
+        return null;
     }
 
     private Category findCategory(String name) {

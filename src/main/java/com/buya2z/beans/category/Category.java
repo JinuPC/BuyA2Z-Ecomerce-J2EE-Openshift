@@ -1,11 +1,13 @@
 package com.buya2z.beans.category;
 
+import com.buya2z.beans.AbstractBean;
+
 import java.util.Date;
 
 /**
  * Created by Jinu on 12/24/2016.
  */
-public class Category {
+public class Category extends AbstractBean{
 
     private int id;
 
@@ -14,10 +16,6 @@ public class Category {
     private String name;
 
     private CategoryType type;
-
-    private Date createdAt;
-
-    private Date updatedAt;
 
     public int getId() {
         return id;
@@ -41,22 +39,6 @@ public class Category {
 
     public void setType(CategoryType type) {
         this.type = type;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
     public boolean isSubCategory() {

@@ -92,7 +92,7 @@ class TableSchema {
                 "product_id bigint primary key auto_increment",
                 "product_name varchar(255) not null",
                 "product_short_desc text(50000)",
-                "product_image varchar(255)",
+                "product_thumbnail varchar(255)",
                 "onstock boolean not null default 0",
                 "active boolean not null default 0",
                 "mrp decimal(12, 2) not null",
@@ -101,8 +101,7 @@ class TableSchema {
                 "created_at timestamp",
                 "created_by bigint not null",
                 "category_id int not null",
-                "user_id bigint not null",
-                "FOREIGN KEY(user_id) REFERENCES user(user_id)",
+                "FOREIGN KEY(created_by) REFERENCES user(user_id)",
                 "FOREIGN KEY(category_id) REFERENCES category(category_id)"
         ));
         addTable("seller_product", setColumns(
@@ -173,8 +172,15 @@ class TableSchema {
                 "rating_id bigint not null",
                 "foreign key(rating_id) references rating(rating_id)"
         ));
-
-
+        addTable("product_image", setColumns(
+                "image_id bigint primary key auto_increment",
+                "image_url varchar(255) not null",
+                "is_primary boolean not null default 0",
+                "updated_at timestamp",
+                "created_at timestamp",
+                "product_id bigint not null",
+                "foreign key(product_id) references product(product_id)"
+        ));
 
     }
 

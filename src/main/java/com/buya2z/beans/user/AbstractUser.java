@@ -1,11 +1,13 @@
 package com.buya2z.beans.user;
 
+import com.buya2z.beans.AbstractBean;
+
 import java.util.Date;
 
 /**
  * Created by Jinu on 12/24/2016.
  */
-public abstract class AbstractUser implements User{
+public abstract class AbstractUser extends AbstractBean implements User{
 
     private int id;
 
@@ -25,13 +27,14 @@ public abstract class AbstractUser implements User{
 
     private String gender;
 
-    private Date updatedAt;
-
-    private Date createdAt;
-
     @Override
     public int getId() {
         return this.id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
@@ -67,16 +70,6 @@ public abstract class AbstractUser implements User{
     @Override
     public String gender() {
         return gender;
-    }
-
-    @Override
-    public Date getCreatedAtTimestamp() {
-        return createdAt;
-    }
-
-    @Override
-    public Date getUpdatedAtTimestamp() {
-        return updatedAt;
     }
 
     @Override

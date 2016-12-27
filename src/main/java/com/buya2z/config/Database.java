@@ -96,6 +96,7 @@ public class Database {
                 try {
                     logger.info("Trying to close " + item + " Object ");
                     ((Statement) item).close();
+                    logger.info("Closed Successfully...");
                 } catch (SQLException e) {
                     logger.error("Exception Happened " + e);
                 }
@@ -104,6 +105,7 @@ public class Database {
                 try {
                     logger.info("Trying to close " + item + " Object ");
                     ((ResultSet) item).close();
+                    logger.info("Closed Successfully...");
                 } catch (SQLException e) {
                     logger.error("Exception Happened " + e);
                 }

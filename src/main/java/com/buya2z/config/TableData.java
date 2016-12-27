@@ -1,5 +1,6 @@
 package com.buya2z.config;
 
+import com.buya2z.model.impl.DAOUtil;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
@@ -165,19 +166,7 @@ public class TableData {
     }
 
     private void setPreparedValue(PreparedStatement pstmt , Object value, int postion) throws SQLException {
-        if(value instanceof Integer) {
-            pstmt.setInt(postion, (Integer) value);
-        } else if(value instanceof Float) {
-            pstmt.setFloat(postion, (Float) value);
-        } else if(value instanceof String) {
-            pstmt.setString(postion, (String) value);
-        } else if(value instanceof Double) {
-            pstmt.setDouble(postion, (Double) value);
-        } else if(value instanceof Boolean) {
-            pstmt.setBoolean(postion, (Boolean) value);
-        } else if(value instanceof Timestamp) {
-            pstmt.setTimestamp(postion, (Timestamp) value);
-        }
+        DAOUtil.setValue(postion, value, pstmt);
     }
 
     private boolean isTableEmpty(String tableName, Connection con) throws SQLException {
