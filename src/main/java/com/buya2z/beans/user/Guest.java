@@ -1,6 +1,7 @@
 package com.buya2z.beans.user;
 
 import com.buya2z.beans.AbstractBean;
+import com.buya2z.beans.QueryTransferObject;
 
 import java.util.Date;
 
@@ -8,6 +9,11 @@ import java.util.Date;
  * Created by Jinu on 12/25/2016.
  */
 public class Guest extends AbstractBean implements User {
+
+    @Override
+    public QueryTransferObject getCreateQuery() {
+        return null;
+    }
 
     @Override
     public boolean isGuest(){

@@ -11,10 +11,10 @@ import java.nio.file.Files;
  */
 public class ImageHandler {
 //    public void CopyImage() {
-//        //File inputFile = new File("resources/storediagram.gif");
+//        //File inputFile = new File("resources/image1.gif");
 //        try {
-//            File testf = new File( this.getClass().getResource( "/storediagram.gif" ).toURI() );
-//            File dest = new File(DirectoryManager.getInstance().getResourceDirectory() + "/storediagram.gif");
+//            File testf = new File( this.getClass().getResource( "/image1.gif" ).toURI() );
+//            File dest = new File(DirectoryManager.getInstance().getResourceDirectory() + "/image1.gif");
 //            try {
 //                copyFileUsingFileStreams(testf, dest);
 //            } catch (IOException e) {

@@ -1,5 +1,7 @@
 package com.buya2z.beans;
 
+import com.buya2z.beans.product.ProductImage;
+
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -27,6 +29,12 @@ public abstract class AbstractBean {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public abstract QueryTransferObject getCreateQuery();
+
+    public boolean validate() {
+        return false;
     }
 
     protected boolean isStringPropertyAssigned(String value) {
@@ -68,5 +76,23 @@ public abstract class AbstractBean {
         count ++;
         values.add(timestamp);
         return count;
+    }
+
+    protected void closeQueryString(int count, StringBuilder query) {
+        query.append( ") VALUES (");
+        for(int i = 1; i <= count; i++) {
+            query.append("?,");
+        }
+        query.setLength(query.length() - 1 );
+        query.append(")");
+    }
+
+    protected boolean validateList(List<? extends AbstractBean> beans) {
+        for(AbstractBean bean : beans) {
+            if(!bean.validate()) {
+                return false;
+            }
+        }
+        return true;
     }
 }

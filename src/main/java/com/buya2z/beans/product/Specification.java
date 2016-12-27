@@ -1,6 +1,7 @@
 package com.buya2z.beans.product;
 
 import com.buya2z.beans.AbstractBean;
+import com.buya2z.beans.QueryTransferObject;
 
 /**
  * Created by Jinu on 12/26/2016.
@@ -24,5 +25,10 @@ public class Specification extends AbstractBean{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public QueryTransferObject getCreateQuery() {
+        return null;
     }
 }

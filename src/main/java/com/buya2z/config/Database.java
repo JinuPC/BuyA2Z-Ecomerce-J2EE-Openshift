@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
  */
 public class Database {
 
-    private static final Logger logger = Logger.getLogger(Database.class);
+    private static final Logger LOGGER = Logger.getLogger(Database.class);
 
     private static final int MAX_CONNECTIONS = 5;
 
@@ -30,41 +30,41 @@ public class Database {
      * Then fills some dummy data in to the database<br>
      */
     public static void init() {
-        logger.info("Updating Database Schema");
+        LOGGER.info("Updating Database Schema");
         Schema schema = new Schema();
         schema.setSchema();
-        logger.info("Database Schema Updated");
+        LOGGER.info("Database Schema Updated");
         initPool();
-        logger.info("Updating Database Data");
+        LOGGER.info("Updating Database Data");
         TableData tableData = new TableData();
         tableData.setTableData();
-        logger.info("Database Data Updated");
+        LOGGER.info("Database Data Updated");
     }
 
     private static void initPool() {
-        logger.info("Initializing Connection Pool");
+        LOGGER.info("Initializing Connection Pool");
         connectionPool = new ArrayList<>(MAX_CONNECTIONS);
         for (int i = 0; i < MAX_CONNECTIONS; i++) {
             try {
                 connectionPool.add(createNewConnection());
             } catch (SQLException e) {
-                logger.error("Exception Happened " + e);
+                LOGGER.error("Exception Happened " + e);
             }
         }
-        logger.info("Connection pool initialized ");
+        LOGGER.info("Connection pool initialized ");
     }
 
     private static Connection createNewConnection() throws SQLException {
-        logger.info("Creating new Connection");
+        LOGGER.info("Creating new Connection");
         String dbUrl = Config.getDbUrlWithDatabaseName();
         return DriverManager.getConnection(dbUrl, Config.getDbUserName(), Config.getDbPassword());
     }
 
-    public static Connection getConnection() {
+    public synchronized static Connection getConnection() {
         Connection con = null;
         try {
             if (connectionPool.isEmpty()) {
-                logger.info("Connection pool is empty trying to create new Connection");
+                LOGGER.info("Connection pool is empty trying to create new Connection");
                 con = createNewConnection();
             }
             con = connectionPool.remove(1);
@@ -72,7 +72,7 @@ public class Database {
                 return getConnection();
             }
         } catch (SQLException e) {
-            logger.error("Exception Happened " + e);
+            LOGGER.error("Exception Happened " + e);
         }
         return con;
     }
@@ -94,30 +94,46 @@ public class Database {
         for (Object item : closableItems) {
             if (item instanceof Statement) {
                 try {
-                    logger.info("Trying to close " + item + " Object ");
+                    LOGGER.info("Trying to close " + item + " Object ");
                     ((Statement) item).close();
-                    logger.info("Closed Successfully...");
+                    LOGGER.info("Closed Successfully...");
                 } catch (SQLException e) {
-                    logger.error("Exception Happened " + e);
+                    LOGGER.error("Exception Happened " + e);
                 }
             }
             if (item instanceof ResultSet) {
                 try {
-                    logger.info("Trying to close " + item + " Object ");
+                    LOGGER.info("Trying to close " + item + " Object ");
                     ((ResultSet) item).close();
-                    logger.info("Closed Successfully...");
+                    LOGGER.info("Closed Successfully...");
                 } catch (SQLException e) {
-                    logger.error("Exception Happened " + e);
+                    LOGGER.error("Exception Happened " + e);
                 }
             }
             if (item instanceof Connection) {
                 try {
                     putConnectionToPool((Connection) item);
                 } catch (SQLException e) {
-                    logger.error("Exception Happened " + e);
+                    LOGGER.error("Exception Happened " + e);
                 }
             }
         }
+    }
+
+    public synchronized static int getAutoIncrementedValue(String tableName) throws SQLException{
+        Connection connection = Database.getConnection();
+        try(Statement statement = connection.createStatement()) {
+            String query = "SHOW TABLE STATUS LIKE '" + tableName + "' " ;
+            ResultSet resultSet = statement.executeQuery(query);
+            if(resultSet.next()) {
+                return resultSet.getInt("Auto_increment");
+            }
+        }
+        return -1;
+    }
+
+    public synchronized static int getAutoIncrementedId(String tableName) throws SQLException {
+        return getAutoIncrementedValue(tableName) - 1;
     }
 
     public static void destroy() {
@@ -125,18 +141,18 @@ public class Database {
             removeConnectionPool();
             unRegisterDriver();
         } catch (SQLException e) {
-            logger.error("Exception happened while closing Database", e);
+            LOGGER.error("Exception happened while closing Database", e);
         }
     }
 
     private static void removeConnectionPool() throws SQLException {
-        logger.info("Trying to close all connections and remove connection Pool");
+        LOGGER.info("Trying to close all connections and remove connection Pool");
         for (Connection connection : connectionPool) {
-            logger.info("Closing " + connection + " Connection");
+            LOGGER.info("Closing " + connection + " Connection");
             connection.close();
         }
         connectionPool.clear();
-        logger.info("Connection Pool Removed Successfully");
+        LOGGER.info("Connection Pool Removed Successfully");
     }
 
     private static void unRegisterDriver() throws SQLException {
@@ -144,7 +160,27 @@ public class Database {
         while (drivers.hasMoreElements()) {
             Driver driver = drivers.nextElement();
             DriverManager.deregisterDriver(driver);
-            logger.info("Jdbc Drivers unregistered Successfully");
+            LOGGER.info("Jdbc Drivers unregistered Successfully");
+        }
+    }
+
+    public static void setAutoCommitTrue(Connection con) {
+        if(con != null) {
+            try {
+                con.setAutoCommit(true);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void setAutoCommitFalse(Connection con) {
+        if(con != null) {
+            try {
+                con.setAutoCommit(false);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 

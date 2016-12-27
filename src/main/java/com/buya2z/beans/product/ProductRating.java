@@ -1,6 +1,7 @@
 package com.buya2z.beans.product;
 
 import com.buya2z.beans.AbstractBean;
+import com.buya2z.beans.QueryTransferObject;
 
 import java.util.List;
 
@@ -40,4 +41,9 @@ public class ProductRating extends AbstractBean {
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
+
+    public QueryTransferObject getCreateQuery() {
+        return null;
+    }
+
 }

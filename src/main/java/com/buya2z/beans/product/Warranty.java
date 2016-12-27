@@ -1,6 +1,7 @@
 package com.buya2z.beans.product;
 
 import com.buya2z.beans.AbstractBean;
+import com.buya2z.beans.QueryTransferObject;
 
 /**
  * Created by Jinu on 12/26/2016.
@@ -64,5 +65,10 @@ public class Warranty extends AbstractBean {
 
     public void setNotCovered(String notCovered) {
         this.notCovered = notCovered;
+    }
+
+    @Override
+    public QueryTransferObject getCreateQuery() {
+        return null;
     }
 }

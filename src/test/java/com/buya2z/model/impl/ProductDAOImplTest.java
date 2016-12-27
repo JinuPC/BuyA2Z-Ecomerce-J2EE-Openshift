@@ -2,16 +2,28 @@ package com.buya2z.model.impl;
 
 import com.buya2z.TestInitializer;
 import com.buya2z.app.Application;
-import com.buya2z.beans.QueryTransferObject;
 import com.buya2z.beans.category.Category;
+import com.buya2z.beans.product.Feature;
+import com.buya2z.beans.product.MainFeature;
 import com.buya2z.beans.product.Product;
+import com.buya2z.beans.product.ProductImage;
 import com.buya2z.beans.user.Seller;
 import com.buya2z.beans.user.User;
+import com.buya2z.config.Database;
+import com.buya2z.config.DatabaseTable;
 import com.buya2z.model.DAOFactory;
 import com.buya2z.model.ProductDAO;
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
@@ -19,6 +31,7 @@ import static org.junit.Assert.*;
  * Created by Jinu on 12/26/2016.
  */
 public class ProductDAOImplTest {
+    private final Logger LOGGER = Logger.getLogger(ProductDAOImplTest.class);
     private final ProductDAO productDAO = DAOFactory.getProductDAO();
 
     public ProductDAOImplTest() {
@@ -27,11 +40,12 @@ public class ProductDAOImplTest {
 
     private Product getTestProduct(int id) {
         Category category = Application.getInstance().getCategoryList().getCategory(101);
-        System.out.println(category);
         User user = new Seller();
         user.setId(2);
         Product product = new Product();
-        product.setId(id);
+        if(id > 0) {
+            product.setId(id);
+        }
         product.setName("Test Product");
         product.setShortDescription("This is a testing description");
         product.setThumbnail("some/url");
@@ -43,27 +57,137 @@ public class ProductDAOImplTest {
         return product;
     }
 
+    private ProductImage getTestImage(int diff) {
+        ProductImage productImage = new ProductImage();
+        productImage.setUrl("slkfdkj/dsklf/sdfj/" + diff);
+        productImage.setPrimary(false);
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        InputStream is = classloader.getResourceAsStream("image" + diff + ".gif");
+        productImage.setReader(is);
+        return productImage;
+    }
+
+    private Feature getTestFeature(int diff) {
+        Feature feature = new Feature();
+        feature.setTitle("sdlkjfklsjd" + diff);
+        feature.setDescription("didksfjjcreiptin" + diff);
+        feature.setSpecificationId(1);
+        return feature;
+    }
+
+    private MainFeature getTestMainFeature(int diff) {
+        MainFeature feature = new MainFeature();
+        feature.setDescription("kdslafjdlksjdf" + diff);
+        feature.setTitle("lkasjdfkljsf" + diff);
+        return feature;
+    }
+
     @Test
-    public void testCreate() {
-//        for (int i = 1000; i<= 1004 ; i++) {
-//            Connection connection =
-//        }
+    public void testGetCreateQueryInProduct() {
+        LOGGER.info("Tesing getCreateQuery() in Product class");
+        String expected = "INSERT INTO product ( onStock, active, product_id, product_name, " +
+                "mrp, product_short_desc, product_thumbnail, special_notes, " +
+                "created_by, category_id, created_at," +
+                " updated_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+        Product product = getTestProduct(33);
+        String actual = product.getCreateQuery().getQuery();
+        System.out.println(actual);
+        if (!expected.equalsIgnoreCase(actual)) {
+            fail("Product Create Statement query not matching");
+        }
+    }
+
+    @Test
+    public void testGetCreateQueryInImage() {
+        LOGGER.info("Tesing getCreateQuery() in Image class");
+        ProductImage image = new ProductImage();
+        image.setProductId(33);
+        image.setPrimary(true);
+        image.setUrl("image/url");
+        String expected = "INSERT INTO product_image " +
+                "( image_url, is_primary, product_id, created_at, updated_at) " +
+                "VALUES (?,?,?,?,?)";
+        if(!expected.equalsIgnoreCase(image.getCreateQuery().getQuery())) {
+            fail("Test case failed at getCreateQuery() in image");
+        }
 
     }
 
     @Test
-    public void testGetProductCreateStatement() {
+    public void testGetCreateQueryInFeature() {
+        LOGGER.info("Tesing getCreateQuery() in Feature class");
+        Feature feature = new Feature();
+        feature.setProductId(33);
+        feature.setSpecificationId(3);
+        feature.setTitle("color");
+        feature.setDescription("blue");
+        String expected = "INSERT INTO feature ( feature_title, product_id," +
+                " feature_desc, specification_id," +
+                " created_at, updated_at) VALUES (?,?,?,?,?,?)";
+        System.out.println(feature.getCreateQuery().getQuery());
+        if (!expected.equals(feature.getCreateQuery().getQuery())) {
+            fail("Feature getCreateQuery is not matching with test object");
+        }
+    }
 
-        Product product = new Product();
-        product.setId(454);
-        product.setName("Test Product");
-        product.setShortDescription("This is a testing description");
-        product.setThumbnail("some/url");
-        product.setMrp(2345.45);
-        product.setSpecialNotes("nothing");
-        product.setCategoryId(101);
-        QueryTransferObject qtj = product.getProductCreateQuery();
-        System.out.println(qtj.getQuery());
-        System.out.println(qtj.getValues());
+    @Test
+    public void testGetCreateQueryInMainFeature() {
+        LOGGER.info("Tesing getCreateQuery() in MainFeature class");
+        MainFeature mainFeature = new MainFeature();
+        mainFeature.setProductId(33);
+        mainFeature.setDescription("Main feature Description");
+        mainFeature.setTitle("main feature title");
+        String expected = "INSERT INTO main_feature ( product_id, main_feature_title," +
+                " main_feature_desc, created_at, updated_at) VALUES (?,?,?,?,?)";
+        if(!expected.equalsIgnoreCase(mainFeature.getCreateQuery().getQuery())) {
+            fail("Test case failed in getCreateQuery in MainFeature");
+        }
+    }
+
+    @Test
+    public void testCreate() {
+        Seller seller = new Seller();
+        seller.setId(2);
+        Product product = getTestProduct(0);
+        product.setName("something");
+        product.setActive(true);
+        product.setCreatedBy(seller);
+        product.setShortDescription("sdjkjfslkjflkdjsf");
+        product.setThumbnail("tum/url/so/lfd");
+        product.setCategoryId(Application.getInstance().getCategoryList().getCategory(33).getId());
+        product.setMrp(3456.67);
+        product.setSpecialNotes("dsjfklsdjfkkdsjflk");
+
+        //
+        ArrayList imageList = new ArrayList();
+        for(int i = 1; i<= 5; i++) {
+            imageList.add(getTestImage(i));
+        }
+        product.setImages(imageList);
+
+        ArrayList featureList = new ArrayList();
+        for(int i = 1; i <=5 ;i ++) {
+            featureList.add(getTestFeature(i));
+        }
+        product.setFeatures(featureList);
+
+        ArrayList mainfeatures = new ArrayList();
+        for(int i =0; i<= 5; i++) {
+            mainfeatures.add(getTestMainFeature(i));
+        }
+        product.setMainFeatures(mainfeatures);
+        System.out.println(product.validate());
+
+        ProductDAO dao = DAOFactory.getProductDAO();
+        dao.create(product);
+    }
+    @Test
+    public void testGetAutoIncrementValue() {
+        String tableName = DatabaseTable.getProductTableName();
+        try {
+            System.out.println(Database.getAutoIncrementedValue(tableName));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

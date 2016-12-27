@@ -1,5 +1,6 @@
 package com.buya2z.beans.product;
 
+import com.buya2z.app.Application;
 import com.buya2z.beans.AbstractBean;
 import com.buya2z.beans.QueryTransferObject;
 import com.buya2z.beans.category.Category;
@@ -38,7 +39,9 @@ public class Product extends AbstractBean{
 
     private String specialNotes;
 
-    private ProductRating rating;
+    private int stars;
+
+    private List<ProductRating> ratings;
 
     private List<ProductImage> images;
 
@@ -55,6 +58,10 @@ public class Product extends AbstractBean{
             throw new RuntimeException("Product id should be greater than 0");
         }
         this.id = id;
+        setProductIdToImages();
+        setProductIdToFeatures();
+        setProductIdToMainFeatures();
+        setProductIdToRatings();
     }
 
     public int getCreatedUserId() {
@@ -87,6 +94,9 @@ public class Product extends AbstractBean{
 
     public void setCategory(Category category) {
         this.category = category;
+        if(category != null) {
+            this.categoryId = category.getId();
+        }
     }
 
     public String getShortDescription() {
@@ -137,20 +147,30 @@ public class Product extends AbstractBean{
         this.specialNotes = specialNotes;
     }
 
-    public ProductRating getRating() {
-        return rating;
+    public int getStars() {
+        return stars;
     }
 
-    public void setRating(ProductRating rating) {
-        this.rating = rating;
+    public void setStars(int stars) {
+        this.stars = stars;
     }
 
     public List<ProductImage> getImages() {
         return images;
     }
 
+    public List<ProductRating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(List<ProductRating> ratings) {
+        this.ratings = ratings;
+        setProductIdToRatings();
+    }
+
     public void setImages(List<ProductImage> images) {
         this.images = images;
+        setProductIdToImages();
     }
 
     public List<MainFeature> getMainFeatures() {
@@ -159,6 +179,7 @@ public class Product extends AbstractBean{
 
     public void setMainFeatures(List<MainFeature> mainFeatures) {
         this.mainFeatures = mainFeatures;
+        setProductIdToMainFeatures();
     }
 
     public List<Feature> getFeatures() {
@@ -167,6 +188,7 @@ public class Product extends AbstractBean{
 
     public void setFeatures(List<Feature> features) {
         this.features = features;
+        setProductIdToFeatures();
     }
 
     public int getCategoryId() {
@@ -174,10 +196,16 @@ public class Product extends AbstractBean{
     }
 
     public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+        Category category = Application.getInstance().getCategoryList().getCategory(categoryId);
+        if(category != null) {
+            this.category = category;
+            this.categoryId = category.getId();
+        } else {
+            throw new RuntimeException("Category id assigned is not valid");
+        }
     }
 
-    public QueryTransferObject getProductCreateQuery() {
+    public QueryTransferObject getCreateQuery() {
         ArrayList values = new ArrayList();
         int count = 0;
         StringBuilder query = new StringBuilder("INSERT INTO " + DatabaseTable.getProductTableName() + " ( ");
@@ -239,6 +267,46 @@ public class Product extends AbstractBean{
         }
         String queryString = query.substring(0, query.length()-1) + ")";
         return new QueryTransferObject(queryString, values);
+    }
+
+    private void setProductIdToImages() {
+        if(this.mainFeatures != null) {
+            for(ProductImage image : this.images) {
+                image.setProductId(this.id);
+            }
+        }
+    }
+
+    private void setProductIdToMainFeatures() {
+        if(this.mainFeatures != null) {
+            for(MainFeature feature : this.mainFeatures) {
+                feature.setProductId(this.id);
+            }
+        }
+    }
+
+    private void setProductIdToFeatures() {
+        if(this.features != null) {
+            for(Feature feature : this.features) {
+                feature.setProductId(this.id);
+            }
+        }
+    }
+
+    private void setProductIdToRatings() {
+        if(this.ratings != null) {
+            for(ProductRating rating: ratings) {
+                rating.setProductId(this.id);
+            }
+        }
+    }
+
+    @Override
+    public boolean validate() {
+       if(!validateList(this.images)) {
+           return false;
+       }
+       return true;
     }
 
 }

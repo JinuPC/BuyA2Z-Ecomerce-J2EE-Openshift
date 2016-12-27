@@ -1,6 +1,7 @@
 package com.buya2z.beans.category;
 
 import com.buya2z.beans.AbstractBean;
+import com.buya2z.beans.QueryTransferObject;
 
 import java.util.Date;
 
@@ -66,4 +67,8 @@ public class Category extends AbstractBean{
         return this.name;
     }
 
+    @Override
+    public QueryTransferObject getCreateQuery() {
+        return null;
+    }
 }

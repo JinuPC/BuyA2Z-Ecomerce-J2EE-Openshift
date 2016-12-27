@@ -75,14 +75,22 @@ public class CategoryListImpl implements CategoryList{
     }
 
     private Category findCategory(String name) {
-        Category category = null;
-        for (Category c : CATEGORIES) {
-            if (c.getName().equalsIgnoreCase(name)) {
-                category = c;
-                break;
+        for(Category mainCategory : CATEGORIES) {
+            if(mainCategory.getName().equalsIgnoreCase(name)) {
+                return mainCategory;
+            }
+            for(Category subCategory : ((MainCategory)mainCategory).getSubCategories()) {
+                if (subCategory.getName().equalsIgnoreCase(name)) {
+                    return subCategory;
+                }
+                for(Category lowerCategory : ((SubCategory)subCategory).getLowerCategories()) {
+                    if(lowerCategory.getName().equalsIgnoreCase(name)) {
+                        return lowerCategory;
+                    }
+                }
             }
         }
-        return category;
+        return null;
     }
 
     @Override

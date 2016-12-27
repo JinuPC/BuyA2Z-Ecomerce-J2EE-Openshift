@@ -1,6 +1,7 @@
 package com.buya2z.beans.product;
 
 import com.buya2z.beans.AbstractBean;
+import com.buya2z.beans.QueryTransferObject;
 
 import java.util.Date;
 
@@ -67,5 +68,10 @@ public class Comment extends AbstractBean{
 
     public void setRatingId(int ratingId) {
         this.ratingId = ratingId;
+    }
+
+    @Override
+    public QueryTransferObject getCreateQuery() {
+        return null;
     }
 }

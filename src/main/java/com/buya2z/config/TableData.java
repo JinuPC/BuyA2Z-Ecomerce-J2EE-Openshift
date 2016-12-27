@@ -119,6 +119,9 @@ public class TableData {
                         timestamp, timestamp, 2, 21
                         )
         );
+        setRecords("specification",
+                new Record(1, "mainSpecifcation", timestamp, timestamp
+        ));
 
     }
 
