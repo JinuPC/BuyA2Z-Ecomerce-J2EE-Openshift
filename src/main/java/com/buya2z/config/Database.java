@@ -1,10 +1,10 @@
 package com.buya2z.config;
 
 
-import java.sql.*;
-
 import com.buya2z.config.dummydata.TableData;
 import org.apache.log4j.Logger;
+
+import java.sql.*;
 
 /**
  * Created by Jinu on 11/26/2016.

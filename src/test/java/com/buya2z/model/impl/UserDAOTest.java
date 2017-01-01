@@ -2,16 +2,14 @@ package com.buya2z.model.impl;
 
 
 import com.buya2z.TestInitializer;
-import com.buya2z.beans.user.*;
-import com.buya2z.config.Database;
+import com.buya2z.beans.user.Buyer;
+import com.buya2z.beans.user.Seller;
+import com.buya2z.beans.user.User;
 import com.buya2z.model.DAOFactory;
 import com.buya2z.model.UserDAO;
-import com.buya2z.model.jdbcimpl.DAOUtil;
 import org.junit.Test;
 
-import javax.validation.constraints.AssertTrue;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Jinu on 12/28/2016.

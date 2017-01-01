@@ -3,8 +3,6 @@ package com.buya2z.beans.category;
 import com.buya2z.beans.AbstractBean;
 import com.buya2z.beans.QueryTransferObject;
 
-import java.util.Date;
-
 /**
  * Created by Jinu on 12/24/2016.
  */

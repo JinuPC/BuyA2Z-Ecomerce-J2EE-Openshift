@@ -3,7 +3,6 @@ package com.buya2z.beans.user;
 import com.buya2z.beans.AbstractBean;
 import com.buya2z.beans.QueryTransferObject;
 
-import java.util.Date;
 import java.util.Map;
 
 /**

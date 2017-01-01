@@ -1,11 +1,8 @@
 package com.buya2z.beans.user;
 
 import com.buya2z.beans.QueryTransferObject;
-import com.buya2z.config.Database;
-import com.buya2z.config.DatabaseTable;
 import org.apache.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 

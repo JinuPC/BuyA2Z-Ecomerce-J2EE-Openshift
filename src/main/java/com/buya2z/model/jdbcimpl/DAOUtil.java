@@ -1,21 +1,14 @@
 package com.buya2z.model.jdbcimpl;
 
 
-import com.buya2z.beans.product.ProductImage;
-import com.buya2z.config.DirectoryManager;
-
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.sql.*;
-import java.util.ArrayList;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Jinu on 12/26/2016.

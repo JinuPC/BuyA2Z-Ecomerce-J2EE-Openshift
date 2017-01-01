@@ -2,7 +2,6 @@ package com.buya2z.model;
 
 import com.buya2z.beans.product.ProductImage;
 
-import java.io.File;
 import java.util.List;
 
 /**

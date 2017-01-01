@@ -2,7 +2,7 @@ package com.buya2z.config;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by Jinu on 12/13/2016.

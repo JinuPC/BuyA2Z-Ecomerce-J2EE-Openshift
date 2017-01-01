@@ -8,24 +8,14 @@ import com.buya2z.beans.product.MainFeature;
 import com.buya2z.beans.product.Product;
 import com.buya2z.beans.product.ProductImage;
 import com.buya2z.beans.user.Seller;
-import com.buya2z.beans.user.User;
-import com.buya2z.config.Database;
-import com.buya2z.config.DatabaseTable;
 import com.buya2z.model.DAOFactory;
 import com.buya2z.model.ProductDAO;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 /**
  * Created by Jinu on 12/26/2016.

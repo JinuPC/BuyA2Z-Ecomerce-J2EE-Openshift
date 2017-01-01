@@ -3,7 +3,10 @@ package com.buya2z.config;
 import com.buya2z.TestInitializer;
 import org.junit.Test;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Created by Jinu on 1/1/2017.

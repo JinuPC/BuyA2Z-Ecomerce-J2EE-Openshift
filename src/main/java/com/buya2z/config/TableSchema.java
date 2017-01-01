@@ -3,7 +3,8 @@ package com.buya2z.config;
 
 import org.apache.log4j.Logger;
 
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * Created by Jinu on 11/27/2016.

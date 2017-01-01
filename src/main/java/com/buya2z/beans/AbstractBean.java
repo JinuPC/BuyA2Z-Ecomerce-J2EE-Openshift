@@ -1,7 +1,5 @@
 package com.buya2z.beans;
 
-import com.buya2z.beans.product.ProductImage;
-
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;

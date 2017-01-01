@@ -2,10 +2,10 @@ package com.buya2z.model;
 
 import com.buya2z.TestInitializer;
 import com.buya2z.beans.category.Category;
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import java.util.List;
-import org.apache.log4j.Logger;
 
 import static org.junit.Assert.*;
 

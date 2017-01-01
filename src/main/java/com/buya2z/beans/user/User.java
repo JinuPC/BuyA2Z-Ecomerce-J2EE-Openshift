@@ -1,10 +1,7 @@
 package com.buya2z.beans.user;
 
-import com.buya2z.beans.QueryTransferObject;
-import com.sun.deploy.net.HttpRequest;
 
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.Map;
 
 /**

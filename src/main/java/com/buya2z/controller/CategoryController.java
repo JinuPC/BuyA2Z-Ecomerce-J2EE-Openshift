@@ -4,8 +4,6 @@ import com.buya2z.app.Application;
 import com.buya2z.beans.category.Category;
 import com.buya2z.beans.category.MainCategory;
 import com.buya2z.model.CategoryList;
-import com.google.gson.Gson;
-import sun.applet.Main;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
