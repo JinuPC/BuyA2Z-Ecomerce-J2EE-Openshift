@@ -3,6 +3,7 @@ package com.buya2z.beans.product;
 import com.buya2z.beans.AbstractBean;
 import com.buya2z.beans.QueryTransferObject;
 import com.buya2z.config.DatabaseTable;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 
@@ -10,6 +11,9 @@ import java.util.ArrayList;
  * Created by Jinu on 12/26/2016.
  */
 public class Feature extends AbstractBean {
+
+    private final Logger LOGGER = Logger.getLogger(Feature.class);
+
     private int id;
 
     private int productId;
@@ -72,30 +76,35 @@ public class Feature extends AbstractBean {
 
     public QueryTransferObject getCreateQuery() {
         ArrayList values = new ArrayList();
-        int count = 0;
         StringBuilder query = new StringBuilder("INSERT INTO " + DatabaseTable.getFeatureTableName() + " ( ");
-        if(isStringPropertyAssigned(this.title)) {
-            query.append("feature_title, ");
-            values.add(this.title);
-            count ++;
-        }
-        if(isIntegerPropertyAssigned(this.productId)) {
-            query.append("product_id, ");
-            count++;
-            values.add(this.productId);
-        }
-        if(isStringPropertyAssigned(this.description)) {
-            query.append("feature_desc, ");
-            count++;
-            values.add(this.description);
-        }
-        if(isIntegerPropertyAssigned(this.specificationId)) {
-            query.append("specification_id, ");
-            count++;
-            values.add(this.specificationId);
-        }
-        count += setTimeStampForCreate(query, values);
-        closeQueryString(count, query);
+        query.append("feature_title, ");
+        values.add(this.title);
+        query.append("product_id, ");
+        values.add(this.productId);
+        query.append("feature_desc, ");
+        values.add(this.description);
+        query.append("specification_id, ");
+        values.add(this.specificationId);
+        setTimeStampForCreate(query, values);
+        closeQueryString(values.size(), query);
         return new QueryTransferObject(query.toString(), values);
+    }
+
+    @Override
+    public boolean validate() {
+        boolean isValid = true;
+        if( !isStringPropertyAssigned(this.title) ) {
+            LOGGER.info("Feature Validation failed: title is not assigned");
+            isValid = false;
+        }
+        if( !isStringPropertyAssigned(this.description) ){
+            LOGGER.info("Feature Validation failed: description is not assigned");
+            isValid = false;
+        }
+        if( !isIntegerPropertyAssigned(this.specificationId) ) {
+            LOGGER.info("Feature Validation failed: Specification id is not assigned");
+            isValid = false;
+        }
+        return isValid;
     }
 }

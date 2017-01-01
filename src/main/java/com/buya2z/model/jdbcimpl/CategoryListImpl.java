@@ -1,4 +1,4 @@
-package com.buya2z.model.impl;
+package com.buya2z.model.jdbcimpl;
 
 import com.buya2z.beans.category.Category;
 import com.buya2z.beans.category.MainCategory;

@@ -1,13 +1,18 @@
 package com.buya2z.beans.user;
 
 import com.buya2z.beans.AbstractBean;
+import com.buya2z.config.PasswordManager;
+import org.apache.log4j.Logger;
 
-import java.util.Date;
+import java.sql.Timestamp;
+import java.util.*;
 
 /**
  * Created by Jinu on 12/24/2016.
  */
 public abstract class AbstractUser extends AbstractBean implements User{
+
+    private final Logger LOGGER = Logger.getLogger(this.getClass());
 
     private int id;
 
@@ -19,11 +24,13 @@ public abstract class AbstractUser extends AbstractBean implements User{
 
     private char[] password;
 
+    private byte[] salt;
+
     private String phoneNumber;
 
     private UserRole role;
 
-    private Status status;
+    private Status status = Status.INACTIVE;
 
     private String gender;
 
@@ -68,8 +75,8 @@ public abstract class AbstractUser extends AbstractBean implements User{
     }
 
     @Override
-    public String gender() {
-        return gender;
+    public String getGender() {
+        return gender == null ? "" : gender;
     }
 
     @Override
@@ -97,8 +104,7 @@ public abstract class AbstractUser extends AbstractBean implements User{
         this.status = status;
     }
 
-    @Override
-    public void setRole(UserRole role) {
+    protected void setRole(UserRole role) {
         this.role = role;
     }
 
@@ -148,7 +154,86 @@ public abstract class AbstractUser extends AbstractBean implements User{
     }
 
     @Override
+    public byte[] getSalt() {
+        return salt;
+    }
+
+    @Override
     public boolean isGuest() {
         return false;
+    }
+
+    @Override
+    public byte[] getEncryptedPassword() {
+        this.salt = PasswordManager.generateSalt();
+        return PasswordManager.getEncryptedPassword(password, this.salt);
+    }
+
+    @Override
+    public boolean validate() {
+        boolean isValidate = true;
+        if( !isStringPropertyAssigned(this.firstName) ) {
+            LOGGER.info("Validation failed at User: First Name is not set");
+            isValidate = false;
+        }
+        if( !isStringPropertyAssigned(this.lastName) ) {
+            LOGGER.info("Validation failed at User: Last Name is not set");
+            isValidate = false;
+        }
+        if( !isStringPropertyAssigned(this.email) ) {
+            LOGGER.info("Validation failed at User: First Name is not set");
+            isValidate = false;
+        }
+        if( !isStringPropertyAssigned(phoneNumber) ) {
+            LOGGER.info("Validation failed at User: Phone Number is not set");
+            isValidate = false;
+        }
+        if( this.role == null ) {
+            LOGGER.info("Validation failed at User: User Role is not set");
+            isValidate = false;
+        }
+        if( this.password == null || this.password.length < 6) {
+            LOGGER.info("Validation failed at User: Password is not set");
+            isValidate = false;
+        }
+        if( this.status == null) {
+            LOGGER.info("Validation failed at User: Status is not set");
+            isValidate = false;
+        }
+        return isValidate;
+    }
+
+    @Override
+    public Map<String, Object> getCreateValues() {
+        Map<String, Object> queryWithValues = new LinkedHashMap<>();
+        Date now = new Date();
+        Timestamp timestamp = new Timestamp(now.getTime());
+        queryWithValues.put("first_name", this.getFirstName());
+        queryWithValues.put("last_name", this.getLastName());
+        queryWithValues.put("email", this.getEmail());
+        queryWithValues.put("phone_number", this.getPhoneNumber());
+        queryWithValues.put("role", this.getRole().getValue());
+        queryWithValues.put("password", this.getEncryptedPassword());
+        queryWithValues.put("salt", this.getSalt());
+        queryWithValues.put("status", this.getStatus().getStatusValue());
+        queryWithValues.put("gender", this.getGender());
+        putCreationTimestamp(queryWithValues);
+        return queryWithValues;
+    }
+
+    @Override
+    public String toString() {
+        return "AbstractUser{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", password=" + Arrays.toString(password) +
+                ", salt=" + Arrays.toString(salt) +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", role=" + role +
+                ", status=" + status +
+                ", gender='" + gender + '\'' +
+                '}';
     }
 }

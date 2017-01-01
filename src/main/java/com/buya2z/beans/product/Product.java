@@ -4,8 +4,10 @@ import com.buya2z.app.Application;
 import com.buya2z.beans.AbstractBean;
 import com.buya2z.beans.QueryTransferObject;
 import com.buya2z.beans.category.Category;
+import com.buya2z.beans.user.Seller;
 import com.buya2z.beans.user.User;
 import com.buya2z.config.DatabaseTable;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +15,9 @@ import java.util.List;
 /**
  * Created by Jinu on 12/26/2016.
  */
-public class Product extends AbstractBean{
+public class Product extends AbstractBean {
+
+    private final Logger LOGGER = Logger.getLogger(Product.class);
 
     private int id;
 
@@ -21,7 +25,7 @@ public class Product extends AbstractBean{
 
     private String name;
 
-    private User createdBy;
+    private Seller createdBy;
 
     private Category category;
 
@@ -54,7 +58,7 @@ public class Product extends AbstractBean{
     }
 
     public void setId(int id) {
-        if(id <= 0) {
+        if (id <= 0) {
             throw new RuntimeException("Product id should be greater than 0");
         }
         this.id = id;
@@ -84,7 +88,7 @@ public class Product extends AbstractBean{
         return createdBy;
     }
 
-    public void setCreatedBy(User createdBy) {
+    public void setCreatedBy(Seller createdBy) {
         this.createdBy = createdBy;
     }
 
@@ -94,7 +98,7 @@ public class Product extends AbstractBean{
 
     public void setCategory(Category category) {
         this.category = category;
-        if(category != null) {
+        if (category != null) {
             this.categoryId = category.getId();
         }
     }
@@ -197,7 +201,7 @@ public class Product extends AbstractBean{
 
     public void setCategoryId(int categoryId) {
         Category category = Application.getInstance().getCategoryList().getCategory(categoryId);
-        if(category != null) {
+        if (category != null) {
             this.category = category;
             this.categoryId = category.getId();
         } else {
@@ -207,95 +211,50 @@ public class Product extends AbstractBean{
 
     public QueryTransferObject getCreateQuery() {
         ArrayList values = new ArrayList();
-        int count = 0;
         StringBuilder query = new StringBuilder("INSERT INTO " + DatabaseTable.getProductTableName() + " ( ");
-        query.append("onStock, ");
-        count ++;
+        query.append("onStock, active, product_name, mrp, product_short_desc, product_thumbnail, special_notes, " +
+                "created_by, category_id, ");
         values.add(isOnStock());
-        query.append("active, ");
-        count ++;
         values.add(isActive());
-
-        if(isIntegerPropertyAssigned(getId())) {
-            query.append("product_id, ");
-            count ++;
-            values.add(getId());
-        }
-
-        if(isStringPropertyAssigned(getName())) {
-            query.append("product_name, ");
-            count ++;
-            values.add(getName());
-        }
-
-        if(isDoublePropertyAssigned(getMrp())) {
-            query.append("mrp, ");
-            count ++;
-            values.add(getMrp());
-        }
-
-        if(isStringPropertyAssigned(getShortDescription())) {
-            query.append("product_short_desc, ");
-            count++;
-            values.add(getShortDescription());
-        }
-        if(isStringPropertyAssigned(getThumbnail())) {
-            query.append("product_thumbnail, ");
-            count ++;
-            values.add(getThumbnail());
-        }
-        if(isStringPropertyAssigned(getSpecialNotes())) {
-            query.append("special_notes, ");
-            count++;
-            values.add(getSpecialNotes());
-        }
-        if(isIntegerPropertyAssigned(getCreatedBy().getId())) {
-            query.append("created_by, ");
-            count++;
-            values.add(getCreatedBy().getId());
-        }
-
-        if(isIntegerPropertyAssigned(getCategory().getId())) {
-            query.append("category_id, ");
-            count ++;
-            values.add(getCategory().getId());
-        }
-        count += setTimeStampForCreate(query, values);
-        query.append( ") VALUES (");
-        for(int i = 1; i <= count; i++) {
-            query.append("?,");
-        }
-        String queryString = query.substring(0, query.length()-1) + ")";
-        return new QueryTransferObject(queryString, values);
+        values.add(getName());
+        values.add(getMrp());
+        values.add(getShortDescription());
+        values.add(getThumbnail());
+        values.add(getSpecialNotes());
+        values.add(getCreatedBy().getId());
+        values.add(getCategory().getId());
+        setTimeStampForCreate(query, values);
+        closeQueryString(values.size(), query);
+        return new QueryTransferObject(query.toString(), values);
     }
 
     private void setProductIdToImages() {
-        if(this.mainFeatures != null) {
-            for(ProductImage image : this.images) {
+        if (this.mainFeatures != null) {
+            for (ProductImage image : this.images) {
                 image.setProductId(this.id);
             }
         }
     }
 
     private void setProductIdToMainFeatures() {
-        if(this.mainFeatures != null) {
-            for(MainFeature feature : this.mainFeatures) {
+        if (this.mainFeatures != null) {
+            for (MainFeature feature : this.mainFeatures) {
                 feature.setProductId(this.id);
             }
         }
     }
 
     private void setProductIdToFeatures() {
-        if(this.features != null) {
-            for(Feature feature : this.features) {
+        if (this.features != null) {
+            for (Feature feature : this.features) {
                 feature.setProductId(this.id);
             }
         }
     }
 
     private void setProductIdToRatings() {
-        if(this.ratings != null) {
-            for(ProductRating rating: ratings) {
+        if (this.ratings != null) {
+            for (ProductRating rating : ratings) {
                 rating.setProductId(this.id);
             }
         }
@@ -303,10 +262,32 @@ public class Product extends AbstractBean{
 
     @Override
     public boolean validate() {
-       if(!validateList(this.images)) {
-           return false;
-       }
-       return true;
+        boolean isValidate = true;
+        if( !isStringPropertyAssigned(this.name) ) {
+            LOGGER.info("Validation Failed At Product: Name not set");
+            isValidate = false;
+        }
+        if( !isStringPropertyAssigned(this.shortDescription) ) {
+            LOGGER.info("Validation Failed At Product: Short Description not set");
+            isValidate = false;
+        }
+        if( !isDoublePropertyAssigned(this.mrp) ) {
+            LOGGER.info("Validation Failed At Product: MRP not set");
+            isValidate = false;
+        }
+        if( !isStringPropertyAssigned(this.specialNotes) ) {
+            LOGGER.info("Validation Failed At Product: Special Notes not set");
+            isValidate = false;
+        }
+        if( this.createdBy == null || !isIntegerPropertyAssigned(this.createdBy.getId() ) ) {
+            LOGGER.info("Validation Failed At Product: Seller Details not set");
+            isValidate = false;
+        }
+        if( !isIntegerPropertyAssigned(this.categoryId)) {
+            LOGGER.info("Validation Failed At Product: Category not set");
+            isValidate = false;
+        }
+        return isValidate;
     }
 
 }

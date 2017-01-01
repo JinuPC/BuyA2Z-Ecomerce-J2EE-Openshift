@@ -16,4 +16,19 @@ public enum Status {
         return this.statusValue;
     }
 
+    public static Status getStatus(int value) {
+        if(value == ACTIVE.getStatusValue()) {
+            return ACTIVE;
+        }
+        if(value == INACTIVE.getStatusValue()) {
+            return INACTIVE;
+        }
+        if(value == BLOCKED.getStatusValue()) {
+            return BLOCKED;
+        }
+        if(value == UN_VERIFIED.getStatusValue()) {
+            return UN_VERIFIED;
+        }
+        return null;
+    }
 }

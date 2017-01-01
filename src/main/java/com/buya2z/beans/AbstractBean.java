@@ -5,29 +5,30 @@ import com.buya2z.beans.product.ProductImage;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Jinu on 12/26/2016.
  */
 public abstract class AbstractBean {
 
-    private Date createdAt;
+    private Timestamp createdAt;
 
-    private Date updatedAt;
+    private Timestamp updatedAt;
 
-    public Date getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdatedAt() {
+    public Timestamp getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -41,17 +42,11 @@ public abstract class AbstractBean {
         if(value == null) {
             return false;
         }
-        if(value.isEmpty()) {
-            return false;
-        }
-        return true;
+        return !value.isEmpty();
     }
 
     protected boolean isIntegerPropertyAssigned(int value) {
-        if(value <= 0) {
-            return false;
-        }
-        return true;
+        return value > 0;
     }
 
     protected boolean isBooleanPropertyAssigned(boolean value) {
@@ -59,10 +54,7 @@ public abstract class AbstractBean {
     }
 
     protected boolean isDoublePropertyAssigned(double value) {
-        if(value > 0) {
-            return true;
-        }
-        return false;
+        return value > 0;
     }
 
     protected int setTimeStampForCreate(StringBuilder query , List values) {
@@ -94,5 +86,10 @@ public abstract class AbstractBean {
             }
         }
         return true;
+    }
+
+    protected void putCreationTimestamp(Map<String, Object> columnWithValues) {
+        Timestamp timestamp = new Timestamp(new Date().getTime());
+        columnWithValues.put("created_at", timestamp);
     }
 }

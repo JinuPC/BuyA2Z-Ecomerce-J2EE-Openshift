@@ -128,8 +128,8 @@ public class Config {
         dbUserName = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
         dbPassword = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
         baseUrl = System.getenv("OPENSHIFT_APP_DNS");
-        appName = System.getenv("OPENSHIFT_APP_NAME");
         homeDirectory = System.getenv("OPENSHIFT_HOMEDIR");
+        appName = System.getenv("OPENSHIFT_APP_NAME");
         dataDirectory = System.getenv("OPENSHIFT_DATA_DIR");
     }
 

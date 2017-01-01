@@ -88,34 +88,26 @@ public class ProductImage extends AbstractBean {
 
     public QueryTransferObject getCreateQuery() {
         ArrayList values = new ArrayList();
-        int count = 0;
         StringBuilder query = new StringBuilder("INSERT INTO " + DatabaseTable.getProductImageTableName() + " ( ");
-        if(isStringPropertyAssigned(url)) {
-            query.append("image_url, ");
-            values.add(url);
-            count ++;
-        }
-        query.append("is_primary, ");
-        count++;
+        query.append("image_url, is_primary, product_id, ");
+        values.add(url);
         values.add(isPrimary());
-        if(isIntegerPropertyAssigned(productId)) {
-            query.append("product_id, ");
-            count++;
-            values.add(getProductId());
-        }
-        count += setTimeStampForCreate(query, values);
-        closeQueryString(count, query);
+        values.add(getProductId());
+        setTimeStampForCreate(query, values);
+        closeQueryString(values.size(), query);
         return new QueryTransferObject(query.toString(), values);
     }
+
     public boolean validate() {
-        if(this.url == null || this.url.isEmpty()) {
-            LOGGER.info("Warning : Url is not set");
-            return false;
+        boolean isValid = true;
+        if( !isStringPropertyAssigned(this.fileName)) {
+            LOGGER.info("Validation Failed At ProductImage: File Name not set");
+            isValid = false;
         }
-        if(reader == null) {
-            LOGGER.info("Warning : Image Reader is not set");
-            return false;
+        if (reader == null) {
+            LOGGER.info("Validation Failed At ProductImage: Reader not set");
+            isValid = false;
         }
-        return true;
+        return isValid;
     }
 }

@@ -16,8 +16,6 @@ public class Application {
 
     private final Logger LOGGER = Logger.getLogger(Application.class);
 
-    private final String DATA_DIRECTORY = Config.getDataDirectory();
-
     private Application() { }
 
     public void start() {
@@ -51,9 +49,4 @@ public class Application {
         CategoryDAO categoryDAO = DAOFactory.getCategoryDAO();
         return categoryDAO.getCategoryList();
     }
-
-    public String getImagePath() {
-        return DATA_DIRECTORY + "/images";
-    }
-
 }

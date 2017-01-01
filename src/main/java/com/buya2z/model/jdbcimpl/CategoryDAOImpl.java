@@ -1,4 +1,4 @@
-package com.buya2z.model.impl;
+package com.buya2z.model.jdbcimpl;
 
 import com.buya2z.beans.category.*;
 import com.buya2z.config.Database;
@@ -93,8 +93,8 @@ public class CategoryDAOImpl implements CategoryDAO {
         category.setId(rs.getInt("category_id"));
         category.setParentId(rs.getInt("parent_category_id"));
         category.setName(rs.getString("category_name"));
-        category.setCreatedAt(rs.getDate("created_at"));
-        category.setUpdatedAt(rs.getDate("updated_at"));
+        category.setCreatedAt(rs.getTimestamp("created_at"));
+        category.setUpdatedAt(rs.getTimestamp("updated_at"));
         LOGGER.info("New Category Created " + category.getName());
         return category;
     }

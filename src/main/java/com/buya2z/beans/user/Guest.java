@@ -4,6 +4,7 @@ import com.buya2z.beans.AbstractBean;
 import com.buya2z.beans.QueryTransferObject;
 
 import java.util.Date;
+import java.util.Map;
 
 /**
  * Created by Jinu on 12/25/2016.
@@ -18,6 +19,16 @@ public class Guest extends AbstractBean implements User {
     @Override
     public boolean isGuest(){
         return true;
+    }
+
+    @Override
+    public byte[] getSalt() {
+        return new byte[0];
+    }
+
+    @Override
+    public byte[] getEncryptedPassword() {
+        return new byte[0];
     }
 
     @Override
@@ -61,7 +72,7 @@ public class Guest extends AbstractBean implements User {
     }
 
     @Override
-    public String gender() {
+    public String getGender() {
         return null;
     }
 
@@ -125,7 +136,7 @@ public class Guest extends AbstractBean implements User {
 
     }
 
-    @Override
+
     public void setRole(UserRole role) {
 
     }
@@ -133,6 +144,11 @@ public class Guest extends AbstractBean implements User {
     @Override
     public void setGender(String gender) {
 
+    }
+
+    @Override
+    public Map<String, Object> getCreateValues() {
+        return null;
     }
 
     @Override

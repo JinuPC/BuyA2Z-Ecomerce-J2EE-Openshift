@@ -15,4 +15,15 @@ public enum UserRole {
     public String getValue() {
         return this.value;
     }
+
+    public static UserRole getUserRole(String value) {
+        if(value.equalsIgnoreCase(SELLER.getValue())) {
+            return SELLER;
+        } else if(value.equalsIgnoreCase(BUYER.getValue())) {
+            return BUYER;
+        } else if(value.equalsIgnoreCase(ADMIN.getValue())) {
+            return ADMIN;
+        }
+        return null;
+    }
 }

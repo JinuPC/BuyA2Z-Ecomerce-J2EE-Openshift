@@ -1,6 +1,5 @@
-package com.buya2z.model.impl;
+package com.buya2z.model.jdbcimpl;
 
-import com.buya2z.beans.AbstractBean;
 import com.buya2z.beans.QueryTransferObject;
 import com.buya2z.beans.product.Feature;
 import com.buya2z.beans.product.MainFeature;
@@ -8,9 +7,10 @@ import com.buya2z.beans.product.Product;
 import com.buya2z.beans.product.ProductImage;
 import com.buya2z.config.Database;
 import com.buya2z.config.DatabaseTable;
+import com.buya2z.model.DAOFactory;
+import com.buya2z.model.ImageDAO;
 import com.buya2z.model.ProductDAO;
 import org.apache.log4j.Logger;
-import sun.rmi.runtime.Log;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,9 +27,13 @@ public class ProductDAOImpl implements ProductDAO{
     public boolean create(Product newProduct) {
         LOGGER.info("Trying to Create a new Product in to database");
         if(!newProduct.validate()) {
-            LOGGER.info("Validation failed exiting from create() method");
             return false;
         }
+        ImageDAO dao = DAOFactory.getImageDAO();
+        dao.saveProductImages(newProduct.getImages());
+        //Setting Product Thumbnail as first image
+        newProduct.setThumbnail(newProduct.getImages().get(1).getUrl());
+
         boolean isCreated = false;
         Connection connection = Database.getConnection();
         try {
@@ -43,7 +47,11 @@ public class ProductDAOImpl implements ProductDAO{
             connection.commit();
             isCreated = true;
         } catch (SQLException e) {
-            Database.setAutoCommitFalse(connection);
+            try {
+                connection.rollback();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
             LOGGER.error("Exception happened ", e);
         } finally {
             Database.setAutoCommitTrue(connection);
@@ -77,7 +85,6 @@ public class ProductDAOImpl implements ProductDAO{
             LOGGER.info("Image inserted");
         }
         LOGGER.info("Product images Inserted...");
-
     }
 
     private void insertMainFeatures(List<MainFeature> mainFeatures, Connection connection) throws SQLException {

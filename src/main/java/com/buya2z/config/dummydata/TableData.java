@@ -1,6 +1,8 @@
-package com.buya2z.config;
+package com.buya2z.config.dummydata;
 
-import com.buya2z.model.impl.DAOUtil;
+import com.buya2z.config.Database;
+import com.buya2z.config.PasswordManager;
+import com.buya2z.model.jdbcimpl.DAOUtil;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
@@ -12,7 +14,7 @@ import java.util.Date;
  */
 public class TableData {
 
-    private final Logger logger = Logger.getLogger(TableData.class);
+    private final Logger LOGGER = Logger.getLogger(TableData.class);
 
     private Map<String, List<TableData.Record>> tableRecords;
 
@@ -23,22 +25,30 @@ public class TableData {
     public void setTableData() {
         setTableRecords();
         for(String tableName : tableRecords.keySet()) {
-            logger.info("Updating " + tableName + " Table Data");
+            LOGGER.info("Updating " + tableName + " Table Data");
             checkAndInsertData(tableName, tableRecords.get(tableName));
         }
+
+        //Adding records by using dao
+
     }
 
     private void setTableRecords() {
         Date now = new Date();
         Timestamp timestamp = new Timestamp(now.getTime());
+        byte[] salt = new byte[8];
+        char[] password = {'r','o','o','t'};
+        salt = PasswordManager.generateSalt();
+        byte[] encryptedPassword = PasswordManager.getEncryptedPassword(password, salt);
+
         //Records for user table
         setRecords("user",
                 new Record(1, "jinu", "P C", "pcjinu@ymail.com", "978624048", "admin",
-                        "password", 1, "male", timestamp, timestamp),
+                        encryptedPassword, salt, 1, "male", timestamp, timestamp),
                 new Record(2, "Praveen", "I", "pravy.cs@gmail.com", "9206945316", "seller",
-                        "password", 1, "male", timestamp, timestamp),
+                        encryptedPassword, salt, 1, "male", timestamp, timestamp),
                 new Record(3, "Ammus", "I", "ammu@gmail.com", "9206945316", "buyer",
-                        "password", 1, "female", timestamp, timestamp)
+                        encryptedPassword, salt, 1, "female", timestamp, timestamp)
         );
         //Records for address table
         setRecords("address",
@@ -109,8 +119,6 @@ public class TableData {
                 new Record(41, "Hp", 11, "lower", timestamp, timestamp),
                 new Record(42, "Sony", 11, "lower", timestamp, timestamp),
 
-
-
                 new Record(101, "Personal Care", 2, "sub", timestamp, timestamp)
         );
         setRecords("product",
@@ -135,7 +143,7 @@ public class TableData {
         Connection con = Database.getConnection();
         try {
             if(isTableEmpty(tableName, con)) {
-                logger.info(tableName + " Data Updated ");
+                LOGGER.info(tableName + " Data Updated ");
                 insertData(tableName, records, con);
             }
         } catch (SQLException e) {
@@ -165,6 +173,7 @@ public class TableData {
         for(int i = 0; i < columns.size(); i++) {
             setPreparedValue(preparedStatement, columns.get(i), i+1);
         }
+        ResultSet rs;
         return preparedStatement;
     }
 
@@ -201,5 +210,7 @@ public class TableData {
         }
 
     }
+
+
 
 }

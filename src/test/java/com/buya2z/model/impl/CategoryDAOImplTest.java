@@ -1,8 +1,8 @@
 package com.buya2z.model.impl;
 
 import com.buya2z.TestInitializer;
-import com.buya2z.config.Database;
 import com.buya2z.model.CategoryDAO;
+import com.buya2z.model.jdbcimpl.CategoryDAOImpl;
 import org.junit.Test;
 
 /**

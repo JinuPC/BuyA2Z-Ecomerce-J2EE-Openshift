@@ -1,20 +1,13 @@
 package com.buya2z.controller;
 
 import com.buya2z.app.Application;
-import com.buya2z.config.DirectoryManager;
-import com.buya2z.model.DAOFactory;
-import com.buya2z.model.ImageDAO;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.image.DirectColorModel;
-import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 
 /**
  * Created by Jinu on 11/26/2016.

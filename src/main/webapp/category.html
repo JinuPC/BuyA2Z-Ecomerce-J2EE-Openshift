@@ -1,0 +1,39 @@
+<html>
+<head>
+    <script src="assets/js/jquery.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#cat').on('change',function(){
+                console.log($(this).val());
+                var id = $(this).val();
+                $('#sub').html("");
+
+                $.ajax({
+                    url: 'http://localhost:8080/category',
+                    data: "id=" + id,
+                    success: function (values) {
+                        for(var key in values) {
+                            $('#sub').append("<option value=''>" + values[key] + "</option>");
+
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<select name="category" id="cat">
+    <option value="">select an option</option>
+    <option value="1">Electorinics</option>
+    <option value="2">Men</option>
+    <option value="3">Women</option>
+
+</select>
+<br>
+<select name="subcategory" id="sub">
+
+</select>
+</body>
+</html>

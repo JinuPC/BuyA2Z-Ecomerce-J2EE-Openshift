@@ -40,7 +40,7 @@ public class ProductDAOImplTest {
 
     private Product getTestProduct(int id) {
         Category category = Application.getInstance().getCategoryList().getCategory(101);
-        User user = new Seller();
+        Seller user = new Seller();
         user.setId(2);
         Product product = new Product();
         if(id > 0) {
@@ -85,13 +85,12 @@ public class ProductDAOImplTest {
     @Test
     public void testGetCreateQueryInProduct() {
         LOGGER.info("Tesing getCreateQuery() in Product class");
-        String expected = "INSERT INTO product ( onStock, active, product_id, product_name, " +
-                "mrp, product_short_desc, product_thumbnail, special_notes, " +
-                "created_by, category_id, created_at," +
-                " updated_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+        String expected = "INSERT INTO product ( onStock, " +
+                "active, product_name, mrp, product_short_desc," +
+                " product_thumbnail, special_notes, created_by, " +
+                "category_id, created_at, updated_at) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         Product product = getTestProduct(33);
         String actual = product.getCreateQuery().getQuery();
-        System.out.println(actual);
         if (!expected.equalsIgnoreCase(actual)) {
             fail("Product Create Statement query not matching");
         }
@@ -146,48 +145,15 @@ public class ProductDAOImplTest {
 
     @Test
     public void testCreate() {
-        Seller seller = new Seller();
-        seller.setId(2);
-        Product product = getTestProduct(0);
-        product.setName("something");
-        product.setActive(true);
-        product.setCreatedBy(seller);
-        product.setShortDescription("sdjkjfslkjflkdjsf");
-        product.setThumbnail("tum/url/so/lfd");
-        product.setCategoryId(Application.getInstance().getCategoryList().getCategory(33).getId());
-        product.setMrp(3456.67);
-        product.setSpecialNotes("dsjfklsdjfkkdsjflk");
 
-        //
-        ArrayList imageList = new ArrayList();
-        for(int i = 1; i<= 5; i++) {
-            imageList.add(getTestImage(i));
-        }
-        product.setImages(imageList);
-
-        ArrayList featureList = new ArrayList();
-        for(int i = 1; i <=5 ;i ++) {
-            featureList.add(getTestFeature(i));
-        }
-        product.setFeatures(featureList);
-
-        ArrayList mainfeatures = new ArrayList();
-        for(int i =0; i<= 5; i++) {
-            mainfeatures.add(getTestMainFeature(i));
-        }
-        product.setMainFeatures(mainfeatures);
-        System.out.println(product.validate());
-
-        ProductDAO dao = DAOFactory.getProductDAO();
-        dao.create(product);
     }
     @Test
     public void testGetAutoIncrementValue() {
-        String tableName = DatabaseTable.getProductTableName();
-        try {
-            System.out.println(Database.getAutoIncrementedValue(tableName));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+//        String tableName = DatabaseTable.getProductTableName();
+//        try {
+//            //System.out.println(Database.getAutoIncrementedValue(tableName));
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
     }
 }

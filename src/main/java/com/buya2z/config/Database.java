@@ -2,10 +2,8 @@ package com.buya2z.config;
 
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
 
+import com.buya2z.config.dummydata.TableData;
 import org.apache.log4j.Logger;
 
 /**
@@ -15,11 +13,9 @@ public class Database {
 
     private static final Logger LOGGER = Logger.getLogger(Database.class);
 
-    private static final int MAX_CONNECTIONS = 5;
-
     private static final String DB_NAME = Config.getDbName();
 
-    private static List<Connection> connectionPool; //for storing connections
+    private static ConnectionPool connectionPool ;
 
     private Database() {
     }
@@ -34,56 +30,20 @@ public class Database {
         Schema schema = new Schema();
         schema.setSchema();
         LOGGER.info("Database Schema Updated");
-        initPool();
+        connectionPool = ConnectionPool.getInstance();
         LOGGER.info("Updating Database Data");
         TableData tableData = new TableData();
         tableData.setTableData();
         LOGGER.info("Database Data Updated");
     }
 
-    private static void initPool() {
-        LOGGER.info("Initializing Connection Pool");
-        connectionPool = new ArrayList<>(MAX_CONNECTIONS);
-        for (int i = 0; i < MAX_CONNECTIONS; i++) {
-            try {
-                connectionPool.add(createNewConnection());
-            } catch (SQLException e) {
-                LOGGER.error("Exception Happened " + e);
-            }
-        }
-        LOGGER.info("Connection pool initialized ");
+    public static Connection getConnection() {
+       return connectionPool.get();
     }
 
-    private static Connection createNewConnection() throws SQLException {
-        LOGGER.info("Creating new Connection");
-        String dbUrl = Config.getDbUrlWithDatabaseName();
-        return DriverManager.getConnection(dbUrl, Config.getDbUserName(), Config.getDbPassword());
-    }
-
-    public synchronized static Connection getConnection() {
-        Connection con = null;
-        try {
-            if (connectionPool.isEmpty()) {
-                LOGGER.info("Connection pool is empty trying to create new Connection");
-                con = createNewConnection();
-            }
-            con = connectionPool.remove(1);
-            if (con.isClosed() || !con.isValid(5)) {
-                return getConnection();
-            }
-        } catch (SQLException e) {
-            LOGGER.error("Exception Happened " + e);
-        }
-        return con;
-    }
 
     private static void putConnectionToPool(Connection con) throws SQLException {
-        if (connectionPool.size() > MAX_CONNECTIONS) {
-            con.close();
-        }
-        if (!con.isClosed()) {
-            connectionPool.add(con);
-        }
+        connectionPool.put(con);
     }
 
     /**
@@ -120,18 +80,29 @@ public class Database {
         }
     }
 
-    public synchronized static int getAutoIncrementedValue(String tableName) throws SQLException{
+
+    private synchronized static int getAutoIncrementedValue(String tableName) throws SQLException{
         Connection connection = Database.getConnection();
-        try(Statement statement = connection.createStatement()) {
-            String query = "SHOW TABLE STATUS LIKE '" + tableName + "' " ;
-            ResultSet resultSet = statement.executeQuery(query);
+        String query = "SHOW TABLE STATUS LIKE ?" ;
+        try(PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, tableName);
+            ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
                 return resultSet.getInt("Auto_increment");
             }
+        } finally {
+            Database.close(connection);
         }
         return -1;
     }
 
+    /**
+     *
+     * @param tableName
+     * @return
+     * @throws SQLException
+     * Will return the last incremented id of a particular table
+     */
     public synchronized static int getAutoIncrementedId(String tableName) throws SQLException {
         return getAutoIncrementedValue(tableName) - 1;
     }
@@ -147,21 +118,12 @@ public class Database {
 
     private static void removeConnectionPool() throws SQLException {
         LOGGER.info("Trying to close all connections and remove connection Pool");
-        for (Connection connection : connectionPool) {
-            LOGGER.info("Closing " + connection + " Connection");
-            connection.close();
-        }
-        connectionPool.clear();
+        connectionPool.remove();
         LOGGER.info("Connection Pool Removed Successfully");
     }
 
     private static void unRegisterDriver() throws SQLException {
-        Enumeration<Driver> drivers = DriverManager.getDrivers();
-        while (drivers.hasMoreElements()) {
-            Driver driver = drivers.nextElement();
-            DriverManager.deregisterDriver(driver);
-            LOGGER.info("Jdbc Drivers unregistered Successfully");
-        }
+        connectionPool.unRegisterDriver();
     }
 
     public static void setAutoCommitTrue(Connection con) {
@@ -182,6 +144,10 @@ public class Database {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static int getConnectionPoolCount() {
+        return connectionPool.size();
     }
 
 }
