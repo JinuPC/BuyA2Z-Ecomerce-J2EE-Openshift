@@ -89,4 +89,14 @@ public class DAOUtil {
         return query.toString() + closingQuery.toString() + ")";
     }
 
+    public static String getUpdateQuery(String tableName, Map<String, Object> columnsWithValues, String primaryColumn) {
+        StringBuilder query = new StringBuilder("UPDATE " + tableName +" SET ");
+        for(String columnName : columnsWithValues.keySet() ) {
+            query.append(columnName + " = ?,");
+        }
+        query.setLength(query.length() - 1);
+        query.append(" WHERE " + primaryColumn + " = ?");
+        return query.toString();
+    }
+
 }

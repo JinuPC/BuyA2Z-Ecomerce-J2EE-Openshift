@@ -4,6 +4,7 @@ package com.buya2z.model.impl;
 import com.buya2z.TestInitializer;
 import com.buya2z.beans.user.Buyer;
 import com.buya2z.beans.user.Seller;
+import com.buya2z.beans.user.Status;
 import com.buya2z.beans.user.User;
 import com.buya2z.model.DAOFactory;
 import com.buya2z.model.UserDAO;
@@ -67,19 +68,49 @@ public class UserDAOTest {
     @Test
     public void testAuthenicateUser() {
         char[] password = {'r','o','o','t'};
-        assertTrue(dao.authenicate("pcjinu@ymail.com", password));
+        //char[] password = {'j','i','n','u'};
+
+        assertTrue(dao.authenicate("978624048", password));
 
     }
 
     @Test
     public void testAuthenicateUserEmail() {
         char[] password = {'r','o','o','t'};
-        assertTrue(dao.authenicate("978624048", password));
+        assertTrue(dao.authenicate("pcjinu@ymail.com", password));
     }
 
     @Test
     public void testGetUser() {
         User user = dao.getUser(2);
         System.out.println(user);
+        assertTrue(user != null);
+    }
+
+    @Test
+    public void testGetUserWithEmailAndPassword() {
+        String email = "978624048";
+        char[] password = {'r','o','o','t'};
+        User user = dao.getUser(email, password);
+        System.out.println(user);
+    }
+
+    @Test
+    public void testResetPassword() {
+        String email = "pcjinu@ymail.com";
+        String phoneNumber = "978624048";
+        char[] oldPassword = {'r','o','o','t'};
+        char[] newPassword = {'j','i','n','u'};
+        assertTrue(dao.resetPassword(email, oldPassword, newPassword));
+        assertTrue(dao.resetPassword(phoneNumber, newPassword, oldPassword));
+    }
+
+    @Test
+    public void testSave() {
+        User user = dao.getUser(2);
+        user.setFirstName("Praveen");
+        user.setLastName("S");
+        user.setStatus(Status.ACTIVE);
+        dao.save(user);
     }
 }

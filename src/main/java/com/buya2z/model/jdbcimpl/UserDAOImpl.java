@@ -92,11 +92,15 @@ public class UserDAOImpl implements UserDAO {
     }
 
     private PreparedStatement getAuthenticationPreparedStatement(String emailOrPhone, Connection connection) throws SQLException {
-        String query = "SELECT password, salt FROM " + DatabaseTable.getUserTableName() + " WHERE email = ? OR " +
-                "phone_number = ?";
+        String query = "SELECT password, salt FROM " + DatabaseTable.getUserTableName() + " ";
+        //Checking is Mobile
+        if(emailOrPhone.matches(".*\\d+.*")) {
+            query += " WHERE phone_number = ?";
+        } else {
+            query += " WHERE email = ?";
+        }
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setString(1, emailOrPhone);
-        preparedStatement.setString(2, emailOrPhone);
         return preparedStatement;
     }
 
@@ -201,5 +205,124 @@ public class UserDAOImpl implements UserDAO {
         bank.setIfscCode(ifscCode);
         bank.setBranch(branch);
         bank.setAccountNumber(accountNumber);
+    }
+
+    @Override
+    public User getUser(String emailOrPhone, char[] password) {
+        User user = null;
+        if(authenicate(emailOrPhone, password)) {
+            String sellerTable = DatabaseTable.getSellerTableName();
+            String userTable = DatabaseTable.getUserTableName();
+            String query = "SELECT * FROM " + userTable + " LEFT JOIN " +
+                    sellerTable + " ON " + userTable + ".user_id = " + sellerTable + ".user_id WHERE ";
+            //Check isMobileNumber
+            if(emailOrPhone.matches(".*\\d+.*")) {
+               query += userTable + ".phone_number = ?";
+            } else {
+                query += userTable + ".email = ?";
+            }
+            user = findUser(query, emailOrPhone);
+        }
+        return user;
+    }
+
+    private User findUser(String query, String emailOrPhone) {
+        User user = null;
+        Connection connection = Database.getConnection();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            DAOUtil.setValue(1, emailOrPhone, preparedStatement);
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                user = getUserFromResultSet(resultSet);
+            }
+        } catch (SQLException e) {
+            LOGGER.error("Exception happened while getting student: ", e);
+        } finally {
+            Database.close(resultSet, preparedStatement, connection);
+        }
+        return user;
+    }
+
+    @Override
+    public boolean resetPassword(String emailOrPhone, char[] oldPassword, char[] newPassword) {
+        boolean isReseted = false;
+        if(authenicate(emailOrPhone, oldPassword)) {
+            byte[] newSalt = PasswordManager.generateSalt();
+            byte[] encryptedPassword = PasswordManager.getEncryptedPassword(newPassword, newSalt);
+            isReseted = updatePassword(emailOrPhone, encryptedPassword, newSalt);
+            PasswordManager.clearCharArray(oldPassword);
+            PasswordManager.clearCharArray(newPassword);
+        }
+        return isReseted;
+    }
+
+    private boolean updatePassword(String emailOrPhone, byte[] encryptedPassword, byte[] newSalt) {
+        boolean isInserted = false;
+        Connection connection = Database.getConnection();
+        try(
+                PreparedStatement pStmt = getUpdatePasswordPreparedStatment(emailOrPhone, encryptedPassword, newSalt, connection);
+                ) {
+            int updatedCount = pStmt.executeUpdate();
+            if(updatedCount > 0) {
+                isInserted = true;
+            }
+        } catch (SQLException e) {
+            LOGGER.error("Exception happened while updating password", e);
+        } finally {
+            Database.close(connection);
+        }
+        return isInserted;
+    }
+
+    private PreparedStatement getUpdatePasswordPreparedStatment(String emailOrPhone, byte[] encryptedPassword,
+                                                                byte[] newSalt, Connection con) throws SQLException {
+        String query = "update " + DatabaseTable.getUserTableName() + " SET password = ?, salt = ? where ";
+        if(emailOrPhone.matches(".*\\d+.*")) {
+            query += " phone_number = ?";
+        } else {
+            query += "email = ?";
+        }
+        PreparedStatement preparedStatement = con.prepareStatement(query);
+        DAOUtil.setValue(1, encryptedPassword, preparedStatement);
+        DAOUtil.setValue(2, newSalt, preparedStatement);
+        DAOUtil.setValue(3, emailOrPhone, preparedStatement);
+        return preparedStatement;
+    }
+
+    @Override
+    public boolean save(User user) {
+        boolean isSaved = false;
+        Map<String, Object> columnsWithValues = user.getSaveValues();
+        isSaved = updateUser(columnsWithValues, user.getId());
+        return isSaved;
+    }
+
+    private boolean updateUser(Map<String, Object> columnsWithValues, int userId) {
+        boolean isUpdated = false;
+        Connection connection = Database.getConnection();
+        try(PreparedStatement pstmt = getUpdateUserPreparedStatement(columnsWithValues, userId, connection);
+        ) {
+            int updatedCount = pstmt.executeUpdate();
+            if(updatedCount > 0) {
+                isUpdated = true;
+            }
+        } catch (SQLException e) {
+            LOGGER.error("Exception happened while updating user table: " , e);
+        } finally {
+            Database.close(connection);
+        }
+        return isUpdated;
+    }
+
+    private PreparedStatement getUpdateUserPreparedStatement(Map<String, Object> columnsWithValues,
+                                                             int userId, Connection con) throws SQLException {
+        String query = DAOUtil.getUpdateQuery(DatabaseTable.getUserTableName(), columnsWithValues, "user_id");
+        PreparedStatement preparedStatement = con.prepareStatement(query);
+        columnsWithValues.put("user_id", userId);
+        DAOUtil.setPreparedValues(preparedStatement, columnsWithValues);
+        return preparedStatement;
     }
 }

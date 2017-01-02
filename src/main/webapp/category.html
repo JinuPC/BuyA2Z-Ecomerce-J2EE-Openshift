@@ -13,8 +13,9 @@
                     url: 'http://localhost:8080/category',
                     data: "id=" + id,
                     success: function (values) {
-                        for(var key in values) {
-                            $('#sub').append("<option value=''>" + values[key] + "</option>");
+                        console.log(values);
+                        for(var key in values.value) {
+                            $('#sub').append("<option value=''>" + values.value[key] + "</option>");
 
                         }
                     }

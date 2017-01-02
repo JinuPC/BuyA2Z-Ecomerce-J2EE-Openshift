@@ -225,6 +225,34 @@ public abstract class AbstractUser extends AbstractBean implements User{
     }
 
     @Override
+    public Map<String, Object> getSaveValues() {
+        if(getId() <= 0) {
+            return null;
+        }
+        Map<String, Object> columnsWithValues = new LinkedHashMap<>();
+        if(isStringPropertyAssigned(getFirstName())) {
+            columnsWithValues.put("first_name", getFirstName());
+        }
+        if(isStringPropertyAssigned(getLastName()))  {
+            columnsWithValues.put("last_name", getLastName());
+        }
+        if(isStringPropertyAssigned(getPhoneNumber())) {
+            columnsWithValues.put("phone_number", getPhoneNumber());
+        }
+        if(isStatusPropertyAssigned(getStatus())) {
+            columnsWithValues.put("status", getStatus().getStatusValue());
+        }
+        if(isStringPropertyAssigned(getGender())) {
+            columnsWithValues.put("gender", getGender());
+        }
+        return columnsWithValues;
+    }
+
+    protected boolean isStatusPropertyAssigned(Status status) {
+        return status != null;
+    }
+
+    @Override
     public String toString() {
         return "AbstractUser{" +
                 "id=" + id +

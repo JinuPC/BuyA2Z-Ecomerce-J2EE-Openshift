@@ -154,4 +154,9 @@ public class Guest extends AbstractBean implements User {
     public void setPassword(char[] password) {
 
     }
+
+    @Override
+    public Map<String, Object> getSaveValues() {
+        return null;
+    }
 }

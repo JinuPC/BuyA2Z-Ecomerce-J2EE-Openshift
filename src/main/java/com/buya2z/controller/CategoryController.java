@@ -29,14 +29,14 @@ public class CategoryController extends HttpServlet {
             CategoryList list = Application.getInstance().getCategoryList();
             MainCategory category = (MainCategory) list.getCategory(id);
             List categories = category.getSubCategories();
-            String json = "{";
+            String json = "{ \"value\": [";
             int index = 0;
             for(Object item : categories) {
                 index++;
                 String name = ((Category)item).getName();
-                json += "\""+ "name" + index +"\":" +"\"" + name +"\""+ ",";
+                json += "\"" + name +"\""+ ",";
             }
-            json  = json.substring(0, json.length() - 1) + "}";
+            json  = json.substring(0, json.length() - 1) + "]}";
             System.out.println(json);
             resp.getWriter().print(json);
         }
