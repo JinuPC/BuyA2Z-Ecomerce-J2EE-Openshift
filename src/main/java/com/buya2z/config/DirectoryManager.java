@@ -66,11 +66,11 @@ public class DirectoryManager {
         LOGGER.info("Slider Directory Set as " + getDataDirectory() + IMAGE_FOLDER_NAME + SLIDER_FOLDER_NAME);
     }
 
-    public String getDataDirectory() {
+    private String getDataDirectory() {
         return this.DATA_DIRECTORY;
     }
 
-    public String getImageDirectory() {
+    private String getImageDirectory() {
         return this.getDataDirectory() + this.IMAGE_FOLDER_NAME;
     }
 

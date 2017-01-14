@@ -10,6 +10,8 @@ import java.util.Arrays;
 
 public class PasswordManager {
 
+    private PasswordManager() {};
+
     public static boolean authenticate(char[] attemptedPassword, byte[] encryptedPassword, byte[] salt) {
         boolean isValid = false;
         byte[] encryptedAttemptedPassword = getEncryptedPassword(attemptedPassword, salt);

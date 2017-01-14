@@ -47,7 +47,7 @@ public abstract class AbstractBean {
         return value > 0;
     }
 
-    protected boolean isBooleanPropertyAssigned(boolean value) {
+   protected boolean isBooleanPropertyAssigned(boolean value) {
         return value;
     }
 
