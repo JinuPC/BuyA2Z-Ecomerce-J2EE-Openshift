@@ -17,7 +17,7 @@
     <link href="<%= baseUrl %>/assets/css/material-kit.css" rel="stylesheet" type="text/css"/>
     <link href="<%= baseUrl %>/assets/css/scrolling-nav.css" rel="stylesheet"/>
     <link href="<%= baseUrl %>/assets/css/w3.css" rel="stylesheet"/>
-    <link href="<%= baseUrl %>assets/css/style.css" rel="stylesheet"/>
+    <link href="<%= baseUrl %>/assets/css/style.css" rel="stylesheet"/>
     <style>
     </style>
 </head>

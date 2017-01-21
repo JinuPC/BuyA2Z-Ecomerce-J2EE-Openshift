@@ -135,7 +135,7 @@ public class Config {
 
     /*
      * Method for set local environment variables
-     * This method reads the properties form the main/resources/config.properties file
+     * This method reads the properties from the main/resources/config.properties file
      */
     private static void setLocalEnv() {
         final String fileName = "config.properties";
