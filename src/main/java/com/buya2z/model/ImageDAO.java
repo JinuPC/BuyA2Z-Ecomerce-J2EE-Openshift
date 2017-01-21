@@ -1,6 +1,6 @@
 package com.buya2z.model;
 
-import com.buya2z.beans.product.ProductImage;
+import com.buya2z.beans.depricated.product.ProductImage;
 
 import java.util.List;
 

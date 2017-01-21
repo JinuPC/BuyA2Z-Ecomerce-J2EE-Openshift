@@ -1,6 +1,6 @@
 package com.buya2z.model;
 
-import com.buya2z.beans.category.Category;
+import com.buya2z.beans.depricated.category.Category;
 
 import java.util.List;
 

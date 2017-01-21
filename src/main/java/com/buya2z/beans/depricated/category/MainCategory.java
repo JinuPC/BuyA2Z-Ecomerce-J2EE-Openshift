@@ -1,4 +1,4 @@
-package com.buya2z.beans.category;
+package com.buya2z.beans.depricated.category;
 
 import java.util.ArrayList;
 

@@ -2,10 +2,10 @@ package com.buya2z.model.impl;
 
 
 import com.buya2z.TestInitializer;
-import com.buya2z.beans.user.Buyer;
-import com.buya2z.beans.user.Seller;
-import com.buya2z.beans.user.Status;
-import com.buya2z.beans.user.User;
+import com.buya2z.beans.depricated.user.Buyer;
+import com.buya2z.beans.depricated.user.Seller;
+import com.buya2z.beans.depricated.user.Status;
+import com.buya2z.beans.depricated.user.User;
 import com.buya2z.model.DAOFactory;
 import com.buya2z.model.UserDAO;
 import org.junit.Test;

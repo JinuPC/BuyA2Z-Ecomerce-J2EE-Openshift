@@ -1,7 +1,4 @@
-package com.buya2z.beans.category;
-
-import com.buya2z.beans.AbstractBean;
-import com.buya2z.beans.QueryTransferObject;
+package com.buya2z.beans.depricated.category;
 
 /**
  * Created by Jinu on 12/24/2016.

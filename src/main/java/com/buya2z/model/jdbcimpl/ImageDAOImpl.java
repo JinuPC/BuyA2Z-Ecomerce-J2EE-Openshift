@@ -1,6 +1,6 @@
 package com.buya2z.model.jdbcimpl;
 
-import com.buya2z.beans.product.ProductImage;
+import com.buya2z.beans.depricated.product.ProductImage;
 import com.buya2z.config.DirectoryManager;
 import com.buya2z.model.ImageDAO;
 

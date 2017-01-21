@@ -1,8 +1,8 @@
 package com.buya2z.controller;
 
 import com.buya2z.app.Application;
-import com.buya2z.beans.category.Category;
-import com.buya2z.beans.category.MainCategory;
+import com.buya2z.beans.depricated.category.Category;
+import com.buya2z.beans.depricated.category.MainCategory;
 import com.buya2z.model.CategoryList;
 
 import javax.servlet.ServletException;

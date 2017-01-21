@@ -1,4 +1,4 @@
-package com.buya2z.beans.user;
+package com.buya2z.beans.depricated.user;
 
 /**
  * Created by Jinu on 12/24/2016.

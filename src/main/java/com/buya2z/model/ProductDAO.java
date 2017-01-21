@@ -1,6 +1,6 @@
 package com.buya2z.model;
 
-import com.buya2z.beans.product.Product;
+import com.buya2z.beans.depricated.product.Product;
 
 /**
  * Created by Jinu on 12/26/2016.

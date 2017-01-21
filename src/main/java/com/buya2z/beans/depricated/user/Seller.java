@@ -1,6 +1,6 @@
-package com.buya2z.beans.user;
+package com.buya2z.beans.depricated.user;
 
-import com.buya2z.beans.QueryTransferObject;
+import com.buya2z.beans.depricated.category.QueryTransferObject;
 import org.apache.log4j.Logger;
 
 import java.util.LinkedHashMap;

@@ -1,7 +1,7 @@
 package com.buya2z.model.impl;
 
 import com.buya2z.TestInitializer;
-import com.buya2z.beans.product.ProductImage;
+import com.buya2z.beans.depricated.product.ProductImage;
 import com.buya2z.config.dummydata.TableData;
 import com.buya2z.model.DAOFactory;
 import com.buya2z.model.ImageDAO;

@@ -2,12 +2,12 @@ package com.buya2z.model.impl;
 
 import com.buya2z.TestInitializer;
 import com.buya2z.app.Application;
-import com.buya2z.beans.category.Category;
-import com.buya2z.beans.product.Feature;
-import com.buya2z.beans.product.MainFeature;
-import com.buya2z.beans.product.Product;
-import com.buya2z.beans.product.ProductImage;
-import com.buya2z.beans.user.Seller;
+import com.buya2z.beans.depricated.category.Category;
+import com.buya2z.beans.depricated.product.Feature;
+import com.buya2z.beans.depricated.product.MainFeature;
+import com.buya2z.beans.depricated.product.Product;
+import com.buya2z.beans.depricated.product.ProductImage;
+import com.buya2z.beans.depricated.user.Seller;
 import com.buya2z.model.DAOFactory;
 import com.buya2z.model.ProductDAO;
 import org.apache.log4j.Logger;

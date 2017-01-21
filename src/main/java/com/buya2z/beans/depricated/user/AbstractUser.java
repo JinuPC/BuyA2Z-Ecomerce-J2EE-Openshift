@@ -1,6 +1,6 @@
-package com.buya2z.beans.user;
+package com.buya2z.beans.depricated.user;
 
-import com.buya2z.beans.AbstractBean;
+import com.buya2z.beans.depricated.category.AbstractBean;
 import com.buya2z.config.PasswordManager;
 import org.apache.log4j.Logger;
 

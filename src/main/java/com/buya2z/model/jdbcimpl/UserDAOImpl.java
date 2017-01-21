@@ -1,6 +1,6 @@
 package com.buya2z.model.jdbcimpl;
 
-import com.buya2z.beans.user.*;
+import com.buya2z.beans.depricated.user.*;
 import com.buya2z.config.Database;
 import com.buya2z.config.DatabaseTable;
 import com.buya2z.config.PasswordManager;

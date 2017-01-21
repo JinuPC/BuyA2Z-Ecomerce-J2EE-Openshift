@@ -1,7 +1,7 @@
 package com.buya2z.model;
 
 import com.buya2z.TestInitializer;
-import com.buya2z.beans.category.Category;
+import com.buya2z.beans.depricated.category.Category;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 

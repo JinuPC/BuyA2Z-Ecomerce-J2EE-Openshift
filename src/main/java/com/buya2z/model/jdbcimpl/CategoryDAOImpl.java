@@ -1,6 +1,6 @@
 package com.buya2z.model.jdbcimpl;
 
-import com.buya2z.beans.category.*;
+import com.buya2z.beans.depricated.category.*;
 import com.buya2z.config.Database;
 import com.buya2z.model.CategoryDAO;
 import com.buya2z.model.CategoryList;

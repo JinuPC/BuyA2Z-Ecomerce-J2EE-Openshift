@@ -1,6 +1,6 @@
 package com.buya2z.model;
 
-import com.buya2z.beans.user.User;
+import com.buya2z.beans.depricated.user.User;
 
 /**
  * Created by Jinu on 12/25/2016.

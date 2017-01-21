@@ -1,11 +1,11 @@
-package com.buya2z.beans.product;
+package com.buya2z.beans.depricated.product;
 
 import com.buya2z.app.Application;
-import com.buya2z.beans.AbstractBean;
-import com.buya2z.beans.QueryTransferObject;
-import com.buya2z.beans.category.Category;
-import com.buya2z.beans.user.Seller;
-import com.buya2z.beans.user.User;
+import com.buya2z.beans.depricated.category.AbstractBean;
+import com.buya2z.beans.depricated.category.QueryTransferObject;
+import com.buya2z.beans.depricated.category.Category;
+import com.buya2z.beans.depricated.user.Seller;
+import com.buya2z.beans.depricated.user.User;
 import com.buya2z.config.DatabaseTable;
 import org.apache.log4j.Logger;
 

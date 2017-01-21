@@ -1,10 +1,10 @@
 package com.buya2z.model.jdbcimpl;
 
-import com.buya2z.beans.QueryTransferObject;
-import com.buya2z.beans.product.Feature;
-import com.buya2z.beans.product.MainFeature;
-import com.buya2z.beans.product.Product;
-import com.buya2z.beans.product.ProductImage;
+import com.buya2z.beans.depricated.category.QueryTransferObject;
+import com.buya2z.beans.depricated.product.Feature;
+import com.buya2z.beans.depricated.product.MainFeature;
+import com.buya2z.beans.depricated.product.Product;
+import com.buya2z.beans.depricated.product.ProductImage;
 import com.buya2z.config.Database;
 import com.buya2z.config.DatabaseTable;
 import com.buya2z.model.DAOFactory;

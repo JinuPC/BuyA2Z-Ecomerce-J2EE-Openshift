@@ -1,4 +1,4 @@
-package com.buya2z.beans.user;
+package com.buya2z.beans.depricated.user;
 
 
 import java.sql.Timestamp;
