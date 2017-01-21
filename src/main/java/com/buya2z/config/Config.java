@@ -130,6 +130,7 @@ public class Config {
         homeDirectory = System.getenv("OPENSHIFT_HOMEDIR");
         appName = System.getenv("OPENSHIFT_APP_NAME");
         dataDirectory = System.getenv("OPENSHIFT_DATA_DIR");
+        baseUrl = "http://" + baseUrl;
     }
 
     /*
