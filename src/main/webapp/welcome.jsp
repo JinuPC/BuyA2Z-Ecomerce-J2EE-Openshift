@@ -1,4 +1,6 @@
+<%@ page import="com.buya2z.config.Config" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<% String baseUrl = Config.getBaseUrl(); %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,12 +12,12 @@
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"/>
     <!-- CSS Files -->
-    <link href="/assets/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/assets/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="/assets/css/material-kit.css" rel="stylesheet" type="text/css"/>
-    <link href="/assets/css/scrolling-nav.css" rel="stylesheet"/>
-    <link href="/assets/css/w3.css" rel="stylesheet"/>
-    <link href="assets/css/style.css" rel="stylesheet"/>
+    <link href="<%= baseUrl %>/assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<%= baseUrl %>/assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="<%= baseUrl %>/assets/css/material-kit.css" rel="stylesheet" type="text/css"/>
+    <link href="<%= baseUrl %>/assets/css/scrolling-nav.css" rel="stylesheet"/>
+    <link href="<%= baseUrl %>/assets/css/w3.css" rel="stylesheet"/>
+    <link href="<%= baseUrl %>/assets/css/style.css" rel="stylesheet"/>
     <style>
     </style>
 </head>
@@ -959,13 +961,13 @@
 </div>
 
 <!--   Core JS Files   -->
-<script src="assets/js/jquery.min.js" type="text/javascript"></script>
-<script src="assets/js/jquery.easing.min.js" type="text/javascript"></script>
-<script src="assets/js/scrolling-nav.js" type="text/javascript"></script>
-<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="assets/js/material.min.js"></script>
+<script src="<%= baseUrl %>/assets/js/jquery.min.js" type="text/javascript"></script>
+<script src="<%= baseUrl %>/assets/js/jquery.easing.min.js" type="text/javascript"></script>
+<script src="<%= baseUrl %>/assets/js/scrolling-nav.js" type="text/javascript"></script>
+<script src="<%= baseUrl %>/assets/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="<%= baseUrl %>/assets/js/material.min.js"></script>
 <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
-<script src="assets/js/material-kit.js" type="text/javascript"></script>
+<script src="<%= baseUrl %>/assets/js/material-kit.js" type="text/javascript"></script>
 <script>
     $(function () {
         $(".dropdown").hover(

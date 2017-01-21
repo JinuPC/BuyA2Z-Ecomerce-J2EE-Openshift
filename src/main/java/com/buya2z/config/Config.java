@@ -130,11 +130,12 @@ public class Config {
         homeDirectory = System.getenv("OPENSHIFT_HOMEDIR");
         appName = System.getenv("OPENSHIFT_APP_NAME");
         dataDirectory = System.getenv("OPENSHIFT_DATA_DIR");
+        baseUrl = "http://" + baseUrl;
     }
 
     /*
      * Method for set local environment variables
-     * This method reads the properties form the main/resources/config.properties file
+     * This method reads the properties from the main/resources/config.properties file
      */
     private static void setLocalEnv() {
         final String fileName = "config.properties";
