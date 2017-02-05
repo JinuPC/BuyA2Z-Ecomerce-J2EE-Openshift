@@ -1,7 +1,7 @@
 package com.buya2z.model.jdbcimpl;
 
 import com.buya2z.beans.depricated.category.*;
-import com.buya2z.config.Database;
+import com.buya2z.config.depricated.Database;
 import com.buya2z.model.CategoryDAO;
 import com.buya2z.model.CategoryList;
 import org.apache.log4j.Logger;

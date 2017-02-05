@@ -1,4 +1,4 @@
-package com.buya2z.config;
+package com.buya2z.config.depricated;
 
 
 import org.apache.log4j.Logger;

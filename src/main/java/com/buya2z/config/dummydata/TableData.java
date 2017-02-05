@@ -1,6 +1,6 @@
 package com.buya2z.config.dummydata;
 
-import com.buya2z.config.Database;
+import com.buya2z.config.depricated.Database;
 import com.buya2z.config.PasswordManager;
 import com.buya2z.model.jdbcimpl.DAOUtil;
 import org.apache.log4j.Logger;
