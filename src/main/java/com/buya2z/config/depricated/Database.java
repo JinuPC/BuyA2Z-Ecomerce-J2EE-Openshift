@@ -1,6 +1,7 @@
-package com.buya2z.config;
+package com.buya2z.config.depricated;
 
 
+import com.buya2z.config.Config;
 import com.buya2z.config.dummydata.TableData;
 import org.apache.log4j.Logger;
 

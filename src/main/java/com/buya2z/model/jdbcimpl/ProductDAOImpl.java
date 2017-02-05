@@ -5,7 +5,7 @@ import com.buya2z.beans.depricated.product.Feature;
 import com.buya2z.beans.depricated.product.MainFeature;
 import com.buya2z.beans.depricated.product.Product;
 import com.buya2z.beans.depricated.product.ProductImage;
-import com.buya2z.config.Database;
+import com.buya2z.config.depricated.Database;
 import com.buya2z.config.DatabaseTable;
 import com.buya2z.model.DAOFactory;
 import com.buya2z.model.ImageDAO;

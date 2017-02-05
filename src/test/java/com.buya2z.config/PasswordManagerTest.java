@@ -1,6 +1,7 @@
 package com.buya2z.config;
 
 import com.buya2z.TestInitializer;
+import com.buya2z.config.depricated.Database;
 import org.junit.Test;
 
 import java.sql.Connection;

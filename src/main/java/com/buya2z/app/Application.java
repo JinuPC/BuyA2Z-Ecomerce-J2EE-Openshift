@@ -1,6 +1,6 @@
 package com.buya2z.app;
 
-import com.buya2z.config.Database;
+import com.buya2z.config.depricated.Database;
 import com.buya2z.config.DirectoryManager;
 import com.buya2z.model.CategoryDAO;
 import com.buya2z.model.CategoryList;

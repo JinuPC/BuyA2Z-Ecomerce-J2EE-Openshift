@@ -12,15 +12,27 @@ public class PasswordManager {
 
     private PasswordManager() {};
 
+    /**
+     * Method for authenticate a user by providing the parameters
+     * @param attemptedPassword
+     * @param encryptedPassword
+     * @param salt
+     * @return true if passwords are matching
+     */
     public static boolean authenticate(char[] attemptedPassword, byte[] encryptedPassword, byte[] salt) {
         boolean isValid = false;
         byte[] encryptedAttemptedPassword = getEncryptedPassword(attemptedPassword, salt);
-
         isValid = Arrays.equals(encryptedPassword, encryptedAttemptedPassword);
         clearBuffer(attemptedPassword, encryptedAttemptedPassword);
+
         return isValid;
     }
 
+    /**
+     * Method for clearing the buffer from the character arrays and byte arrays
+     * @param chars
+     * @param bytesArray
+     */
     private static void clearBuffer(char[] chars, byte[]... bytesArray) {
         clearCharArray(chars);
         for(byte[] b : bytesArray) {
@@ -28,14 +40,18 @@ public class PasswordManager {
         }
     }
 
+    /**
+     * Method for getting the encrypted Password by providing the char[] password and salt value
+     * @param password
+     * @param salt
+     * @return encrypted password
+     */
     public static byte[] getEncryptedPassword(char[] password, byte[] salt){
         byte[] encryptedPassword= null;
         String algorithm = "PBKDF2WithHmacSHA1";
         int derivedKeyLength = 160;
         int iterations = 20000;
-
         KeySpec spec = new PBEKeySpec(password, salt, iterations, derivedKeyLength);
-
         SecretKeyFactory f = null;
         try {
             f = SecretKeyFactory.getInstance(algorithm);
@@ -45,6 +61,7 @@ public class PasswordManager {
         } catch (InvalidKeySpecException e) {
             e.printStackTrace();
         }
+
         return encryptedPassword;
     }
 
@@ -56,6 +73,10 @@ public class PasswordManager {
         Arrays.fill(chars, '\u0000');
     }
 
+    /**
+     * Method for generating salt. The value will always unique.
+     * @return random salt value
+     */
     public static byte[] generateSalt() {
         SecureRandom random = null;
         try {
